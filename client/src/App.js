@@ -33,7 +33,7 @@ function App() {
         <h3>Привет, {user.login}! </h3>
       </div>
         <Main />
-        <Footer /> 
+   
         <Routes>
           <Route path='testcard' element={<ItemCard></ItemCard>}></Route>
         </Routes>
