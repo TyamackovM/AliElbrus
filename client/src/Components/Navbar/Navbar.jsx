@@ -3,6 +3,8 @@ import { AudioOutlined, ShoppingCartOutlined, HeartOutlined, UserOutlined } from
 import { Input, Space,} from 'antd';
 
 import React from 'react';
+import { Link } from "react-router-dom";
+import ModalPage from "../Modal/Modal";
 const { Search } = Input;
 // const suffix = (
 //   <AudioOutlined
@@ -28,9 +30,10 @@ const Navbar = () => (
     <UserOutlined className={styles.icon_cart} />
     <div className={styles.sign_join_my} >
     <div className={styles.sign_login}>
-    <a href="#" className={styles.header_link} >Sign in</a>
+    {/* <Link to='/login' className={styles.header_link} >Sign in</Link>
     <span className={styles.devider} > | </span>
-    <a href="#" className={styles.header_link}>Join</a>
+    <Link to='/registr' className={styles.header_link}>Join</Link> */}
+    <ModalPage />
     </div>
     <div>
     <span>My AliElbrus</span>
