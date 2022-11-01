@@ -14,8 +14,13 @@ export default function ItemCard() {
               style={{ height: '480px', width: '640px' }}
             />
           </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", flexDirection: "row" }}>
             Small images
+            <img style={{ height: '55px', width: '64px' }} src="https://pp.userapi.com/c824504/v824504631/a126/iIpRKHlia1k.jpg" alt="Small" />
+            <img style={{ height: '55px', width: '64px' }} src="https://pp.userapi.com/c824504/v824504631/a126/iIpRKHlia1k.jpg" alt="Small" />
+            <img style={{ height: '55px', width: '64px' }} src="https://pp.userapi.com/c824504/v824504631/a126/iIpRKHlia1k.jpg" alt="Small" />
+            <img style={{ height: '55px', width: '64px' }} src="https://pp.userapi.com/c824504/v824504631/a126/iIpRKHlia1k.jpg" alt="Small" />
+            <img style={{ height: '55px', width: '64px' }} src="https://pp.userapi.com/c824504/v824504631/a126/iIpRKHlia1k.jpg" alt="Small" />
           </div>
         </div>
         <div  className="product-info" style={{ display: "flex", flexDirection: "column" }}>
@@ -27,7 +32,14 @@ export default function ItemCard() {
             <div>Info-5</div>
         </div>
       </div>
-      <div  className="lower part"></div>
+      <div  className="lower part" style={{ display: "flex", flexDirection: "column" }}>
+            Detail-container 
+            <div>Detail-1</div>
+            <div>Detail-2</div>
+            <div>Detail-3</div>
+            <div>Detail-4</div>
+            <div>Detail-5</div>
+      </div>
     </div>
   );
 }
