@@ -1,10 +1,11 @@
-import Main from "./Components/Main/Main";
+import Footer from '../Footer/Footer'
+
 
 
 function App() {
   return (
     <div>APP
-      <Main></Main>
+      <Footer />
     </div>
   );
 }
