@@ -1,6 +1,12 @@
+import Footer from '../Footer/Footer'
+
+
+
 function App() {
   return (
-    <div>APP</div>
+    <div>APP
+      <Footer />
+    </div>
   );
 }
 
