@@ -27,8 +27,12 @@ const App = () => {
         onCancel={() => setModal2Open(false)}
         style={{ borderRadius: "10px" }}
       >
-        {/* <Link to='registr'>Registration</Link>
-        <Link to='login'>Sign In</Link> */}
+        <button>
+          <Link to="registr">Registration</Link>
+        </button>
+        <button>
+          <Link to="login">Sign In</Link>
+        </button>
         <p>some contents...</p>
         <p>some contents...</p>
         <p>some contents...</p>
