@@ -1,8 +1,10 @@
 import React from 'react'
+import Categories from '../Categories/Categories'
 
 export default function Main() {
   return (
-    <div>Main
+    <div>
+      <Categories />
     </div>
   )
 }
