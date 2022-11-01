@@ -9,10 +9,13 @@ import Modal from "./Components/Modal/Modal";
 import Footer from "./Components/Footer/Footer";
 import Main from "./Components/Main/Main";
 import style from "./App.module.css";
+import { Layout } from "antd";
 
 function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+
+  const { Header, Footer, Sider, Content } = Layout;
 
   useEffect(() => {
     (async function () {
@@ -36,14 +39,19 @@ function App() {
         </Link>
         <h3>Привет, {user.login}! </h3>
       </div>
+      <Layout>
+          <Sider>Sider</Sider>
+          <Layout>
+            <Content>Content</Content>
+            <Layout>
+              <Sider>Sider</Sider>
+            </Layout>
+          </Layout>
+        </Layout>
       <div className={style.container}>
         <Main />
-      <Modal />
-      <Footer />
-        <Routes>
-          <Route path="/registr" element={<RegistrPage />} />
-          <Route path="/login" element={<LoginPage />} />
-        </Routes>
+        <Footer />
+        <Modal />        
       </div>
     </div>
   );

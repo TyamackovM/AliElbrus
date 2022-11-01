@@ -1,15 +1,17 @@
 import { Button, Modal } from "antd";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import "antd/dist/antd.min.css";
-import styles from "./Modal.module.css";
+import style from "./Modal.module.css";
+import RegistrPage from "../Registr/Registr";
+import LoginPage from "../Login/Login";
 
 const App = () => {
   const [modal2Open, setModal2Open] = useState(false);
 
   return (
     <div
-    // className={styles.modaldiv}
+    className={style.modaldiv}
     >
       <Button
         type="primary"
@@ -20,22 +22,24 @@ const App = () => {
       </Button>
 
       <Modal
-        title="Vertically centered modal dialog"
         centered
         open={modal2Open}
         onOk={() => setModal2Open(false)}
         onCancel={() => setModal2Open(false)}
-        style={{ borderRadius: "10px" }}
+        style={{ borderRadius: "50px" }}
       >
-        <button>
-          <Link to="registr">Registration</Link>
-        </button>
-        <button>
-          <Link to="login">Sign In</Link>
-        </button>
-        <p>some contents...</p>
-        <p>some contents...</p>
-        <p>some contents...</p>
+        <div className={style.allLinks}>
+          <Link className={style.link} to="registr">
+            Registration
+          </Link>
+          <Link className={style.link} to="login">
+            Sign In
+          </Link>
+        </div>
+        <Routes>
+          <Route path="/registr" element={<RegistrPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
       </Modal>
     </div>
   );
