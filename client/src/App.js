@@ -1,12 +1,17 @@
-import Footer from '../Footer/Footer'
-
+import 'antd/dist/antd.min.css';
+//import Footer from '../src/Components/Footer/Footer'
+import Navbar from "../src/Components/Navbar/Navbar"
 
 
 function App() {
   return (
-    <div>APP
-      <Footer />
-    </div>
+    
+      <>
+        <Navbar />
+      {/* <Footer /> */}
+    
+      </>
+    
   );
 }
 
