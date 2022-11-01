@@ -5,6 +5,9 @@ import LoginPage from "./Components/Login/Login";
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from "react";
 import { getUser } from "./store/user/actionCreators";
+import Modal from './Components/Modal/Modal';
+import Footer from './Components/Footer/Footer'
+import Main from './Components/Main/Main'
 
 function App() {
   const dispatch = useDispatch();
@@ -22,10 +25,14 @@ function App() {
   }, []);
 
   return (
+
     <>
     <Link to='/registr' color="inherit">Регистрация</Link>
     <Link to='/login' color="inherit">Логин</Link>
     <h3>Привет, {user.login}! </h3>
+      <Main />
+      <Modal />
+      <Footer />
     <Routes>
       <Route path="/registr" element={<RegistrPage/>} />
       <Route path="/login" element={<LoginPage/>} />
