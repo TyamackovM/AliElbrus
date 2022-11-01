@@ -1,10 +1,12 @@
-import Footer from '../Footer/Footer'
+import Modal from './Components/Modal/Modal';
+import Footer from './Components/Footer/Footer'
 
 
 
 function App() {
   return (
     <div>APP
+      <Modal />
       <Footer />
     </div>
   );
