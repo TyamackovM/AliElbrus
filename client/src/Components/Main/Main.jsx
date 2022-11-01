@@ -1,12 +1,27 @@
-import React from 'react';
-import Categories from '../Categories/Categories';
-import Carousel from '../Carousel/Carousel';
+import React from "react";
+import Categories from "../Categories/Categories";
+import { Layout } from "antd";
+import SliderCarousel from "../Carousel/Carousel";
 
 export default function Main() {
+  const { Header, Footer, Sider, Content } = Layout;
   return (
-    <div>
-      <Categories />
-      <Carousel />
+    <div style={{display: 'flex', justifyContent: 'center'}}>
+    <div style={{width: '80%'}}>
+      <Layout style={{backgroundColor: 'white'}}>
+        <Sider style={{boxShadow: '2px 1px 1px 1px rgba(167, 167, 167, 0.596)', borderRadius: '5px', backgroundColor: 'white'}}>
+          <Categories />
+        </Sider>
+        <Content style={{backgroundColor: 'white', margin: '0 10px'}}>
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '5px', boxShadow: '2px 1px 1px 1px rgba(167, 167, 167, 0.596)', }}>
+            <SliderCarousel />
+          </div>
+        </Content>
+        <Sider style={{backgroundColor: 'white', borderRadius: '5px', boxShadow: '2px 1px 1px 1px rgba(167, 167, 167, 0.596)'}}>
+          <Categories />
+        </Sider>
+      </Layout>
+    </div>
     </div>
   );
 }

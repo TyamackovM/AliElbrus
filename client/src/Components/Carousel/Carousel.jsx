@@ -7,10 +7,11 @@ const contentStyle = {
   lineHeight: '160px',
   textAlign: 'center',
   background: '#364d79',
+
 };
 export default function SliderCarousel() {
   return (
-    <Carousel autoplay>
+    <Carousel style={{width: '550px', borderRadius: '5px'}} autoplay>
       <div>
         <h3 style={contentStyle}>1</h3>
       </div>

@@ -34,7 +34,8 @@ const App = () => (
   <Menu
     onClick={onClick}
     style={{
-      width: 256,
+      width: 200,
+      borderRadius: '5px'
     }}
     mode="vertical"
     items={items}
