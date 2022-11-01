@@ -1,0 +1,74 @@
+.header {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+
+  
+    position: relative;
+    display: block;
+    width: 500px;
+    height: 100%;
+    padding: 11px 10px 11px 0;
+    line-height: 18px;
+    font-size: 13px;
+    border: 0;
+    font-family: arial;
+
+}
+
+.cartnum {
+  display: flex;
+  flex-direction: column;
+}
+
+.sign_login {
+  display: flex;
+
+}
+
+.sign_join_my {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon_cart {
+  font-size: 35px;
+  color: grey;
+}
+
+.icon_heart {
+  font-size: 35px;
+  color: grey;
+
+}
+
+.icon_user {
+  font-size: 35px;
+  color: grey;
+}
+
+.devider {
+  margin: 0 5px;
+  color:#e9e9e9
+}
+
+.header_link {
+  text-decoration: none;
+  color: black;
+}
+
+.span_number {
+    min-width: 25px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #e62e04;
+    color: #fff;
+    font-size: 12px;
+}

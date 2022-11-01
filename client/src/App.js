@@ -1,11 +1,12 @@
+import 'antd/dist/antd.min.css';
 import { Routes, Route, Link } from "react-router-dom";
-import "antd/dist/antd.min.css";
 import RegistrPage from "./Components/Registr/Registr";
 import LoginPage from "./Components/Login/Login";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getUser } from "./store/user/actionCreators";
 import Modal from "./Components/Modal/Modal";
+import Navbar from "../src/Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
 import Main from "./Components/Main/Main";
 import style from "./App.module.css";
@@ -30,6 +31,8 @@ function App() {
 
   return (
     <div>
+    <Navbar />
+      <Modal />
       <div>
         <Link to="/registr" color="inherit">
           Регистрация
@@ -54,6 +57,7 @@ function App() {
         <Modal />        
       </div>
     </div>
+
   );
 }
 
