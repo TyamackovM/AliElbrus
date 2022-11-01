@@ -29,6 +29,7 @@ function App() {
   return (
     <div>
     <Navbar />
+      <Modal />
       <div>
         <Link to="/registr" color="inherit">
           Регистрация
@@ -38,14 +39,13 @@ function App() {
         </Link>
         <h3>Привет, {user.login}! </h3>
       </div>
-      <div className={style.container}>
-        <Main />
-      <Modal />
-      <Footer />
         <Routes>
           <Route path="/registr" element={<RegistrPage />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>
+        <Main />
+      <div className={style.container}>
+      <Footer />
       </div>
     </div>
 
