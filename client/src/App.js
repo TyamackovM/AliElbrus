@@ -12,6 +12,7 @@ import style from "./App.module.css";
 import { Layout } from "antd";
 import ModalPage from './Components/Modal/Modal';
 import FooterPage from './Components/Footer/Footer';
+import ItemCard from './Components/ItemCard/ItemCard';
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +53,10 @@ function App() {
 
         <Main />
         <Footer /> 
+        <Routes>
+          <Route path='testcard' element={<ItemCard></ItemCard>}></Route>
+        </Routes>
+        <Link to='testcard'>testcard</Link>
         <FooterPage />   
       </div>
 
