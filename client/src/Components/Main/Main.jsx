@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Categories from '../Categories/Categories';
+import Carousel from '../Carousel/Carousel';
 
 export default function Main() {
   return (
-    <div>Main
+    <div>
+      <Categories />
+      <Carousel />
     </div>
-  )
+  );
 }
