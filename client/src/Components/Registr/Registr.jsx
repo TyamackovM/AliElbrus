@@ -2,7 +2,7 @@ import { Button, Form, Input } from "antd";
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import styles from "./Registr.module.css";
+import style from "./Registr.module.css";
 import { getUser } from "../../store/user/actionCreators";
 
 const RegistrPage = () => {
@@ -40,12 +40,7 @@ const RegistrPage = () => {
   return (
     <Form
       name="basic"
-      labelCol={{
-        span: 8,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
+      style={{display: 'flex', flexDirection: 'column', alignItems:'center'}}
       initialValues={{
         remember: true,
       }}
@@ -53,8 +48,9 @@ const RegistrPage = () => {
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'stretch'}}>
       <Form.Item
-        label="Username"
+
         name="login"
         rules={[
           {
@@ -63,12 +59,10 @@ const RegistrPage = () => {
           },
         ]}
       >
-        <Input name="login" onChange={inputHandler} style={{width: '300px', borderRadius: '5px'}}/>
+        <Input placeholder='Login' name="login" onChange={inputHandler} style={{width: "300px", borderRadius: '5px'}}/>
       </Form.Item>
 
       <Form.Item
-        label="Email"
-        name="email"
         rules={[
           {
             required: true,
@@ -76,11 +70,10 @@ const RegistrPage = () => {
           },
         ]}
       >
-        <Input name="email" onChange={inputHandler} style={{width: '300px', borderRadius: '5px'}}/>
+        <Input placeholder='Email' name="email" onChange={inputHandler} style={{width: "300px", borderRadius: '5px'}}/>
       </Form.Item>
 
       <Form.Item
-        label="Password"
         name="password"
         rules={[
           {
@@ -89,19 +82,14 @@ const RegistrPage = () => {
           },
         ]}
       >
-        <Input.Password name="password" onChange={inputHandler} style={{width: '300px', borderRadius: '5px'}}/>
+        <Input.Password placeholder='Password' name="password" onChange={inputHandler} style={{width: "300px", borderRadius: '5px'}}/>
       </Form.Item>
+      </div>
 
-      <Form.Item
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-        <Button onClick={handleRegistr} style={{width: '300px', height: '40px'}} type="primary" shape="round" htmlType="submit">
+        <Button className={style.btnReg} onClick={handleRegistr} style={{width: '300px', height: '40px'}} type="primary" shape="round" htmlType="submit">
           Create account
         </Button>
-      </Form.Item>
+
     </Form>
   );
 };

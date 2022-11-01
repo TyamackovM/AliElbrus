@@ -22,7 +22,7 @@ const ModalPage = () => {
       </a>
 
       <Modal
-        // footer={null}
+        footer={null}
         cancelButtonProps={{ style: { display: 'none' } }}
         okButtonProps={{ style: { display: 'none' } }}
         centered
@@ -31,7 +31,7 @@ const ModalPage = () => {
         onCancel={() => setModal2Open(false)}
       >
         <div className={style.allLinks}>
-          <Link className={style.link} to="registr">
+          <Link className={style.link} to="/">
             Registration
           </Link>
           <Link className={style.link} to="login">
@@ -39,7 +39,7 @@ const ModalPage = () => {
           </Link>
         </div>
         <Routes>
-          <Route path="/registr" element={<RegistrPage />} />
+          <Route path="/" element={<RegistrPage />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>
       </Modal>
