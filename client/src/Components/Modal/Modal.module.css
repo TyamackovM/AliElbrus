@@ -1,4 +1,16 @@
 .modaldiv{
     color: red;
-    border-radius: 30px; 
+    border-radius: 200px; 
+    display: flex;
+    justify-content: center;
+}
+
+.link {
+  color: rgb(157, 0, 255);
+  margin: 10px;
+}
+
+.allLinks {
+  display: flex;
+  justify-content: center;
 }

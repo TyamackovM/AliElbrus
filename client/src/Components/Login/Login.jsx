@@ -50,7 +50,6 @@ const LoginPage = () => {
       initialValues={{
         remember: true,
       }}
-      style={{border: '1px solid black', borderRadius: '8px', width: '670px', alignContent: 'center', alignItems: 'center', padding: '10px'}}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
