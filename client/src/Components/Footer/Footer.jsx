@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Footer() {
+export default function FooterPage() {
   return (
     <section className="rc-footer-bottom">
       <div className="site-server-box" data-site="site" data-spm="20">

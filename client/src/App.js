@@ -5,12 +5,13 @@ import LoginPage from "./Components/Login/Login";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getUser } from "./store/user/actionCreators";
-import Modal from "./Components/Modal/Modal";
 import Navbar from "../src/Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
 import Main from "./Components/Main/Main";
 import style from "./App.module.css";
 import { Layout } from "antd";
+import ModalPage from './Components/Modal/Modal';
+import FooterPage from './Components/Footer/Footer';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,14 +33,11 @@ function App() {
   return (
     <div>
     <Navbar />
-      <Modal />
+    {/* <Routes>
+      <Route path="/registr" element={< />} 
+    </Routes> */}
+      <ModalPage />
       <div>
-        <Link to="/registr" color="inherit">
-          Регистрация
-        </Link>
-        <Link to="/login" color="inherit">
-          Логин
-        </Link>
         <h3>Привет, {user.login}! </h3>
       </div>
       <Layout>
@@ -51,12 +49,12 @@ function App() {
             </Layout>
           </Layout>
         </Layout>
-      <div className={style.container}>
+
         <Main />
-        <Footer />
-        <Modal />        
+        <Footer /> 
+        <FooterPage />   
       </div>
-    </div>
+
 
   );
 }
