@@ -1,28 +1,39 @@
-import { Button, Modal } from 'antd';
-import React, { useState } from 'react';
-import 'antd/dist/antd.min.css';
-
+import { Button, Modal } from "antd";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "antd/dist/antd.min.css";
+import styles from "./Modal.module.css";
 
 const App = () => {
-  const [open, setOpen] = useState(false);
+  const [modal2Open, setModal2Open] = useState(false);
+
   return (
-    <>
-      <Button type="primary" onClick={() => setOpen(true)}>
-        Open Modal of 1000px width
-      </Button>
-      <Modal
-        title="Modal 1000px width"
-        centered
-        open={open}
-        onOk={() => setOpen(false)}
-        onCancel={() => setOpen(false)}
-        width={1000}
+    <div
+    // className={styles.modaldiv}
+    >
+      <Button
+        type="primary"
+        onClick={() => setModal2Open(true)}
+        style={{ borderRadius: "10px" }}
       >
+        Register/Login
+      </Button>
+
+      <Modal
+        title="Vertically centered modal dialog"
+        centered
+        open={modal2Open}
+        onOk={() => setModal2Open(false)}
+        onCancel={() => setModal2Open(false)}
+        style={{ borderRadius: "10px" }}
+      >
+        {/* <Link to='registr'>Registration</Link>
+        <Link to='login'>Sign In</Link> */}
         <p>some contents...</p>
         <p>some contents...</p>
         <p>some contents...</p>
       </Modal>
-    </>
+    </div>
   );
 };
 export default App;
