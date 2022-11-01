@@ -1,17 +1,18 @@
 import { Routes, Route, Link } from "react-router-dom";
-import 'antd/dist/antd.min.css';
+import "antd/dist/antd.min.css";
 import RegistrPage from "./Components/Registr/Registr";
 import LoginPage from "./Components/Login/Login";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getUser } from "./store/user/actionCreators";
-import Modal from './Components/Modal/Modal';
-import Footer from './Components/Footer/Footer'
-import Main from './Components/Main/Main'
+import Modal from "./Components/Modal/Modal";
+import Footer from "./Components/Footer/Footer";
+import Main from "./Components/Main/Main";
+import style from "./App.module.css";
 
 function App() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user)
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     (async function () {
@@ -25,19 +26,26 @@ function App() {
   }, []);
 
   return (
-
-    <>
-    <Link to='/registr' color="inherit">Регистрация</Link>
-    <Link to='/login' color="inherit">Логин</Link>
-    <h3>Привет, {user.login}! </h3>
-      <Main />
+    <div>
+      <div>
+        <Link to="/registr" color="inherit">
+          Регистрация
+        </Link>
+        <Link to="/login" color="inherit">
+          Логин
+        </Link>
+        <h3>Привет, {user.login}! </h3>
+      </div>
+      <div className={style.container}>
+        <Main />
       <Modal />
       <Footer />
-    <Routes>
-      <Route path="/registr" element={<RegistrPage/>} />
-      <Route path="/login" element={<LoginPage/>} />
-    </Routes>
-    </>
+        <Routes>
+          <Route path="/registr" element={<RegistrPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </div>
+    </div>
   );
 }
 
