@@ -26,7 +26,7 @@ export default function Main() {
 
   setTimeout(() => {
     setLoading(false);
-  }, 1000);
+  }, 500);
 
   return !loading ? (
     <div style={{ display: "flex", justifyContent: "center" }}>
@@ -63,7 +63,7 @@ export default function Main() {
                 <SliderCarousel />
               </div>
             </Content>
-            <Footer style={{ padding: "60px 0px", margin: "0px 10px" }}>
+            <Footer style={{ padding: "60px 0px", margin: "5px 5px" }}>
               <div
                 style={{
                   backgroundColor: "#fffafa",
@@ -74,7 +74,7 @@ export default function Main() {
                   boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
                 }}
               >
-                <p>123</p>
+                <div>123</div>
               </div>
             </Footer>
           </Layout>

@@ -12,6 +12,8 @@ import FooterPage from './Components/Footer/Footer';
 import ItemCard from './Components/ItemCard/ItemCard';
 import SettingsPerson from "./Components/SettingsPerson/SettingsPerson";
 import LoginPage from "./Components/Login/Login";
+import Account from "./Components/Account/Account";
+import WishList from "./Components/WishList/WishList";
 
 function App() {
 
@@ -37,8 +39,14 @@ function App() {
           <Route path='/' element={<Main />} />
           <Route path='/login' element={<Main />} />
           <Route path='testcard' element={<ItemCard></ItemCard>}></Route>
-          <Route path='/account' element={<SettingsPerson />} />
+
+          {/* <Route path='/account' element={<SettingsPerson />} /> */}
+          <Route path='/account' element={<SettingsPerson />}>
+            <Route path='info' element={<Account />} />
+            <Route path='wish-list' element={<WishList />} />
+          </Route>
         </Routes>
+        
         <Link to='testcard'>testcard</Link>
         <FooterPage />   
       </div>
