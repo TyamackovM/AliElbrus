@@ -8,6 +8,17 @@ export default function ItemCard() {
   
   const [quantity, setQuantity] = useState(1);
 
+  function quantityMinus() {
+    if(quantity > 1){
+      setQuantity(quantity - 1)
+    }
+  }
+
+  function quantityPlus() {
+    if(quantity >= 0){
+      setQuantity(quantity + 1)
+    }
+  }
 
 
   const tabListNoTitle = [
@@ -271,9 +282,9 @@ export default function ItemCard() {
               <p>
               Quantity:
               </p>
-            <Button className={styles.btnReg} onClick={() => setQuantity(quantity - 1)} style={{ marginRight: "15px" }}>-</Button>
+            <Button className={styles.btnReg} onClick={quantityMinus} style={{ marginRight: "15px" }}>-</Button>
             {quantity}
-            <Button className={styles.btnReg}  onClick={() => setQuantity(quantity + 1)} style={{ marginLeft: "15px" }}>+</Button>
+            <Button className={styles.btnReg}  onClick={quantityPlus} style={{ marginLeft: "15px" }}>+</Button>
             </div>
             <div style={{ marginTop: '20px' }}>
               <Button className={styles.btnReg} >Buy now</Button>
