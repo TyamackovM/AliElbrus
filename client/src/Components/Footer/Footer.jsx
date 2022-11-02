@@ -1,46 +1,55 @@
-import {  } from '@ant-design/icons';
+import {DollarCircleOutlined, CarOutlined, CreditCardOutlined, CheckCircleOutlined, TeamOutlined, AndroidFilled, AppleFilled} from '@ant-design/icons';
 import React from "react";
+import styles from "../Footer/Footer.module.css";
 
 export default function FooterPage() {
   return (
     <section className="rc-footer-bottom">
-      <div className="site-server-box" data-site="site" data-spm="20">
+      <div className={styles.site_server_box} data-site="site" data-spm="20">
         <div
           style={{ display: "flex", flexDirection: "row" }}
-          className="container"
+          className={styles.container}
         >
-          <div className="site-item">
-            <i className="icon i-great">&nbsp;</i>
+          <div className={styles.site_item}>
+          <DollarCircleOutlined className={styles.icon} />
             <h3>Great value</h3>
             <p>We offer competitive prices on over 100 million items.</p>
           </div>
-          <div className="site-item">
+          <div className={styles.site_item}>
             <i className="icon i-delivery">&nbsp;</i>
+            <CarOutlined className={styles.icon} />
             <h3>Worldwide shopping</h3>
             <p>
               We ship to over 200 countries and regions, and our site comes in
               12 languages.
             </p>
           </div>
-          <div className="site-item">
+          <div className={styles.site_item}>
             <i className="icon i-payment">&nbsp;</i>
+            <CreditCardOutlined className={styles.icon} />
             <h3>Safe payment</h3>
             <p>Pay with the world’s most popular and secure payment methods.</p>
           </div>
-          <div className="site-item">
+          <div className={styles.site_item}>
             <i className="icon i-confidence">&nbsp;</i>
+            <CheckCircleOutlined className={styles.icon} />
             <h3>Shop with confidence</h3>
             <p>
               Our Buyer Protection policy covers your entire purchase journey.
             </p>
           </div>
-          <div className="site-item">
+          <div className={styles.site_item}>
             <i className="icon i-help">&nbsp;</i>
+            <TeamOutlined className={styles.icon} />
             <h3>Help center</h3>
             <p>Round-the-clock assistance for a smooth shopping experience.</p>
           </div>
-          <div className="site-item">
+          <div className={styles.site_item} >
             <i className="icon i-shop">&nbsp;</i>
+          
+            <AndroidFilled className={styles.icon} />
+         
+           
             <h3>Shop better</h3>
             <p>
               <a
