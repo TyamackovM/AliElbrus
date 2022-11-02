@@ -221,7 +221,9 @@ export default function ItemCard() {
               className={styles.price}
             >
               <p></p>
+              <div style={{ marginLeft: '15px' }}>
               2000$
+              </div>
             </div>
             <div>
               <div
