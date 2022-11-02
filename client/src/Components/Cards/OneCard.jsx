@@ -1,8 +1,8 @@
 import React from 'react';
+import styles from './OneCard.module.css';
 import {
   EditOutlined,
-  SettingOutlined,
-  TagOutlined,
+ HeartOutlined,
   BarsOutlined,
   EllipsisOutlined,
 } from '@ant-design/icons';
@@ -16,20 +16,25 @@ export default function OneCard({ el }) {
 
   return (
     <Card
+   
       key={el['Items.id']}
       onClick={selectCardHandler}
       style={{
-        width: 300,
+        width: 250,
       }}
       cover={<img alt="123123123123" src={el['Items.image']} />}
-      actions={
-        <>
-          [<EllipsisOutlined key="ellipsis" />]{' '}
-          <span>{'$' + el['Items.price']}</span>
-        </>
-      }
-    >
-      <EllipsisOutlined />
+      
+      actions={[
+       <EllipsisOutlined key="ellipsis" />,
+      ]}
+         
+       
+      
+    > 
+    <div className={styles.card_bottom}>
+       <span className={styles.price}>{'$' + el['Items.price']}</span>
+       <HeartOutlined className={styles.icon_card} />
+    </div>
     </Card>
   );
 }

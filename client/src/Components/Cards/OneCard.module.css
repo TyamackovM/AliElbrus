@@ -1,0 +1,15 @@
+
+.card_bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon_card {
+  font-size: 22px;
+  color: grey;
+}
+
+.price {
+  font-size: 20px;
+}
+

@@ -7,7 +7,7 @@ import { Menu } from 'antd';
 
 import React from 'react';
 import { useState } from 'react';
-import AllCards from '../AllCards/AllCards';
+import AllCards from '../Cards/AllCards';
 import { fetchRequest } from './fetchRequest';
 
 function getItem(label, key, icon, children, type) {
