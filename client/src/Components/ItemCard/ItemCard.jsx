@@ -3,6 +3,8 @@ import { Card, Rate, Button } from "antd";
 import styles from './ItemCard.module.css'
 
 export default function ItemCard() {
+
+
   const desc = ["terrible", "bad", "normal", "good", "wonderful"];
   const [value, setValue] = useState(3);
   
@@ -208,15 +210,19 @@ export default function ItemCard() {
             className="product-info"
             style={{
               display: "flex",
-              marginTop: "20px",
               flexDirection: "column",
               marginLeft: "10px",
               boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
               borderRadius: "5px",
             }}
           >
+            <div  style={{ marginTop: '20px', display: 'flex' ,justifyContent: 'center' }}>
+              <div style={{ width: '80%' }}>
+
             BMAX S13A 13.3 Inch FHD Display Intel Celeron Processor N3350 8GB
             RAM 128GB 256GB SSD Windows 10 System Laptop
+              </div>
+            </div>
             <div
               className={styles.price}
             >
@@ -231,6 +237,7 @@ export default function ItemCard() {
                   display: "flex",
                   flexDirection: "row",
                   marginTop: "20px",
+                  marginLeft: '20px'
                 }}
               >
                 <p>Color:</p>
@@ -280,15 +287,15 @@ export default function ItemCard() {
                 />
               </div>
             </div>
-            <div  style={{ marginTop: '20px' }}>
+            <div  style={{ marginTop: '20px', marginLeft: '20px' }}>
               <p>
               Quantity:
               </p>
-            <Button className={styles.btnReg} onClick={quantityMinus} style={{ marginRight: "15px" }}>-</Button>
+            <Button className={styles.btnReg} onClick={quantityMinus} style={{ marginRight: "15px", marginLeft: '29px' }}>-</Button>
             {quantity}
             <Button className={styles.btnReg}  onClick={quantityPlus} style={{ marginLeft: "15px" }}>+</Button>
             </div>
-            <div style={{ marginTop: '20px' }}>
+            <div style={{ marginTop: '20px', marginLeft: '20px' }}>
               <Button className={styles.btnReg} >Buy now</Button>
               <Button className={styles.btnReg}  style={{ marginLeft: "3px" }}>
                 Add card
