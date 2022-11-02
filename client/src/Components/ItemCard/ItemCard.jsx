@@ -129,7 +129,6 @@ export default function ItemCard() {
             display: "flex",
             flexDirection: "row",
             alignContent: "center ",
-            marginLeft: "10px",
           }}
         >
           <div
@@ -145,7 +144,7 @@ export default function ItemCard() {
               <img
                 src="https://www.seoclerk.com/pics/622332-1P9ruQ1533837156.jpg"
                 alt=""
-                style={{ height: "420px", width: "640px" }}
+                style={{ height: "420px", width: "800px" }}
               />
             </div>
             <div style={{ display: "flex", flexDirection: "row" }}>
