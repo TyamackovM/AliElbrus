@@ -3,6 +3,12 @@ import Categories from "../Categories/Categories";
 import { Layout, Space, Spin } from "antd";
 import SliderCarousel from "../Carousel/Carousel";
 import Person from "../Person/Person";
+import MenuPerson from "../MenuPerson/MenuPerson";
+import { VideoCameraOutlined, UploadOutlined, UserOutlined } from '@ant-design/icons';
+import { Breadcrumb, Menu } from 'antd';
+import WishList from "../WishList/WishList";
+import Account from "../Account/Account";
+import { Link, Route, Routes, Outlet } from "react-router-dom";
 
 export default function SettingsPerson() {
   const [loading, setLoading] = useState(true);
@@ -20,61 +26,76 @@ export default function SettingsPerson() {
 
   setTimeout(() => {
     setLoading(false)
-  }, 1000)
+  }, 500)
+
+  function getItem(label, key, children ) {
+    return {
+      label,      
+      key,
+      children,
+    };
+  }
+
+  const items = [
+  getItem(<Link to='/account/info'>Account</Link>, 1),
+  getItem(<Link to='/account/wish-list'>Wish List</Link>, 2),
+];
 
   return (
     !loading ? (
-      <div style={{ display: "flex", justifyContent: "center" }}>
-      <div style={{ width: "85%" }}>
-        <Layout>
-          <Sider
+      <div style={{display: 'flex', justifyContent: 'center'}}>
+      <div style={{width: '80%'}}>
+      <Layout >
+      <Sider
+      style={{background: 'white', height: '100px'}}
+        breakpoint="lg"
+        collapsedWidth="0"
+        onBreakpoint={(broken) => {
+          console.log(broken);
+        }}
+        onCollapse={(collapsed, type) => {
+          console.log(collapsed, type);
+        }}
+      >
+        <div className="logo" />
+        <Menu
+          style={{borderRadius: '5px', boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)"}}
+          theme="white"
+          mode="inline"
+          defaultSelectedKeys={['4']}
+          items={items}
+          // {[UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
+          //   (icon, index) => ({
+          //     key: String(index + 1),
+          //     icon: React.createElement(icon),
+          //     label: `nav ${index + 1}`,
+          //   }),
+          // )}
+        />
+      </Sider>
+      <Layout>
+        <Content
+          style={{
+            margin: '0px 16px',
+            borderRadius: '10px'
+          }}
+        >
+          <div
+            className="site-layout-background"
             style={{
-              boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-              borderRadius: "5px",
-              backgroundColor: "white",
+              padding: 24,
+              minHeight: 360,
+              borderRadius: '5px',
+              boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)"
             }}
           >
-            <Categories />
-          </Sider>
-          <Layout>
-            <Content
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                margin: "0 10px",
-              }}
-            >
-              <div
-                style={{
-                  width: "100%",
-                  backgroundColor: "#fffafa",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderRadius: "5px",
-                  boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-                }}
-              >
-                <SliderCarousel />
-              </div>
-            </Content>
-            <Footer style={{ padding: "60px 0px", margin: "0px 10px" }}>
-              <div
-                style={{
-                  backgroundColor: "#fffafa",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderRadius: "5px",
-                  boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-                }}
-              >
-                <p>123</p>
-              </div>
-            </Footer>
-          </Layout>
-        </Layout>
-      </div>
+            <Outlet />
+            
+          </div>
+        </Content>
+      </Layout>
+    </Layout>
+    </div>
     </div>
     ) : (
       spinner
@@ -82,3 +103,4 @@ export default function SettingsPerson() {
    
   );
 }
+
