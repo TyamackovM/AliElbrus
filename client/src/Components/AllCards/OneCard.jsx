@@ -4,7 +4,7 @@ import {
   SettingOutlined,
   TagOutlined,
   BarsOutlined,
-  EllipsisOutlined
+  EllipsisOutlined,
 } from '@ant-design/icons';
 import { Avatar, Card } from 'antd';
 const { Meta } = Card;
