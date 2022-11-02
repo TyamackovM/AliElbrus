@@ -4,7 +4,7 @@ import {
   ProfileOutlined,
   MessageOutlined,
 } from "@ant-design/icons";
-import { Avatar } from "antd";
+import { Avatar, Carousel } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "antd";
 import style from "./Person.module.css";
@@ -53,7 +53,9 @@ export default function Person() {
             <p className={style.newMem}>Just for new AliElbrus members!</p>
           </div>
           <div className={style.bottomSecond}></div>
-          <div className={style.bottomThird}></div>
+          <div className={style.bottomThird}>
+
+          </div>
         </div>
       </div>
     </div>
