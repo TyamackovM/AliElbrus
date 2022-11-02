@@ -10,6 +10,8 @@ import { Layout } from "antd";
 import ModalPage from './Components/Modal/Modal';
 import FooterPage from './Components/Footer/Footer';
 import ItemCard from './Components/ItemCard/ItemCard';
+import SettingsPerson from "./Components/SettingsPerson/SettingsPerson";
+import LoginPage from "./Components/Login/Login";
 
 function App() {
 
@@ -30,9 +32,12 @@ function App() {
   return (
     <div>
       <Navbar />
-        <Main />
+        
         <Routes>
+          <Route path='/' element={<Main />} />
+          <Route path='/login' element={<Main />} />
           <Route path='testcard' element={<ItemCard></ItemCard>}></Route>
+          <Route path='/account' element={<SettingsPerson />} />
         </Routes>
         <Link to='testcard'>testcard</Link>
         <FooterPage />   

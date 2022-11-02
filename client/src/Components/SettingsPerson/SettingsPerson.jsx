@@ -4,7 +4,7 @@ import { Layout } from "antd";
 import SliderCarousel from "../Carousel/Carousel";
 import Person from "../Person/Person";
 
-export default function Main() {
+export default function SettingsPerson() {
   const { Header, Footer, Sider, Content } = Layout;
   return (
     <div style={{display: 'flex', justifyContent: 'center'}}>
@@ -25,9 +25,6 @@ export default function Main() {
           </div>
         </Footer>
         </Layout>
-        <Sider style={{display: "flex", justifyContent: "center", backgroundColor: '#fffafa', borderRadius: '5px', boxShadow: '1px 1px 1px 1px rgba(167, 167, 167, 0.596)'}}>
-          <Person />
-        </Sider>
       </Layout>
     </div>
     </div>

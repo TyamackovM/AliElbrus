@@ -56,7 +56,9 @@ const Navbar = () => {
       </div>
       <Space className={styles.header} direction="vertical">
         <div className={styles.logo}>
+          <Link to='/'>
           <span className={styles.logo_base}>AliElbrus</span>
+          </Link>
         </div>
         <Search
           className={styles.input}
@@ -87,7 +89,7 @@ const Navbar = () => {
           </div>
         </div>
       </Space>
-        <hr style={{background: '#959595b9'}}/>
+        {/* <hr style={{background: '#959595b9'}}/> */}
     </>
   );
 };

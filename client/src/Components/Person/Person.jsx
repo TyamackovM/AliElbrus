@@ -5,16 +5,26 @@ import {
   MessageOutlined,
 } from "@ant-design/icons";
 import { Avatar } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "antd";
 import style from "./Person.module.css";
 import ModalPage from "../Modal/Modal";
+import { Link } from "react-router-dom";
+import { changeBooleanStateAC } from "../../store/modal/actionCreators";
 
 export default function Person() {
   const user = useSelector((state) => state.user);
+  const modal = useSelector((state) => state.modal);
+
+  const dispatch = useDispatch()
+
+  const modalPageHandler = (arg) => {    
+    dispatch(changeBooleanStateAC(arg))
+  }
+
 
   return user.login ? (
-    <div>
+    <div >
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}
       >
@@ -31,10 +41,20 @@ export default function Person() {
         <ProfileOutlined style={{ fontSize: "20px", marginRight: "2px" }} />
         <MessageOutlined style={{ fontSize: "20px", marginRight: "15px" }} />
       </div>
-      <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-        <p style={{ fontSize: "13px" }}>Account</p>
-        <p style={{ fontSize: "13px" }}>Orders</p>
-        <p style={{ fontSize: "13px" }}>Messages</p>
+      <div style={{ display: "flex", justifyContent: "space-evenly", marginBottom: '7px' }}>
+        <Link to='/account' style={{ fontSize: "13px" }}>Account</Link>
+        <Link style={{ fontSize: "13px" }}>Orders</Link>
+        <Link style={{ fontSize: "13px" }}>Messages</Link>
+      </div>
+      <div style={{width: '190px', height: '180px', display: 'flex', justifyContent: 'center'}}>
+        <div className={style.bottomBlock}>
+          <div className={style.bottomFirst}>
+            <p className={style.exc}>Exclusive offers</p>
+            <p className={style.newMem}>Just for new AliElbrus members!</p>
+          </div>
+          <div className={style.bottomSecond}></div>
+          <div className={style.bottomThird}></div>
+        </div>
       </div>
     </div>
   ) : (
@@ -51,8 +71,9 @@ export default function Person() {
         <p style={{ fontWeight: "bold", fontSize: "17px" }}>Welcome to AliElbrus</p>
       </div>
       <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-      <Button className={style.btnClick}  type="primary" shape="round" htmlType="submit">
-          <ModalPage/>
+      <Button onClick={() => modalPageHandler(true)} className={style.btnClick}   shape="round" htmlType="submit">
+          {/* <ModalPage/> */}
+          Registr | Login
         </Button>
       </div>
     </div>
