@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Rate } from 'antd';
+import { Card, Rate, Button } from 'antd';
 
 export default function ItemCard() {
 
@@ -156,7 +156,10 @@ export default function ItemCard() {
           </div>
           <div>Quantity</div>
           <div>Info-4</div>
-          <div>Info-5</div>
+          <div>
+            <Button type="primary">Buy now</Button>
+            <Button type="primary" style={{ marginLeft: '3px' }}>Add card</Button>
+          </div>
         </div>
       </div>
       <div
