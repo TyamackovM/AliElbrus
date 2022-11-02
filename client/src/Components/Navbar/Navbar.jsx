@@ -6,24 +6,28 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { Input, Space } from "antd";
-
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ModalPage from "../Modal/Modal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../store/user/actionCreators";
 const { Search } = Input;
 
-// const suffix = (
-//   <AudioOutlined
-//     style={{
-//       fontSize: 16,
-//       color: '#1890ff',
-//     }}
-//   />
-// );
 const onSearch = (value) => console.log(value);
 // const user = useSelector((state) => state.user);
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = async (e) => {
+    const res = await fetch('http://localhost:4000/logout', {
+      method: 'GET',
+      credentials: 'include',
+    });
+    dispatch(logoutUser());
+    navigate('/');
+  }
+
   const user = useSelector((state) => state.user);
   return (
     <>
@@ -55,7 +59,7 @@ const Navbar = () => {
             { !user.login ? (
               <ModalPage />
             ) : (
-              user.login
+              <Link onClick={handleLogout}>Logout</Link>
             )}
           </div>
           <div>

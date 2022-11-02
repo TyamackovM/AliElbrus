@@ -9,6 +9,7 @@ const FileStore = require('session-file-store')(session);
 const regRouter = require('./routes/user/regRouter');
 const loginRouter = require('./routes/user/loginRouter');
 const checkUserRouter = require('./routes/user/checkUserRouter');
+const logoutRouter = require('./routes/user/logoutRouter');
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use(session(sessionConfig));
 app.use('/registr', regRouter);
 app.use('/login', loginRouter);
 app.use('/check', checkUserRouter);
+app.use('/logout', logoutRouter);
 
 app.listen(CURRENT_PORT ?? 5000, () => {
   console.log(`Server started ${CURRENT_PORT}`);

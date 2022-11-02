@@ -29,7 +29,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <div>
+      <div style={{display: 'flex', justifyContent: 'center'}}>
         <h3>Привет, {user.login}! </h3>
       </div>
         <Main />
