@@ -5,10 +5,19 @@ import "antd/dist/antd.min.css";
 import style from "./Modal.module.css";
 import RegistrPage from "../Registr/Registr";
 import LoginPage from "../Login/Login";
+import { useDispatch } from "react-redux";
+import { changeBooleanStateAC } from "../../store/modal/actionCreators";
 
 const ModalPage = () => {
   const [modal2Open, setModal2Open] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch()
+
+  dispatch(changeBooleanStateAC(modal2Open))
+  // const modalPageHandler = () => {
+
+  // }
+
 
   return (
     <div className={style.modaldiv}>

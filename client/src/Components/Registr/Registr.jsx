@@ -1,20 +1,20 @@
 import { Button, Form, Input } from "antd";
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import style from "./Registr.module.css";
 import { getUser } from "../../store/user/actionCreators";
+import { changeBooleanStateAC } from "../../store/modal/actionCreators";
 
 const RegistrPage = () => {
   const [input, setInput] = useState({ login: '', email: '', password: ''});
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const inputHandler = async(e) => {
     setInput({...input, [e.target.name]: e.target.value})
   }
-
-  console.log(input)
 
   const handleRegistr = async(e) => {
     e.preventDefault();
@@ -28,6 +28,7 @@ const RegistrPage = () => {
     });
     const toJson = await res.json();
     dispatch(getUser(toJson));
+    // dispatch(changeBooleanStateAC(true))
     navigate('/');
   }
 
