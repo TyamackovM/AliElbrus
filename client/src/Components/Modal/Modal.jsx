@@ -5,29 +5,29 @@ import "antd/dist/antd.min.css";
 import style from "./Modal.module.css";
 import RegistrPage from "../Registr/Registr";
 import LoginPage from "../Login/Login";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeBooleanStateAC } from "../../store/modal/actionCreators";
 
 const ModalPage = () => {
-  const [modal2Open, setModal2Open] = useState(false);
+  // const [modal2Open, setModal2Open] = useState(false);
+  const modal = useSelector((state) => state.modal)
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
-  dispatch(changeBooleanStateAC(modal2Open))
-  // const modalPageHandler = () => {
-
-  // }
+  const modalPageHandler = (arg) => {    
+    dispatch(changeBooleanStateAC(arg))
+  }
 
 
   return (
     <div className={style.modaldiv}>
-      <a className={style.adecor}
+      <p className={style.adecor}
         
         type="primary"
-        onClick={() => setModal2Open(true)}
+        onClick={() => modalPageHandler(true)}
       >
         Register | Login
-      </a>
+      </p>
 
       <Modal
         className={style.modal}
@@ -35,9 +35,9 @@ const ModalPage = () => {
         cancelButtonProps={{ style: { display: 'none' } }}
         okButtonProps={{ style: { display: 'none' } }}
         centered
-        open={modal2Open}
-        onOk={() => setModal2Open(false)}
-        onCancel={() => setModal2Open(false)}
+        open={modal}
+        // onOk={() => setModal2Open(false)}
+        onCancel={() => modalPageHandler(false)}
       >
         <div className={style.allLinks}>
           <Link className={style.link} to="/">
