@@ -12,6 +12,7 @@ import FooterPage from './Components/Footer/Footer';
 import ItemCard from './Components/ItemCard/ItemCard';
 
 function App() {
+
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
