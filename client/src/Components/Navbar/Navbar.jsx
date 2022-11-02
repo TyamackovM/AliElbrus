@@ -13,9 +13,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../store/user/actionCreators";
 const { Search } = Input;
 
-const onSearch = (value) => console.log(value);
+const onSearch =  async (value) => {
+
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'ee1ce809e1msh50af60dd35dd5a6p15bdd0jsnb22ba520ac55',
+      'X-RapidAPI-Host': 'magic-aliexpress1.p.rapidapi.com'
+    }
+  };
+  
+  const res = await fetch(`https://magic-aliexpress1.p.rapidapi.com/api/products/search?name=${value}`, options)
+   const result = await res.json();
+   
+
+
+}
 // const user = useSelector((state) => state.user);
 const Navbar = () => {
+
+
+
+
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
