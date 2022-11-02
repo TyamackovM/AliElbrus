@@ -69,12 +69,12 @@ const Navbar = () => {
         <ShoppingCartOutlined className={styles.icon_cart} />
         <div className={styles.cartnum}>
           <span className={styles.span_number}>0</span>
-          <span>Cart</span>
+          <Link to='/account/busket'>Cart</Link>
         </div>
         <HeartOutlined className={styles.icon_heart} />
-        <span>
+        <Link to='/account/wish-list'>
           Wish <br /> List
-        </span>
+        </Link>
         <UserOutlined className={styles.icon_cart} />
         <div className={styles.sign_join_my}>
           <div className={styles.sign_login}>

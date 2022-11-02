@@ -14,6 +14,8 @@ import SettingsPerson from "./Components/SettingsPerson/SettingsPerson";
 import LoginPage from "./Components/Login/Login";
 import Account from "./Components/Account/Account";
 import WishList from "./Components/WishList/WishList";
+import Orders from "./Components/Orders/Orders";
+import Busket from "./Components/Busket/Busket";
 
 function App() {
 
@@ -44,6 +46,8 @@ function App() {
           <Route path='/account' element={<SettingsPerson />}>
             <Route path='info' element={<Account />} />
             <Route path='wish-list' element={<WishList />} />
+            <Route path='orders' element={<Orders />} />
+            <Route path='busket' element={<Busket />} />
           </Route>
         </Routes>
         
