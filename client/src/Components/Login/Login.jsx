@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getUser } from "../../store/user/actionCreators";
 import style from "../Registr/Registr.module.css";
+import { changeBooleanStateAC } from "../../store/modal/actionCreators";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const LoginPage = () => {
     else if (toJson === "EmailNotDone") alert("Incorrect email");
     else {
       dispatch(getUser(toJson));
+      // dispatch(changeBooleanStateAC(false))
       navigate("/");
     }
   };
