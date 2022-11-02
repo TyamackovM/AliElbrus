@@ -29,9 +29,6 @@ function App() {
   return (
     <div>
       <Navbar />
-      <div style={{display: 'flex', justifyContent: 'center'}}>
-        <h3>Привет, {user.login}! </h3>
-      </div>
         <Main />
         <Routes>
           <Route path='testcard' element={<ItemCard></ItemCard>}></Route>

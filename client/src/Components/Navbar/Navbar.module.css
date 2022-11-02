@@ -1,14 +1,14 @@
 .header {
-  margin-top: 50px;
+  margin-top: 6px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  height: 50px;
+  /* color: #a622ffb9; */
 }
 
-.input {
-
-  
+.input {  
     position: relative;
     display: block;
     width: 500px;
@@ -83,12 +83,9 @@
  background-image: url(https://ae01.alicdn.com/kf/Sf388682793dc4b8091b837b946a85011N.png_.webp)
 }
 
-.banner_container {
-  
-  
+.banner_container {  
   height: 80px;
   overflow: hidden;
-
 }
 
 .logo {

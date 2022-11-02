@@ -12,16 +12,16 @@ const ModalPage = () => {
 
   return (
     <div className={style.modaldiv}>
-      <a
+      <a className={style.adecor}
         
         type="primary"
         onClick={() => setModal2Open(true)}
-        style={{ borderRadius: "10px" }}
       >
         Register | Login
       </a>
 
       <Modal
+        className={style.modal}
         footer={null}
         cancelButtonProps={{ style: { display: 'none' } }}
         okButtonProps={{ style: { display: 'none' } }}

@@ -1,14 +1,19 @@
-.modaldiv{
-    color: red;
-    border-radius: 200px; 
-    display: flex;
-    justify-content: center;
+
+.adecor {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.adecor:hover {
+  text-decoration: none;
+  color: rgb(55, 0, 255);
 }
 
 .link {
-  color: rgb(0, 0, 0);
+  color: rgb(157, 0, 255);
+  text-decoration: none;
   margin: 10px;
-  font:bold;
+  font-weight:bold;
   font-size: 20px;
   border-bottom: 3px solid transparent;
 }

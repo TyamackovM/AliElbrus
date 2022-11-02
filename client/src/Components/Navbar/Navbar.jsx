@@ -67,6 +67,7 @@ const Navbar = () => {
           </div>
         </div>
       </Space>
+        <hr style={{background: '#959595b9'}}/>
     </>
   );
 };
