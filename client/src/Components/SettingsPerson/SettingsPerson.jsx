@@ -3,7 +3,6 @@ import Categories from "../Categories/Categories";
 import { Layout, Space, Spin } from "antd";
 import SliderCarousel from "../Carousel/Carousel";
 import Person from "../Person/Person";
-import MenuPerson from "../MenuPerson/MenuPerson";
 import { VideoCameraOutlined, UploadOutlined, UserOutlined } from '@ant-design/icons';
 import { Breadcrumb, Menu } from 'antd';
 import WishList from "../WishList/WishList";
@@ -39,12 +38,14 @@ export default function SettingsPerson() {
   const items = [
   getItem(<Link to='/account/info'>Account</Link>, 1),
   getItem(<Link to='/account/wish-list'>Wish List</Link>, 2),
+  getItem(<Link to='/account/orders'>Orders</Link>, 3),
+  getItem(<Link to='/account/busket'>Busket</Link>, 4),
 ];
 
   return (
     !loading ? (
       <div style={{display: 'flex', justifyContent: 'center'}}>
-      <div style={{width: '80%'}}>
+      <div style={{width: '85%'}}>
       <Layout >
       <Sider
       style={{background: 'white', height: '100px'}}
