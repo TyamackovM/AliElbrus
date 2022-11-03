@@ -43,10 +43,6 @@ function App() {
           <Route path='/' element={<Main />} />
           <Route path='/login' element={<Main />} />
 
-
-        
-          
-
           <Route path='testcard' element={<ItemCard></ItemCard>}></Route>
           <Route path='chat' element={<Chat />} />
 

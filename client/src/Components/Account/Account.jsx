@@ -62,7 +62,7 @@ export default function Account() {
       credentials: "include",
     });
     const toJsonEmail = await res.json();
-    dispatch(updateEmail(toJsonEmail))
+    dispatch(getUser(toJsonEmail))
     setBtnEmailTrue(true)
     setTimeout(() => {
       setBtnEmailTrue(false)

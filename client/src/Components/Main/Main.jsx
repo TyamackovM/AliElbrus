@@ -3,6 +3,7 @@ import Categories from "../Categories/Categories";
 import { Layout, Skeleton, Space, Spin } from "antd";
 import SliderCarousel from "../Carousel/Carousel";
 import Person from "../Person/Person";
+import RandomCards from "../RandomCards/RandomCards";
 
 export default function Main() {
   const [loading, setLoading] = useState(true);
@@ -63,7 +64,7 @@ export default function Main() {
                 <SliderCarousel />
               </div>
             </Content>
-            <Footer style={{ padding: "60px 0px", margin: "5px 5px" }}>
+            <Footer style={{ padding: "60px 0px", margin: "5px 10px" }}>
               <div
                 style={{
                   backgroundColor: "#fffafa",
@@ -89,6 +90,29 @@ export default function Main() {
           >
             <Person />
           </Sider>
+        </Layout>
+        <Layout>
+          <Content
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              margin: "10px 0px",
+            }}
+          >
+            <div
+              style={{
+                width: "100%",
+                backgroundColor: "#fffafa",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: "5px",
+                boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
+              }}
+            >
+              <RandomCards />
+            </div>
+          </Content>
         </Layout>
       </div>
     </div>
