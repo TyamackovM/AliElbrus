@@ -40,17 +40,22 @@ function App() {
     <div>
       <Navbar />        
         <Routes>
-        <Route path='/' element={<Main />} />
+          <Route path='/' element={<Main />} />
           <Route path='/login' element={<Main />} />
+
+
+        
+          
+
           <Route path='testcard' element={<ItemCard></ItemCard>}></Route>
           <Route path='chat' element={<Chat />} />
+
 
           <Route path='/category/:id' element={<AllCards></AllCards>}></Route>
 
           {/* <Route path='/account' element={<SettingsPerson />} /> */}
           <Route path='/testcard' element={<ItemCard/>}/>
-
-          <Route path='/account' element={<SettingsPerson />}>
+           <Route path='/account' element={<SettingsPerson />}>
             <Route path='info' element={<Account />} />
             <Route path='wish-list' element={<WishList />} />
             <Route path='orders' element={<Orders />} />

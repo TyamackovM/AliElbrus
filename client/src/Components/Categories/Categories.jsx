@@ -24,7 +24,6 @@ const items = [
   getItem("Women's Fashion", "sub1", <MailOutlined />, [
     getItem("Dress", "1"),
     getItem("Jeans", "woman-jeans"),
-    // getItem('Item 2', null, null, [getItem('ыыыыыы', '3'), getItem('фыайц 4', '4')], 'group'),
   ]),
   getItem("Men's Fashion", "sub2", <AppstoreOutlined />, [
     getItem("T-shirts", "shirts"),
@@ -53,22 +52,14 @@ const items = [
 ];
 
 export default function Categories() {
-  // const [allItems, setAllItems] = useState(null);
   const navigate = useNavigate();
 
   const onClick = async (e) => {
-    // const allItems = await fetchRequest(e.keyPath[0]);
-
-    // setAllItems(allItems);
     navigate(`/category/${e.keyPath[0]}`);
   };
 
   return (
     <>
-      {/* <button onClick={() => console.log(answer)}>СТЭЙТ</button> */}
-
-      <AllCards />
-
       <Menu
         onClick={onClick}
         style={{
