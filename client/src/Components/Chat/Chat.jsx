@@ -1,9 +1,12 @@
 import { Button } from 'antd';
 import React from 'react'
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styles from './Chat.module.css'
 
 export default function Chat() {
+
+    const user = useSelector((state) => state.user)
 
     const [ input, setInput ] = useState('')
     const [allMessages, setAllMessages] = useState([])
@@ -20,18 +23,19 @@ export default function Chat() {
     
    const submitClick  = ((e) => {
       e.preventDefault();
-      setAllMessages( [...allMessages, input.chatInp])
-      const jsonMess = JSON.stringify( input )
+      const sendMess = { login: user.login, mess: input.chatInp}
+      setAllMessages( [...allMessages, sendMess])
+      const jsonMess = JSON.stringify( sendMess )
       ws.send(jsonMess)
       console.log('сообщение отправлено', jsonMess);
 
     })
     
     ws.onmessage = (e) => {
-      const mess = JSON.parse(e.data)
-      setAllMessages( [...allMessages, mess.chatInp])
+      const getMess = JSON.parse(e.data)
+      setAllMessages( [...allMessages, getMess])
       console.log(allMessages)
-      console.log('сообщение получено', mess);
+      console.log('сообщение получено', getMess);
     }
     // console.log(input)
 
@@ -46,7 +50,7 @@ export default function Chat() {
       </form>
       <hr />
       <div id="chatDiv" >{allMessages.map((el, index) => (
-        <div key={index}>{el}</div>
+        <div key={index}>{el.login} : {el.mess}</div>
       ))}</div>
     </div>
   )
