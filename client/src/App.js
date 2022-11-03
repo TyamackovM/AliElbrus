@@ -39,7 +39,7 @@ function App() {
       <Navbar />
         
         <Routes>
-        <Route path='/' element={<Main />} />
+          <Route path='/' element={<Main />} />
           <Route path='/login' element={<Main />} />
           <Route path='/category/:id' element={<AllCards></AllCards>}></Route>
           <Route path='testcard' element={<ItemCard></ItemCard>}></Route>
