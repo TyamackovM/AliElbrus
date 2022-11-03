@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AntDesignOutlined, UserOutlined } from "@ant-design/icons";
 import { Avatar, Divider, Tooltip, Button, Form, Input } from "antd";
-import { getUser } from "../../store/user/actionCreators";
+import { getUser, updateEmail } from "../../store/user/actionCreators";
 import { useNavigate } from "react-router-dom";
 import style from "./Account.module.css";
 
@@ -12,6 +12,7 @@ export default function Account() {
   const [inputEmail, setInputEmail] = useState({ email: "" });
   const [btnPass, setBtnPass] = useState(false);
   const [btnPassTrue, setBtnPassTrue] = useState(false);
+  const [btnEmailTrue, setBtnEmailTrue] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ export default function Account() {
       setBtnPassTrue(true);
       setTimeout(() => {
         setBtnPassTrue(false);
-      }, 2000);
+      }, 3000);
     } else {
       console.log("Nope!");
       setBtnPass(true);
@@ -61,7 +62,11 @@ export default function Account() {
       credentials: "include",
     });
     const toJsonEmail = await res.json();
-    console.log(toJsonEmail);
+    dispatch(updateEmail(toJsonEmail))
+    setBtnEmailTrue(true)
+    setTimeout(() => {
+      setBtnEmailTrue(false)
+    }, 3000)
   };
 
   const onFinish = (values) => {
@@ -96,7 +101,7 @@ export default function Account() {
           style={{
             display: "flex",
             flexDirection: "column",
-            // alignItems: "center",
+            alignItems: "center",
             marginTop: "10px",
           }}
           initialValues={{
@@ -127,6 +132,7 @@ export default function Account() {
                 name="password"
                 onChange={inputHandlerPassword}
                 style={{ width: "300px", borderRadius: "5px" }}
+                value={inputPas.password}
               />
             </Form.Item>
 
@@ -144,6 +150,7 @@ export default function Account() {
                 name="passwordRep"
                 onChange={inputHandlerPassword}
                 style={{ width: "300px", borderRadius: "5px" }}
+                value={inputPas.passwordRep}
               />
             </Form.Item>
           </div>
@@ -206,7 +213,9 @@ export default function Account() {
               />
             </Form.Item>
           </div>
-
+          {btnEmailTrue ? (
+            <div style={{color: 'green'}}>Your email has been changed</div>
+          ) : null}
           <Button
             className={style.btnChange}
             onClick={handleEmail}

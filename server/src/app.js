@@ -12,6 +12,7 @@ const checkUserRouter = require('./routes/user/checkUserRouter');
 const logoutRouter = require('./routes/user/logoutRouter');
 const getItemsRouter = require('./routes/items/getItemsRouter');
 const editPassword = require('./routes/user/editPassword');
+const editEmail = require('./routes/user/editEmail');
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use('/check', checkUserRouter);
 app.use('/logout', logoutRouter);
 app.use('/get-items', getItemsRouter);
 app.use('/edit-password', editPassword);
+app.use('/edit-email', editEmail);
 
 app.listen(CURRENT_PORT ?? 5000, () => {
   console.log(`Server started ${CURRENT_PORT}`);
