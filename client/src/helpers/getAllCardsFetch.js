@@ -1,13 +1,7 @@
-export async function fetchRequest(categoryId) {
+export async function getAllCardsFetch(categoryId) {
   const res = await fetch(`http://localhost:4000/get-items/${categoryId}`);
   return res.json();
 }
-
-
-
-
-
-
 
 
 
