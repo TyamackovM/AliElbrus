@@ -5,6 +5,7 @@ import {
  HeartOutlined,
   BarsOutlined,
   EllipsisOutlined,
+  ShoppingCartOutlined
 } from '@ant-design/icons';
 import { Avatar, Card } from 'antd';
 const { Meta } = Card;
@@ -16,24 +17,27 @@ export default function OneCard({ el }) {
 
   return (
     <Card
-   
+     
       key={el['Items.id']}
       onClick={selectCardHandler}
       style={{
-        width: 250,
+        width: 200,
       }}
       cover={<img alt="123123123123" src={el['Items.image']} />}
       
-      actions={[
-       <EllipsisOutlined key="ellipsis" />,
-      ]}
+      // actions={[
+      //  <EllipsisOutlined key="ellipsis" />,
+      // ]}
          
        
       
     > 
     <div className={styles.card_bottom}>
        <span className={styles.price}>{'$' + el['Items.price']}</span>
-       <HeartOutlined className={styles.icon_card} />
+       <div className={styles.heart}>
+       <HeartOutlined className={styles.icon_card_heart} />
+       </div>
+       <ShoppingCartOutlined className={styles.icon_card}  />
     </div>
     </Card>
   );

@@ -11,53 +11,53 @@ import { Link, useNavigate } from "react-router-dom";
 import ModalPage from "../Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../store/user/actionCreators";
+import { changeBooleanStateAC } from "../../store/modal/actionCreators";
 const { Search } = Input;
 
-const onSearch =  async (value) => {
-
+const onSearch = async (value) => {
   const options = {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'X-RapidAPI-Key': 'ee1ce809e1msh50af60dd35dd5a6p15bdd0jsnb22ba520ac55',
-      'X-RapidAPI-Host': 'magic-aliexpress1.p.rapidapi.com'
-    }
+      "X-RapidAPI-Key": "ee1ce809e1msh50af60dd35dd5a6p15bdd0jsnb22ba520ac55",
+      "X-RapidAPI-Host": "magic-aliexpress1.p.rapidapi.com",
+    },
   };
-  
-  const res = await fetch(`https://magic-aliexpress1.p.rapidapi.com/api/products/search?name=${value}`, options)
-   const result = await res.json();
-   
 
-
-}
+  const res = await fetch(
+    `https://magic-aliexpress1.p.rapidapi.com/api/products/search?name=${value}`,
+    options
+  );
+  const result = await res.json();
+};
 // const user = useSelector((state) => state.user);
 const Navbar = () => {
-
-
-
-
-
+  const modal = useSelector((state) => state.modal);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = async (e) => {
-    const res = await fetch('http://localhost:4000/logout', {
-      method: 'GET',
-      credentials: 'include',
+    const res = await fetch("http://localhost:4000/logout", {
+      method: "GET",
+      credentials: "include",
     });
     dispatch(logoutUser());
-    navigate('/');
-  }
+    navigate("/");
+  };
+
+  const modalPageHandler = (arg) => {
+    dispatch(changeBooleanStateAC(arg));
+  };
 
   const user = useSelector((state) => state.user);
   return (
     <>
       <div className={styles.banner_container}>
-        <a href="#" className={styles.banner}></a>
+        <Link href="#" className={styles.banner}></Link>
       </div>
       <Space className={styles.header} direction="vertical">
         <div className={styles.logo}>
-          <Link to='/'>
-          <span className={styles.logo_base}>AliElbrus</span>
+          <Link to="/">
+            <span className={styles.logo_base}>AliElbrus</span>
           </Link>
         </div>
         <Search
@@ -69,16 +69,26 @@ const Navbar = () => {
         <ShoppingCartOutlined className={styles.icon_cart} />
         <div className={styles.cartnum}>
           <span className={styles.span_number}>0</span>
-          <Link to='/account/busket'>Cart</Link>
+          {!user.login ? (
+            <Link onClick={() => modalPageHandler(true)}>Cart</Link>
+          ) : (
+            <Link to="/account/busket">Cart</Link>
+          )}
         </div>
         <HeartOutlined className={styles.icon_heart} />
-        <Link to='/account/wish-list'>
-          Wish <br /> List
-        </Link>
+        {!user.login ? (
+          <Link onClick={() => modalPageHandler(true)}>
+            Wish <br /> List
+          </Link>
+        ) : (
+          <Link to="/account/wish-list">
+            Wish <br /> List
+          </Link>
+        )}
         <UserOutlined className={styles.icon_cart} />
         <div className={styles.sign_join_my}>
           <div className={styles.sign_login}>
-            { !user.login ? (
+            {!user.login ? (
               <ModalPage />
             ) : (
               <Link onClick={handleLogout}>Logout</Link>
@@ -89,7 +99,7 @@ const Navbar = () => {
           </div>
         </div>
       </Space>
-        {/* <hr style={{background: '#959595b9'}}/> */}
+      {/* <hr style={{background: '#959595b9'}}/> */}
     </>
   );
 };
