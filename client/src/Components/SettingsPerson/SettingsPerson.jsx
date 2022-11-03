@@ -45,7 +45,7 @@ export default function SettingsPerson() {
   return (
     !loading ? (
       <div style={{display: 'flex', justifyContent: 'center'}}>
-      <div style={{width: '85%'}}>
+      <div style={{width: '80%'}}>
       <Layout >
       <Sider
       style={{background: 'white', height: '100px'}}
@@ -94,6 +94,19 @@ export default function SettingsPerson() {
             
           </div>
         </Content>
+
+        <Sider
+      style={{background: 'white', height: '100px'}}
+      >
+        <div style={{height:'200px', width: '300px'}}>
+          <div style={{height:'200px', width: '300px'}}>
+            123
+          </div>
+          
+        </div>
+        
+      </Sider>
+
       </Layout>
     </Layout>
     </div>
