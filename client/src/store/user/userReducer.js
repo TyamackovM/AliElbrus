@@ -1,4 +1,4 @@
-import { GET_USER, LOGOUT_USER } from "./actionTypes";
+import { GET_USER, LOGOUT_USER, UPDATE_EMAIL } from "./actionTypes";
 
 const initialState = {}
 
@@ -9,6 +9,10 @@ export default function userReducer (state = initialState, action) {
     }
     case LOGOUT_USER: {
       return {}
+    }
+    case UPDATE_EMAIL: {
+      console.log(state)
+      return action.payload;
     }
     default:
       return state;

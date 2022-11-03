@@ -32,6 +32,7 @@ const onSearch = async (value) => {
 // const user = useSelector((state) => state.user);
 const Navbar = () => {
   const modal = useSelector((state) => state.modal);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -48,7 +49,7 @@ const Navbar = () => {
     dispatch(changeBooleanStateAC(arg));
   };
 
-  const user = useSelector((state) => state.user);
+ 
   return (
     <>
       <div className={styles.banner_container}>
