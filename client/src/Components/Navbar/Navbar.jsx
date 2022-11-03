@@ -12,29 +12,24 @@ import ModalPage from "../Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../store/user/actionCreators";
 import { changeBooleanStateAC } from "../../store/modal/actionCreators";
+import { checkItemFromInputInDB } from "../../helpers/checkItemFromInputInDB";
+import { useState } from "react";
 const { Search } = Input;
 
-const onSearch = async (value) => {
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": "ee1ce809e1msh50af60dd35dd5a6p15bdd0jsnb22ba520ac55",
-      "X-RapidAPI-Host": "magic-aliexpress1.p.rapidapi.com",
-    },
-  };
-
-  const res = await fetch(
-    `https://magic-aliexpress1.p.rapidapi.com/api/products/search?name=${value}`,
-    options
-  );
-  const result = await res.json();
-};
 // const user = useSelector((state) => state.user);
 const Navbar = () => {
   const modal = useSelector((state) => state.modal);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [items, setItems] = useState(null)
+
+  const searchHandler = async (value) => {
+    const searchResult = await checkItemFromInputInDB(value)
+    console.log('searchResult: ', searchResult);
+    setItems(items)
+  };
 
   const handleLogout = async (e) => {
     const res = await fetch("http://localhost:4000/logout", {
@@ -62,9 +57,10 @@ const Navbar = () => {
           </Link>
         </div>
         <Search
+          name='item'
           className={styles.input}
           placeholder="I'm shopping for..."
-          onSearch={onSearch}
+          onSearch={searchHandler}
           enterButton
         />
         <ShoppingCartOutlined className={styles.icon_cart} />

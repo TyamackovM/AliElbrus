@@ -18,6 +18,13 @@ module.exports = {
       title: {
         type: Sequelize.TEXT
       },
+      size: {
+        type: Sequelize.TEXT
+      },
+      color: {
+        type: Sequelize.TEXT
+      },
+
       category_id: {
         type: Sequelize.INTEGER,
         references: {

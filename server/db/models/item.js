@@ -17,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.FLOAT,
     image: DataTypes.TEXT,
     title: DataTypes.TEXT,
+    size: DataTypes.TEXT,
+    color: DataTypes.TEXT,
     category_id: DataTypes.INTEGER,
     comment_id: DataTypes.INTEGER
   }, {
