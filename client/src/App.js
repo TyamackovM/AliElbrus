@@ -35,23 +35,19 @@ function App() {
 
   return (
     <div>
-      <Navbar />
-        
+      <Navbar />        
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/login' element={<Main />} />
-          <Route path='testcard' element={<ItemCard></ItemCard>}></Route>
-
-          {/* <Route path='/account' element={<SettingsPerson />} /> */}
+          <Route path='/testcard' element={<ItemCard/>}/>
           <Route path='/account' element={<SettingsPerson />}>
             <Route path='info' element={<Account />} />
             <Route path='wish-list' element={<WishList />} />
             <Route path='orders' element={<Orders />} />
             <Route path='busket' element={<Busket />} />
           </Route>
-        </Routes>
-        
-        <Link to='testcard'>testcard</Link>
+        </Routes>        
+          <Link to='testcard'>testcard</Link>
         <FooterPage />   
       </div>
   );
