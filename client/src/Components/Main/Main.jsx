@@ -30,7 +30,7 @@ export default function Main() {
   }, 500);
 
   return !loading ? (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div style={{ display: "flex", justifyContent: "center",}}>
       <div style={{ width: "80%" }}>
         <Layout>
           <Sider
