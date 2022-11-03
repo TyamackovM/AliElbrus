@@ -3,7 +3,7 @@ import React from "react";
 import OneCard from "./OneCard";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { fetchRequest } from "../Categories/fetchRequest";
+import { getAllCardsFetch } from "../../helpers/getAllCardsFetch";
 import { Layout } from "antd";
 import { Pagination } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
@@ -13,11 +13,13 @@ export default function AllCards() {
 
   const { id } = useParams();
   useEffect(() => {
-    (async function () {
-      const allItems = await fetchRequest(id);
-      setAllItems(allItems);
-    })();
-  }, []);
+    if (id) {
+      (async function () {
+        const allItems = await getAllCardsFetch(id);
+        setAllItems(allItems);
+      })();
+    }
+  }, [id]);
 
   return (
     <Layout>
@@ -29,7 +31,6 @@ export default function AllCards() {
             {allItems?.map((el) => (
               <OneCard el={el} key={el["Items.id"]} />
             ))}
-            //{" "}
           </div>
         </Content>
         <Footer>
