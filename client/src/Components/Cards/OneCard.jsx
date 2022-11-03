@@ -21,8 +21,10 @@ export default function OneCard({ el }) {
       onClick={selectCardHandler}
       style={{
         width: 200,
+        borderRadius: '5px',
+        boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)"
       }}
-      cover={<img alt="123123123123" src={el["Items.image"]} />}
+      cover={<img alt="Items_image" style={{borderRadius: '5px 5px 0px 0px',}} src={el["Items.image"]} />}
 
       // actions={[
       //  <EllipsisOutlined key="ellipsis" />,

@@ -57,16 +57,18 @@ export default function AllCards() {
 
   return !loading ? (
     <div
-      style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
+      style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
     >
-      <div style={{ width: "85%" }}>
+      <div style={{ width: "80%" }}>
         <Layout>
           <Sider
             style={{
               boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
               borderRadius: "5px",
               backgroundColor: "white",
-              height: "730px",
+              height: "565px",
+              position: 'sticky',
+              top: '55px',
             }}
           >
             <div className={styles.sider_div}>
