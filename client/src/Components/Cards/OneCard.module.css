@@ -4,12 +4,37 @@
   justify-content: space-between;
 }
 
-.icon_card {
+.icon_card_heart {
+  position: absolute;
   font-size: 22px;
   color: grey;
+  top: 65%;
+  right: 10%;
+  color: black;
+  visibility: visible;
+ 
+}
+
+/* .icon_card_heart:hover {
+  position: absolute;
+  font-size: 22px;
+  color: grey;
+  top: 65%;
+  right: 10%;
+  color: azure;
+ visibility: visible;
+} */
+
+
+.heart {
+  background-color: white;
 }
 
 .price {
   font-size: 20px;
 }
+
+/* .card {
+  border: ;
+} */
 

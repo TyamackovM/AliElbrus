@@ -16,6 +16,7 @@ import Account from "./Components/Account/Account";
 import WishList from "./Components/WishList/WishList";
 import Orders from "./Components/Orders/Orders";
 import Busket from "./Components/Busket/Busket";
+import AllCards from "./Components/Cards/AllCards";
 
 function App() {
 
@@ -37,17 +38,21 @@ function App() {
     <div>
       <Navbar />        
         <Routes>
-          <Route path='/' element={<Main />} />
+        <Route path='/' element={<Main />} />
           <Route path='/login' element={<Main />} />
+          <Route path='/category/:id' element={<AllCards></AllCards>}></Route>
+          {/* <Route path='/account' element={<SettingsPerson />} /> */}
           <Route path='/testcard' element={<ItemCard/>}/>
+
           <Route path='/account' element={<SettingsPerson />}>
             <Route path='info' element={<Account />} />
             <Route path='wish-list' element={<WishList />} />
             <Route path='orders' element={<Orders />} />
             <Route path='busket' element={<Busket />} />
-          </Route>
-        </Routes>        
-          <Link to='testcard'>testcard</Link>
+          </Route>      
+        </Routes>
+        
+        <Link to='testcard'>testcard</Link>
         <FooterPage />   
       </div>
   );
