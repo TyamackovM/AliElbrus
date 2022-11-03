@@ -41,7 +41,7 @@ export default function Chat() {
 
   return (
     <div>Chat
-              <h2 id="users">Количество юзеров в чате: 0</h2>
+              <h2 id="users">Чат:</h2>
       <hr />
       <form name="chatForm" className="d-flex formChat">
         <label htmlFor="exampleInput1" className="form-label">Введите сообщение</label>
