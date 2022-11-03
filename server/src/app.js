@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const ws = require('ws')
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -42,6 +43,19 @@ app.use('/check', checkUserRouter);
 app.use('/logout', logoutRouter);
 app.use('/get-items', getItemsRouter)
 
-app.listen(CURRENT_PORT ?? 5000, () => {
+const httpServer = app.listen(CURRENT_PORT ?? 5000, () => {
   console.log(`Server started ${CURRENT_PORT}`);
 });
+
+
+const wsServer = new ws.WebSocketServer({ server: httpServer })
+wsServer.on('connection', (currentClient) => {
+  currentClient.on('message', (data) => {
+    const utfMessage = data.toString('utf-8');
+    const jsonMess = JSON.parse(utfMessage)
+    console.log(jsonMess)
+    wsServer.clients.forEach((oneClient) => {
+      oneClient.send(JSON.stringify(jsonMess))
+    })
+  })
+})

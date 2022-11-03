@@ -16,7 +16,9 @@ import Account from "./Components/Account/Account";
 import WishList from "./Components/WishList/WishList";
 import Orders from "./Components/Orders/Orders";
 import Busket from "./Components/Busket/Busket";
+import Chat from "./Components/Chat/Chat";
 import AllCards from "./Components/Cards/AllCards";
+
 
 function App() {
 
@@ -40,7 +42,11 @@ function App() {
         <Routes>
         <Route path='/' element={<Main />} />
           <Route path='/login' element={<Main />} />
+          <Route path='testcard' element={<ItemCard></ItemCard>}></Route>
+          <Route path='chat' element={<Chat />} />
+
           <Route path='/category/:id' element={<AllCards></AllCards>}></Route>
+
           {/* <Route path='/account' element={<SettingsPerson />} /> */}
           <Route path='/testcard' element={<ItemCard/>}/>
 
