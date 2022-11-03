@@ -4,19 +4,34 @@ const { Category } = require('../../../db/models');
 const { Item } = require('../../../db/models');
 
 router.post('/', async (req, res) => {
-  const { value } = req.body;
-  console.log('value: ', value);
+  const { value, tag } = req.body;
+  console.log('req.body: ', req.body);
+  const obj = { color: tag };
 
-  const foundItems = await Item.findAll({
-    where: {
-      title: {
-        [Op.substring]: value,
+  if (tag) {
+    const findItems = await Item.findAll({
+      where: {
+        title: {
+          [Op.substring]: value,
+        },
+        ...obj,
       },
-    },
-    raw: true,
-  });
-  console.log('foundItems: ', foundItems);
-  res.json(foundItems);
+      raw: true,
+    });
+    // console.log('findItems: ', findItems);
+    res.json(findItems);
+  } else {
+    const findItems = await Item.findAll({
+      where: {
+        title: {
+          [Op.substring]: value,
+        },
+      },
+      raw: true,
+    });
+    // console.log('findItems: ', findItems);
+    res.json(findItems);
+  }
 });
 
 module.exports = router;
