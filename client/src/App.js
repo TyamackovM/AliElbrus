@@ -36,21 +36,24 @@ function App() {
 
   return (
     <div>
-      <Navbar />
-        
+      <Navbar />        
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/login' element={<Main />} />
-          <Route path='category/:id' element={<AllCards></AllCards>}></Route>
-          <Route path='testcard' element={<ItemCard></ItemCard>}></Route>
+
+        
+          
+
+          <Route path='/category/:id' element={<AllCards></AllCards>}></Route>
+
           {/* <Route path='/account' element={<SettingsPerson />} /> */}
-          <Route path='/account' element={<SettingsPerson />}>
+          <Route path='/testcard' element={<ItemCard/>}/>
+           <Route path='/account' element={<SettingsPerson />}>
             <Route path='info' element={<Account />} />
             <Route path='wish-list' element={<WishList />} />
             <Route path='orders' element={<Orders />} />
             <Route path='busket' element={<Busket />} />
-          </Route>
-         
+          </Route>      
         </Routes>
         
         <Link to='testcard'>testcard</Link>

@@ -60,8 +60,6 @@ export default function Categories() {
 
   return (
     <>
-      {/* <AllCards /> */}
-
       <Menu
         onClick={onClick}
         style={{
