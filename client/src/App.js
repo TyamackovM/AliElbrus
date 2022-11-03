@@ -18,6 +18,7 @@ import Orders from "./Components/Orders/Orders";
 import Busket from "./Components/Busket/Busket";
 import Chat from "./Components/Chat/Chat";
 import AllCards from "./Components/Cards/AllCards";
+import TEST from "./Components/Cards/TEST";
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/login' element={<Main />} />
+          <Route path='/search' element={<TEST />} />
 
           <Route path='testcard' element={<ItemCard></ItemCard>}></Route>
           <Route path='chat' element={<Chat />} />

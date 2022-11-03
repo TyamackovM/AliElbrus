@@ -1,19 +1,19 @@
-import styles from "../Navbar/Navbar.module.css";
+import styles from '../Navbar/Navbar.module.css';
 import {
   AudioOutlined,
   ShoppingCartOutlined,
   HeartOutlined,
   UserOutlined,
-} from "@ant-design/icons";
-import { Input, Space } from "antd";
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import ModalPage from "../Modal/Modal";
-import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../../store/user/actionCreators";
-import { changeBooleanStateAC } from "../../store/modal/actionCreators";
-import { checkItemFromInputInDB } from "../../helpers/checkItemFromInputInDB";
-import { useState } from "react";
+} from '@ant-design/icons';
+import { Input, Space } from 'antd';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import ModalPage from '../Modal/Modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from '../../store/user/actionCreators';
+import { changeBooleanStateAC } from '../../store/modal/actionCreators';
+import { checkItemFromInputInDB } from '../../helpers/checkItemFromInputInDB';
+import { useState } from 'react';
 const { Search } = Input;
 
 // const user = useSelector((state) => state.user);
@@ -23,28 +23,28 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [items, setItems] = useState(null)
+  const [items, setItems] = useState(null);
 
   const searchHandler = async (value) => {
-    const searchResult = await checkItemFromInputInDB(value)
-    console.log('searchResult: ', searchResult);
-    setItems(items)
+    const searchResult = await checkItemFromInputInDB(value);
+
+    navigate('/search', { state: { searchResult, searchWord: value } });
+    // setItems(searchResult)
   };
 
   const handleLogout = async (e) => {
-    const res = await fetch("http://localhost:4000/logout", {
-      method: "GET",
-      credentials: "include",
+    const res = await fetch('http://localhost:4000/logout', {
+      method: 'GET',
+      credentials: 'include',
     });
     dispatch(logoutUser());
-    navigate("/");
+    navigate('/');
   };
 
   const modalPageHandler = (arg) => {
     dispatch(changeBooleanStateAC(arg));
   };
 
- 
   return (
     <>
       <div className={styles.banner_container}>
@@ -57,7 +57,7 @@ const Navbar = () => {
           </Link>
         </div>
         <Search
-          name='item'
+          name="item"
           className={styles.input}
           placeholder="I'm shopping for..."
           onSearch={searchHandler}

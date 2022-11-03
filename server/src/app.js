@@ -54,7 +54,6 @@ app.use('/find-slider', itemsToSliderRouter);
 app.use('/check-item', checkItem);
 app.use('/add-item-to-wish-list', addItemToWishList);
 
-
 const httpServer = app.listen(CURRENT_PORT ?? 5000, () => {
   console.log(`Server started ${CURRENT_PORT}`);
 });

@@ -11,6 +11,7 @@ import { Avatar, Card } from "antd";
 const { Meta } = Card;
 
 export default function OneCard({ el }) {
+  console.log('222222222: ', el);
   const selectCardHandler = (event) => {
     console.log(event);
   };
