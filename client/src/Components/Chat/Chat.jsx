@@ -30,10 +30,10 @@ export default function Chat() {
     ws.onmessage = (e) => {
       const mess = JSON.parse(e.data)
       setAllMessages( [...allMessages, mess.chatInp])
+      console.log(allMessages)
       console.log('сообщение получено', mess);
     }
-    // console.log(allMessages)
-    console.log(input)
+    // console.log(input)
 
   return (
     <div>Chat
@@ -45,8 +45,8 @@ export default function Chat() {
         <Button className={styles.btnReg} onClick={submitClick}  style={{ marginLeft: "3px" }}>Отправить</Button>
       </form>
       <hr />
-      <div id="chatDiv" >{allMessages.map((el) => (
-        <div>{el}</div>
+      <div id="chatDiv" >{allMessages.map((el, index) => (
+        <div key={index}>{el}</div>
       ))}</div>
     </div>
   )
