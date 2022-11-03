@@ -43,7 +43,7 @@ export default function Person() {
       </div>
       <div style={{ display: "flex", justifyContent: "space-evenly", marginBottom: '7px' }}>
         <Link to='/account/info' style={{ fontSize: "13px" }}>Account</Link>
-        <Link style={{ fontSize: "13px" }}>Orders</Link>
+        <Link to='account/orders' style={{ fontSize: "13px" }}>Orders</Link>
         <Link style={{ fontSize: "13px" }}>Messages</Link>
       </div>
       <div style={{width: '190px', height: '180px', display: 'flex', justifyContent: 'center'}}>
