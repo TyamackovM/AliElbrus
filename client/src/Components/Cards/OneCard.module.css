@@ -2,6 +2,7 @@
 .card_bottom {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .icon_card_heart {
@@ -10,7 +11,7 @@
   color: grey;
   top: 65%;
   right: 10%;
-  color: black;
+  color: white;
   visibility: visible;
  
 }
@@ -34,7 +35,7 @@
   font-size: 20px;
 }
 
-/* .card {
-  border: ;
-} */
+.icon_card {
+  border: 28px ;
+}
 
