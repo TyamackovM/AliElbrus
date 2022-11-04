@@ -69,7 +69,7 @@ const Navbar = () => {
           {!user.login ? (
             <Link onClick={() => modalPageHandler(true)}>Cart</Link>
           ) : (
-            <Link to="/account/busket">Cart</Link>
+            <Link to="/account/cart">Cart</Link>
           )}
         </div>
         <HeartOutlined className={styles.icon_heart} />

@@ -78,7 +78,7 @@ export default function SettingsPerson() {
     getItem(<Link to="/account/info">Account</Link>, 1),
     getItem(<Link to="/account/wish-list">Wish List</Link>, 2),
     getItem(<Link to="/account/orders">Orders</Link>, 3),
-    getItem(<Link to="/account/busket">Busket</Link>, 4),
+    getItem(<Link to="/account/cart">Cart</Link>, 4),
   ];
 
   return !loading ? (
