@@ -9,6 +9,7 @@ import { Space, Spin } from 'antd';
 import { Pagination } from 'antd';
 import { Checkbox, Col, Row } from 'antd';
 import { Button, Form, Input, Radio } from 'antd';
+import SearchRenderOneCard from './SearchRenderOneCard';
 const { Header, Footer, Sider, Content } = Layout;
 
 export default function SearchRenderAllCards() {
@@ -16,16 +17,6 @@ export default function SearchRenderAllCards() {
   setTimeout(() => {
     setLoading(false);
   }, 500);
-
-  // const { id } = useParams();
-  // useEffect(() => {
-  //   if (id) {
-  //     (async function () {
-  //       const allItems = await getAllCardsFetch(id);
-  //       setAllItems(allItems);
-  //     })();
-  //   }
-  // }, [id]);
 
   const onChange = (checkedValues) => {
     console.log('checked = ', checkedValues);
@@ -64,11 +55,10 @@ export default function SearchRenderAllCards() {
     .map((el) => el.size);
   const arr = [...new Set(filter)];
   const arr2 = [...new Set(filter2)];
-  const elementTitle = location.state.searchResult;
+
+  // const itemsArray = location.state.searchResult;
 
   const handler = async (event) => {
-    // console.log('event: ', event.target.innerText);
-
     const response = await fetch('http://localhost:4000/check-item', {
       method: 'POST',
       headers: {
@@ -110,7 +100,9 @@ export default function SearchRenderAllCards() {
                 boxShadow: '1px 1px 1px 1px rgba(167, 167, 167, 0.596)',
                 borderRadius: '5px',
                 backgroundColor: 'white',
-                height: '730px',
+                height: '565px',
+                position: 'sticky',
+                top: '55px',
               }}
             >
               <div className={styles.sider_div}>
@@ -146,9 +138,10 @@ export default function SearchRenderAllCards() {
                     >
                       <Col>
                         {arr2.map((el) => (
-                          <Col span={8}>
-                            <Checkbox value={el}>{el}</Checkbox>
-                          </Col>
+                          // <Col span={8}>
+                          //   <Checkbox value={el}>{el}</Checkbox>
+                          // </Col>
+                          <button onClick={handler}>{el}</button>
                         ))}
                       </Col>
                     </Checkbox.Group>
@@ -167,9 +160,10 @@ export default function SearchRenderAllCards() {
                     >
                       <Col>
                         {arr.map((el) => (
-                          <Col span={8}>
-                            <Checkbox value={el}>{el}</Checkbox>
-                          </Col>
+                          // <Col span={8}>
+                          //   <Checkbox value={el}>{el}</Checkbox>
+                          // </Col>
+                          <button onClick={handler}>{el}</button>
                         ))}
                       </Col>
                     </Checkbox.Group>
@@ -195,9 +189,9 @@ export default function SearchRenderAllCards() {
                 }}
               >
                 <div className={styles.mainDiv}>
-                  {/* {allItems?.map((el) => (
-                    <OneCard el={el} key={el['Items.id']} />
-                  ))} */}
+                  {items?.map((el) => (
+                    <SearchRenderOneCard el={el} key={el.id} />
+                  ))}
                 </div>
               </Content>
               <Footer style={{ textAlign: 'center', marginTop: '50px' }}>
