@@ -69,6 +69,7 @@ export default function AllCards() {
               height: "565px",
               position: 'sticky',
               top: '55px',
+              // widht: '50px'
             }}
           >
             <div className={styles.sider_div}>
