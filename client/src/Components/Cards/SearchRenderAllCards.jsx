@@ -21,14 +21,13 @@ export default function SearchRenderAllCards() {
   const [items, setItems] = useState(location.state.searchResult);
   const [itemSort, setItemSort]= useState(items);
   
-  console.log('NORMAL', items);
-  console.log('itemSort', itemSort)
+
 
   const handler = async (event) => {
     console.log(event.target.name);
     console.log(event.target.innerText);
     setCheckTag({...checkTag, [event.target.name]: event.target.innerText});
-    console.log('checkTag', checkTag)
+
     const response = await fetch("http://localhost:4000/check-item", {
       method: "POST",
       headers: {
@@ -50,13 +49,15 @@ export default function SearchRenderAllCards() {
   };
 
   const sortLowHandler = (e) => {
-    setItemSort(...itemSort.sort((min, max) => min.price > max.price));
-    console.log('low', itemSort)
+    const spred = [...itemSort]
+    const sort = spred.sort((min, max) => min.price - max.price)
+    setItems(sort);
   }
 
   const sortHighHandler = (e) => {
-    setItemSort(...itemSort.sort((min, max) => max.price < min.price));
-    console.log('high', itemSort)
+    const spred = [...itemSort]
+    const sort = spred.sort((min, max) => max.price - min.price)
+    setItems(sort);
   }
 
 
