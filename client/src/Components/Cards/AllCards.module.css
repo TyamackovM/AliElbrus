@@ -1,0 +1,32 @@
+.mainDiv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+ 
+  margin-left: 80px;
+ 
+  margin-bottom: 20px;
+  
+}
+
+
+.sider_div {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  padding-left: 20px;
+
+  
+}
+
+.span {
+
+  font-size: 18px;
+ 
+}
+
+.div_span {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}

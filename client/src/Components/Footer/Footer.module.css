@@ -1,0 +1,52 @@
+.icon {
+  font-size: 38px;
+  color: grey;
+  margin-bottom: 15px;
+ 
+}
+
+
+
+
+.site_item {
+  float: left;
+    width: 16.66666667%;
+    padding: 40px 0;
+    min-height: 228px;
+    text-align: center;
+    position: relative;
+}
+.two_icons {
+  display: flex;
+}
+
+.site_item p {
+  
+    margin-bottom: 0;
+    line-height: 18px;
+    color: #999;
+    padding: 0 15px;
+    font-size: 12px;
+}
+
+.site_item:not(:last-child):after {
+  content: " ";
+  font-size: 44px;
+  width: 1px;
+  height: 56px;
+  background: #979797;
+  position: absolute;
+  opacity: .14;
+  right: 0;
+  top: 50%;
+  transform: translate(-50%);
+}
+.site_server_box {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+}
+
+.container {
+  padding: 20px;
+}

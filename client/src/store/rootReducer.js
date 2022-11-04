@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-// import postsReducer from "./posts/reducer";
+import userReducer from './user/userReducer';
+import modalReducer from './modal/modalReducer';
 
 export default combineReducers({
-  // stars: starsReducer,
+  user: userReducer,
+  modal: modalReducer
 });

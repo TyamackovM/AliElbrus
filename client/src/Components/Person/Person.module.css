@@ -1,0 +1,50 @@
+.btnClick {
+  background: rgb(225,150,255);
+  background: linear-gradient(90deg, rgba(225,150,255,1) 0%, rgba(211,101,255,1) 34%, rgba(136,0,255,1) 100%);
+  height: 35px;
+}
+
+.btnClick:hover {
+  background: rgb(225,150,255);
+  background: linear-gradient(90deg, rgba(225,150,255,1) 0%, rgba(211,101,255,1) 34%, rgba(136,0,255,1) 100%);
+  height: 35px;
+  text-decoration: none;
+}
+
+.bottomBlock {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  font-family: Open Sans,Roboto,Arial,Helvetica,sans-serif,SimSun;
+  background-size: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid gray;
+  align-items: center;
+}
+
+.bottomFirst {
+  height: 98px;
+  color: rgb(0, 0, 0);
+}
+
+.bottomFirst p {
+  margin: 0;
+}
+
+.bottomFirst p.exc {
+  padding-top: 10px;
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.bottomFirst p.newMem {
+  padding-top: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+}
+

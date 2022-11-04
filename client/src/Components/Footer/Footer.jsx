@@ -1,45 +1,55 @@
+import {DollarCircleOutlined, CarOutlined, CreditCardOutlined, CheckCircleOutlined, TeamOutlined, AndroidFilled, AppleFilled} from '@ant-design/icons';
 import React from "react";
+import styles from "../Footer/Footer.module.css";
 
-export default function Footer() {
+export default function FooterPage() {
   return (
-    <section class="rc-footer-bottom">
-      <div class="site-server-box" data-site="site" data-spm="20">
+    <section className="rc-footer-bottom">
+      <div className={styles.site_server_box} data-site="site" data-spm="20">
         <div
           style={{ display: "flex", flexDirection: "row" }}
-          class="container"
+          className={styles.container}
         >
-          <div class="site-item">
-            <i class="icon i-great">&nbsp;</i>
+          <div className={styles.site_item}>
+          <DollarCircleOutlined className={styles.icon} />
             <h3>Great value</h3>
             <p>We offer competitive prices on over 100 million items.</p>
           </div>
-          <div class="site-item">
-            <i class="icon i-delivery">&nbsp;</i>
+          <div className={styles.site_item}>
+            <i className="icon i-delivery">&nbsp;</i>
+            <CarOutlined className={styles.icon} />
             <h3>Worldwide shopping</h3>
             <p>
               We ship to over 200 countries and regions, and our site comes in
               12 languages.
             </p>
           </div>
-          <div class="site-item">
-            <i class="icon i-payment">&nbsp;</i>
+          <div className={styles.site_item}>
+            <i className="icon i-payment">&nbsp;</i>
+            <CreditCardOutlined className={styles.icon} />
             <h3>Safe payment</h3>
             <p>Pay with the world’s most popular and secure payment methods.</p>
           </div>
-          <div class="site-item">
-            <i class="icon i-confidence">&nbsp;</i>
+          <div className={styles.site_item}>
+            <i className="icon i-confidence">&nbsp;</i>
+            <CheckCircleOutlined className={styles.icon} />
             <h3>Shop with confidence</h3>
             <p>
               Our Buyer Protection policy covers your entire purchase journey.
             </p>
           </div>
-          <div class="site-item">
-            <i class="icon i-help">&nbsp;</i>
+          <div className={styles.site_item}>
+            <i className="icon i-help">&nbsp;</i>
+            <TeamOutlined className={styles.icon} />
             <h3>Help center</h3>
             <p>Round-the-clock assistance for a smooth shopping experience.</p>
           </div>
-          <div class="site-item">
-            <i class="icon i-shop">&nbsp;</i>
+          <div className={styles.site_item} >
+            <i className="icon i-shop">&nbsp;</i>
+          
+            <AndroidFilled className={styles.icon} />
+         
+           
             <h3>Shop better</h3>
             <p>
               <a
@@ -64,7 +74,7 @@ export default function Footer() {
           alignItems: "center",
           height: "50px",
         }}
-        class="footer-copywrite"
+        className="footer-copywrite"
       >
         <div style={{ display: "flex", justifyContent: "space-evenly" }}>
           <a
@@ -111,9 +121,9 @@ export default function Footer() {
       </div>
       <div
         style={{ color: "white", background: "black", textAlign: "center" }}
-        class="footer-copywrite"
+        className="footer-copywrite"
       >
-        <div style={{ height: "25px" }} class="container">
+        <div style={{ height: "25px" }} className="container">
           ©️2022 Ali-Elbrus. All rights reserved.
         </div>
       </div>
