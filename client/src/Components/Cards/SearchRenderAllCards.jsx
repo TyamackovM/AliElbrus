@@ -19,7 +19,10 @@ export default function SearchRenderAllCards() {
   const [checkTag, setCheckTag] = useState({});
   const location = useLocation();
   const [items, setItems] = useState(location.state.searchResult);
+  const [itemSort, setItemSort]= useState(items);
   
+  console.log('NORMAL', items);
+  console.log('itemSort', itemSort)
 
   const handler = async (event) => {
     console.log(event.target.name);
@@ -46,17 +49,21 @@ export default function SearchRenderAllCards() {
     setItems(responseToJSON);
   };
 
-  const testHandler = (event) => {
-    setCheckTag({...checkTag, [event.target.name]: event.target.innerText})
-    console.log('checkTag', checkTag)
+  const sortLowHandler = (e) => {
+    setItemSort(...itemSort.sort((min, max) => min.price > max.price));
+    console.log('low', itemSort)
   }
+
+  const sortHighHandler = (e) => {
+    setItemSort(...itemSort.sort((min, max) => max.price < min.price));
+    console.log('high', itemSort)
+  }
+
 
   const mouseHandler = (event) => {
     setCheckTag({...checkTag, [event.target.name]: event.target.innerText})
     console.log('checkTagMouse', checkTag)
   }
-
-
 
   setTimeout(() => {
     setLoading(false);
@@ -118,21 +125,6 @@ export default function SearchRenderAllCards() {
   // const itemsArray = location.state.searchResult;
   return !loading ? (
     <>
-      {/* <div> */}
-      {/* {arr.map((el) => (
-          <button onClick={handler}>{el}</button>
-        ))}
-      </div>
-      <div>
-        {arr2.map((el) => (
-          <button onClick={handler}>{el}</button>
-        ))}
-      </div>
-      <div>
-        {items.map((el) => (
-          <div>{el.color}</div>
-        ))} */}
-      {/* </div> */}
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
       >
@@ -163,8 +155,8 @@ export default function SearchRenderAllCards() {
                       <span className={styles.span}>Sort by price</span>
                     </div>
                     <Radio.Group>
-                      <Radio.Button value="optional">Low</Radio.Button>
-                      <Radio.Button value>High</Radio.Button>
+                      <Radio.Button onClick={sortLowHandler} name='low'>Low</Radio.Button>
+                      <Radio.Button onClick={sortHighHandler} name='high'>High</Radio.Button>
                     </Radio.Group>
                   </Form.Item>
                 </Form>
@@ -181,9 +173,6 @@ export default function SearchRenderAllCards() {
                     >
                       <Col>
                         {arr2.map((el) => (
-                          // <Col span={8}>
-                          //   <Checkbox value={el}>{el}</Checkbox>
-                          // </Col>
                           <button name='size' onClick={handler} key={uuidv4()}>
                             {el}
                           </button>
@@ -205,9 +194,6 @@ export default function SearchRenderAllCards() {
                     >
                       <Col>
                         {arr.map((el) => (
-                          // <Col span={8}>
-                          //   <Checkbox value={el}>{el}</Checkbox>
-                          // </Col>
                           <button name='color' onClick={handler} key={uuidv4()}>
                             {el}
                           </button>
@@ -218,16 +204,7 @@ export default function SearchRenderAllCards() {
                 </div>
               </div>
             </Sider>
-            <Layout>
-              {/* <Header
-              style={{
-                boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-                borderRadius: "5px",
-                backgroundColor: "white",
-                marginLeft: "40px",
-                height: "80px",
-              }}
-            ></Header> */}
+            <Layout>          
               <Content
                 style={{
                   display: "flex",
