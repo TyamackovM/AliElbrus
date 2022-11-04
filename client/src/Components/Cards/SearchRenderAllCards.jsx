@@ -10,7 +10,9 @@ import { Pagination } from 'antd';
 import { Checkbox, Col, Row } from 'antd';
 import { Button, Form, Input, Radio } from 'antd';
 import SearchRenderOneCard from './SearchRenderOneCard';
+import { v4 as uuidv4 } from 'uuid';
 const { Header, Footer, Sider, Content } = Layout;
+
 
 export default function SearchRenderAllCards() {
   const [loading, setLoading] = useState(true);
@@ -141,7 +143,7 @@ export default function SearchRenderAllCards() {
                           // <Col span={8}>
                           //   <Checkbox value={el}>{el}</Checkbox>
                           // </Col>
-                          <button onClick={handler}>{el}</button>
+                          <button onClick={handler} key={uuidv4()}>{el}</button>
                         ))}
                       </Col>
                     </Checkbox.Group>
@@ -163,7 +165,7 @@ export default function SearchRenderAllCards() {
                           // <Col span={8}>
                           //   <Checkbox value={el}>{el}</Checkbox>
                           // </Col>
-                          <button onClick={handler}>{el}</button>
+                          <button onClick={handler} key={uuidv4()}>{el}</button>
                         ))}
                       </Col>
                     </Checkbox.Group>
