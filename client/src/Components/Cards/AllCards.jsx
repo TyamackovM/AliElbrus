@@ -11,6 +11,8 @@ import { Checkbox, Col, Row } from "antd";
 import { Button, Form, Input, Radio } from "antd";
 import { v4 as uuidv4 } from "uuid";
 import { useLocation } from "react-router-dom";
+import filterMap from "../../helpers/filterMapFunction";
+import FormFilter from "./FormFilter";
 const { Header, Footer, Sider, Content } = Layout;
 
 export default function AllCards() {
@@ -21,7 +23,7 @@ export default function AllCards() {
   const [arrSize, setArrSize] = useState();
   const [arrColor, setArrColor] = useState();
   const [filterItems, setFilterItems] = useState();
-  
+
   const { id } = useParams();
   useEffect(() => {
     if (id) {
@@ -34,17 +36,15 @@ export default function AllCards() {
   }, [id]);
 
   const handler = async (event) => {
-    console.log(event.target.name);
-    console.log(event.target.innerText);
-    setCheckTag({...checkTag, [event.target.name]: event.target.innerText});
-    console.log('checkTag', checkTag)
+    setCheckTag({ ...checkTag, [event.target.name]: event.target.value });
+    console.log("checkTag", checkTag);
     const response = await fetch("http://localhost:4000/filter-category", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        check: {...checkTag, [event.target.name]: event.target.innerText},
+        check: { ...checkTag, [event.target.name]: event.target.value },
       }),
     });
     const responseToJSON = await response.json();
@@ -55,20 +55,25 @@ export default function AllCards() {
     setAllItems(responseToJSON);
   };
 
+  const sortLowHandler = (e) => {
+    const spred = [...allItems];
+    const sort = spred.sort((min, max) => min.price - max.price);
+    setAllItems(sort);
+  };
+
+  const sortHighHandler = (e) => {
+    const spred = [...allItems];
+    const sort = spred.sort((min, max) => max.price - min.price);
+    setAllItems(sort);
+  };
+
   useEffect(() => {
     if (filterItems) {
-      const filter = filterItems
-      .filter((el) => el.color)
-      .map((el) => el.color);
-    const filter2 = filterItems
-      .filter((el) => el.size)
-      .map((el) => el.size);
-    const color = [...new Set(filter)];
-    const size = [...new Set(filter2)];
-    setArrSize(size);
-    setArrColor(color);
+      const res = filterMap(filterItems);
+      setArrSize(res.size);
+      setArrColor(res.color);
     }
-  }, [filterItems])
+  }, [filterItems]);
 
   const spinner = (
     <div style={{ display: "flex", justifyContent: "center", height: "300px" }}>
@@ -90,12 +95,6 @@ export default function AllCards() {
     setLoading(false);
   }, 500);
 
-
-
-  const onChange = (checkedValues) => {
-    console.log("checked = ", checkedValues);
-  };
-
   const [form] = Form.useForm();
   const [requiredMark, setRequiredMarkType] = useState("");
   const onRequiredTypeChange = ({ requiredMarkValue }) => {
@@ -114,8 +113,8 @@ export default function AllCards() {
               borderRadius: "5px",
               backgroundColor: "white",
               height: "565px",
-              position: 'sticky',
-              top: '55px',
+              position: "sticky",
+              top: "55px",
               // widht: '50px'
             }}
           >
@@ -134,65 +133,17 @@ export default function AllCards() {
                     <span className={styles.span}>Sort by price</span>
                   </div>
                   <Radio.Group>
-                    <Radio.Button value="optional">Low</Radio.Button>
-                    <Radio.Button value>High</Radio.Button>
+                    <Radio.Button onClick={sortLowHandler}>Low</Radio.Button>
+                    <Radio.Button onClick={sortHighHandler}>High</Radio.Button>
                   </Radio.Group>
                 </Form.Item>
               </Form>
-              <div className={styles.div_size}>
-                <div className={styles.div_span}>
-                  <span className={styles.span}>Size</span>
-                </div>
-                <div className={styles.content}>
-                  <Checkbox.Group
-                    style={{
-                      width: "100%",
-                    }}
-                    onChange={onChange}
-                  >
-                    <Col>
-                    {arrSize?.map((el) => (
-                          <button name='size' onClick={handler} key={uuidv4()}>
-                            {el}
-                          </button>
-                        ))}
-                    </Col>
-                  </Checkbox.Group>
-                </div>
-              </div>
-              <div className={styles.div_color}>
-                <div className={styles.div_span}>
-                  <span className={styles.span}>Color</span>
-                </div>
-                <div className={styles.div_content}>
-                  <Checkbox.Group
-                    style={{
-                      width: "100%",
-                    }}
-                    onChange={onChange}
-                  >
-                    <Col>
-                    {arrColor?.map((el) => (
-                          <button name='color' onClick={handler} key={uuidv4()}>
-                            {el}
-                          </button>
-                        ))}
-                    </Col>
-                  </Checkbox.Group>
-                </div>
-              </div>
+              <FormFilter array={arrSize} name="size" handler={handler} />
+
+              <FormFilter array={arrColor} name="color" handler={handler} />
             </div>
           </Sider>
           <Layout>
-            {/* <Header
-              style={{
-                boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-                borderRadius: "5px",
-                backgroundColor: "white",
-                marginLeft: "40px",
-                height: "80px",
-              }}
-            ></Header> */}
             <Content
               style={{
                 display: "flex",
