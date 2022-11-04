@@ -5,7 +5,7 @@ const { Item } = require('../../../db/models');
 
 router.post('/', async (req, res) => {
   const { value, tag } = req.body;
-  console.log('req.body: ', req.body);
+
   const obj = { color: tag };
 
   if (tag) {

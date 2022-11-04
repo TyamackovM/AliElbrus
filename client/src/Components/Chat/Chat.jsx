@@ -37,7 +37,6 @@ export default function Chat() {
       console.log(allMessages)
       console.log('сообщение получено', getMess);
     }
-    // console.log(input)
 
   return (
     <div>Chat

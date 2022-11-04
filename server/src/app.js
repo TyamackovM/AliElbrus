@@ -63,7 +63,6 @@ wsServer.on('connection', (currentClient) => {
   currentClient.on('message', (data) => {
     const utfMessage = data.toString('utf-8');
     const jsonMess = JSON.parse(utfMessage);
-    console.log(jsonMess);
     wsServer.clients.forEach((oneClient) => {
       oneClient.send(JSON.stringify(jsonMess));
     });

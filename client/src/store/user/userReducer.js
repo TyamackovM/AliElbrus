@@ -11,7 +11,6 @@ export default function userReducer (state = initialState, action) {
       return {}
     }
     case UPDATE_EMAIL: {
-      console.log(state)
       return action.payload;
     }
     default:
