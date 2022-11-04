@@ -37,7 +37,6 @@ export default function Account() {
         credentials: "include",
       });
       const toJson = await res.json();
-      console.log(toJson);
       setBtnPass(false);
       setInputPas({ password: "", passwordRep: "" });
       setBtnPassTrue(true);
@@ -45,7 +44,6 @@ export default function Account() {
         setBtnPassTrue(false);
       }, 3000);
     } else {
-      console.log("Nope!");
       setBtnPass(true);
       setBtnPassTrue(false);
     }
