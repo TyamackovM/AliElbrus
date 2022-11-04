@@ -15,8 +15,9 @@ const getItemsRouter = require('./routes/items/getItemsRouter');
 const editPassword = require('./routes/user/editPassword');
 const editEmail = require('./routes/user/editEmail');
 const itemsToSliderRouter = require('./routes/items/itemsToSliderRouter');
-const checkItem = require('./routes/items/findItemFromInput');
+const findItemFromInput = require('./routes/items/findItemFromInput');
 const addItemToWishList = require('./routes/user/addItemToWishList');
+const findItemCategoryFilter = require('./routes/items/findItemCategoryFilter');
 
 
 const app = express();
@@ -51,8 +52,9 @@ app.use('/get-items', getItemsRouter);
 app.use('/edit-password', editPassword);
 app.use('/edit-email', editEmail);
 app.use('/find-slider', itemsToSliderRouter);
-app.use('/check-item', checkItem);
+app.use('/check-item', findItemFromInput);
 app.use('/add-item-to-wish-list', addItemToWishList);
+app.use('/filter-category', findItemCategoryFilter);
 
 const httpServer = app.listen(CURRENT_PORT ?? 5000, () => {
   console.log(`Server started ${CURRENT_PORT}`);
@@ -63,7 +65,6 @@ wsServer.on('connection', (currentClient) => {
   currentClient.on('message', (data) => {
     const utfMessage = data.toString('utf-8');
     const jsonMess = JSON.parse(utfMessage);
-    console.log(jsonMess);
     wsServer.clients.forEach((oneClient) => {
       oneClient.send(JSON.stringify(jsonMess));
     });
