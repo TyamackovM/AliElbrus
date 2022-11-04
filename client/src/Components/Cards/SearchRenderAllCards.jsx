@@ -11,7 +11,9 @@ import { Checkbox, Col, Row } from "antd";
 import { Button, Form, Input, Radio } from "antd";
 import SearchRenderOneCard from "./SearchRenderOneCard";
 import { v4 as uuidv4 } from "uuid";
+
 const { Header, Footer, Sider, Content } = Layout;
+
 
 export default function SearchRenderAllCards() {
   const [loading, setLoading] = useState(true);
@@ -88,6 +90,8 @@ export default function SearchRenderAllCards() {
           alignItems: "center",
           display: "flex",
           justifyContent: "center",
+
+
         }}
       >
         <Space size="middle">
@@ -104,6 +108,7 @@ export default function SearchRenderAllCards() {
           alignItems: "center",
           display: "flex",
           justifyContent: "center",
+
         }}
       >
         <Space size="middle">
@@ -125,6 +130,7 @@ export default function SearchRenderAllCards() {
   const arr2 = [...new Set(filter2)];
 
   // const itemsArray = location.state.searchResult;
+
   return !loading ? (
     <>
       <div
@@ -175,7 +181,11 @@ export default function SearchRenderAllCards() {
                     >
                       <Col>
                         {arr2.map((el) => (
+
+                       
+
                           <button name='size' onClick={handler} key={uuidv4()}>
+
                             {el}
                           </button>
                         ))}
@@ -196,7 +206,10 @@ export default function SearchRenderAllCards() {
                     >
                       <Col>
                         {arr.map((el) => (
+
+
                           <button name='color' onClick={handler} key={uuidv4()}>
+
                             {el}
                           </button>
                         ))}
@@ -225,7 +238,11 @@ export default function SearchRenderAllCards() {
                 )}
               </Content>
               <Footer style={{ textAlign: "center", marginTop: "50px" }}>
+
+               
+
                 <Pagination defaultCurrent={1} total={50} />
+
               </Footer>
             </Layout>
           </Layout>

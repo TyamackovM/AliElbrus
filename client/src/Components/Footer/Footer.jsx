@@ -1,4 +1,16 @@
-import {DollarCircleOutlined, CarOutlined, CreditCardOutlined, CheckCircleOutlined, TeamOutlined, AndroidFilled, AppleFilled} from '@ant-design/icons';
+import {
+  DollarCircleOutlined,
+  CarOutlined,
+  CreditCardOutlined,
+  CheckCircleOutlined,
+  TeamOutlined,
+  AndroidFilled,
+  WechatFilled,
+  InstagramFilled,
+  TwitterOutlined,
+  FacebookFilled,
+} from "@ant-design/icons";
+import { getStatusClassNames } from "antd/lib/_util/statusUtils";
 import React from "react";
 import styles from "../Footer/Footer.module.css";
 
@@ -11,7 +23,7 @@ export default function FooterPage() {
           className={styles.container}
         >
           <div className={styles.site_item}>
-          <DollarCircleOutlined className={styles.icon} />
+            <DollarCircleOutlined className={styles.icon} />
             <h3>Great value</h3>
             <p>We offer competitive prices on over 100 million items.</p>
           </div>
@@ -44,39 +56,43 @@ export default function FooterPage() {
             <h3>Help center</h3>
             <p>Round-the-clock assistance for a smooth shopping experience.</p>
           </div>
-          <div className={styles.site_item} >
+          <div className={styles.site_item}>
             <i className="icon i-shop">&nbsp;</i>
-          
+
             <AndroidFilled className={styles.icon} />
-         
-           
+
             <h3>Shop better</h3>
-            <p>
-              <a
-                rel="nofollow"
-                href="//sale.aliexpress.com/download_app_guide.htm"
-              >
-                Download the app
-              </a>{" "}
-              for mobile-only features such as image search and discount games.
-            </p>
+            <p>Our advanced mobile application is coming out soon.</p>
           </div>
         </div>
       </div>
-
 
       <div
         style={{
           color: "white",
           background: "#C0C0C0",
           display: "flex",
-          justifyContent: "space-around",
+          justifyContent: "space-between",
           alignItems: "center",
-          height: "50px",
+          height: "70px",
         }}
         className="footer-copywrite"
       >
-        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+        <div className={styles.stay_connected}>
+          <div className={styles.text}> Stay connected</div>
+          <div className={styles.icons_social}>
+            <WechatFilled className={styles.icons} />
+            <InstagramFilled className={styles.icons} />
+            <TwitterOutlined className={styles.icons} />
+            <FacebookFilled className={styles.icons} />
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-evenly",
+          }}
+        >
           <a
             style={{
               textDecoration: "none",
