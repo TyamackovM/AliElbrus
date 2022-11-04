@@ -11,12 +11,37 @@ import { Avatar, Card } from "antd";
 const { Meta } = Card;
 
 export default function OneCard({ el }) {
-  
   const selectCardHandler = (event) => {
     console.log(event);
   };
 
   return (
+
+    <div className={styles.image_div}>
+      <Card
+        key={el["Items.id"]}
+        onClick={selectCardHandler}
+        style={{
+          width: 200,
+          borderRadius: "5px",
+          boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
+        }}
+        cover={
+          <img
+            className={styles.image}
+            alt="Items_image"
+            style={{ borderRadius: "5px 5px 0px 0px" }}
+            src={el["Items.image"]}
+          />
+        }
+      >
+        <div className={styles.card_bottom}>
+          <span className={styles.price}>{"$" + el["Items.price"]}</span>
+          <div className={styles.heart}>
+            <HeartOutlined className={styles.icon_card_heart} />
+          </div>
+          <ShoppingCartOutlined style={{ fontSize: "22px", color: "grey" }} />
+
     <Card
       key={el.id}
       onClick={selectCardHandler}
@@ -35,9 +60,12 @@ export default function OneCard({ el }) {
         <span className={styles.price}>{"$" + el.price}</span>
         <div className={styles.heart}>
           <HeartOutlined className={styles.icon_card_heart} />
+
         </div>
-        <ShoppingCartOutlined style={{ fontSize: "22px", color: "grey" }} />
+      </Card>
+      <div className={styles.heart}>
+        <HeartOutlined className={styles.icon_card_heart} />
       </div>
-    </Card>
+    </div>
   );
 }
