@@ -6,29 +6,49 @@
 }
 
 .icon_card_heart {
-  position: absolute;
-  font-size: 22px;
+  margin-top: 1px;
+  font-size: 18px;
   color: grey;
-  top: 65%;
-  right: 10%;
-  color: white;
-  visibility: visible;
- 
+  align-self: center;
+ padding: 5.5px;
 }
 
-/* .icon_card_heart:hover {
-  position: absolute;
-  font-size: 22px;
-  color: grey;
-  top: 65%;
-  right: 10%;
-  color: azure;
- visibility: visible;
-} */
+.icon_card_heart:hover {
+  color: red;
+}
+
+
+
+
+.image_div {
+  position: relative;
+  float:left;
+  margin:5px;}
+
+.image_div:hover .heart
+{
+
+display: block;
+}
+
+.image_div .heart {
+  position:absolute;
+  top:65%;
+  right:8%;
+  display:none;
+}
+
 
 
 .heart {
-  background-color: white;
+
+
+width: 30px;
+height: 30px;
+box-shadow: 0 4px 8px 0 rgb(0 0 0 / 8%);
+background-color: whitesmoke;
+border-radius: 50%;
+
 }
 
 .price {

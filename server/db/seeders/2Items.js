@@ -104,6 +104,17 @@ module.exports = {
           comment_id: 0,
           createdAt: new Date(),
           updatedAt: new Date()
+        },  
+        {
+          price: 45.5,
+          image: "https://ae04.alicdn.com/kf/Sd2f53935fdf044aebd546891c2432c63r.jpg",
+          title: "Women's long flash evening dress, asymmetric, off shoulder, sleeveless, mop, prom dress",
+          size:'XS',
+          color:'grey',
+          category_id: 1,
+          comment_id: 0,
+          createdAt: new Date(),
+          updatedAt: new Date()
         },       
       ],
       {}
