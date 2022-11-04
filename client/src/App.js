@@ -15,7 +15,7 @@ import LoginPage from "./Components/Login/Login";
 import Account from "./Components/Account/Account";
 import WishList from "./Components/WishList/WishList";
 import Orders from "./Components/Orders/Orders";
-import Busket from "./Components/Busket/Busket";
+import Cart from "./Components/Cart/Cart";
 import Chat from "./Components/Chat/Chat";
 import AllCards from "./Components/Cards/AllCards";
 import TEST from "./Components/Cards/TEST";
@@ -57,7 +57,7 @@ function App() {
             <Route path='info' element={<Account />} />
             <Route path='wish-list' element={<WishList />} />
             <Route path='orders' element={<Orders />} />
-            <Route path='busket' element={<Busket />} />
+            <Route path='cart' element={<Cart />} />
           </Route>      
         </Routes>
         
