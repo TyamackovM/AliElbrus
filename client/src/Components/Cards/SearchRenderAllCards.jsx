@@ -40,6 +40,7 @@ export default function SearchRenderAllCards() {
         // tag: event.target.innerText,
       }),
     });
+    
     const responseToJSON = await response.json();
     setLoadingSort(false);
     setTimeout(() => {
