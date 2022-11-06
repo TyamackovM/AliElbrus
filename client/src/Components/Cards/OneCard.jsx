@@ -10,8 +10,7 @@ import {
 import { Avatar, Card } from "antd";
 const { Meta } = Card;
 
-export default function OneCard({ el }) {
-  
+export default function OneCard({ el }) {  
   const selectCardHandler = (event) => {
     console.log(event);
   };
