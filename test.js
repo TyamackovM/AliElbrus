@@ -68,3 +68,6 @@ const filterScent = array.filter((el) => el.scent).map((el) => {
 
 console.log(filterCpu);
 console.log(filterScent);
+
+
+

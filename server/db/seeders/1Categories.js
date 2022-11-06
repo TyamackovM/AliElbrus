@@ -7,37 +7,127 @@ module.exports = {
       'Categories',
       [
         {
-          name: "Women's Fashion",
+          name: "Dresses",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          name: "Men's Fashion",
+          name: "Hoodies",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          name: 'Phones & Telecommunications',
+          name: 'Shirts',
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          name: 'Computer, Office & Security',
+          name: 'Jeans',
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          name: 'Consumer Electronics',
+          name: 'Shoes',
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          name: 'Jewelry & Watches',
+          name: 'Suits',
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          name: 'Home, Pet & Appliances',
+          name: 'Jeans & Pants',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Sweaters',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Jackets',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Shoes',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Phones',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Walkie Talkie',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Accessories',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Laptops',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Desktops',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Tablets',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Cameras',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'TVs',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Drones',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Watches',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Rings',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Earings',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Cat Supplies',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Furniture',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'Decor',
           createdAt: new Date(),
           updatedAt: new Date()
         },
