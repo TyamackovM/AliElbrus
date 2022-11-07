@@ -12,7 +12,7 @@ const { Meta } = Card;
 
 export default function SearchRenderOneCard({ el }) {
   const selectCardHandler = (event) => {
-    console.log(event);
+    // console.log(event);
   };
 
   return (
