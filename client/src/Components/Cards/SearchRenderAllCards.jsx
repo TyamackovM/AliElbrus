@@ -31,6 +31,8 @@ export default function SearchRenderAllCards() {
   const [arrGender, setArrGender] = useState();
   const [arrStyle, setArrStyle] = useState();
   const [current, setCurrent] = useState(1);
+  const [length, setLength] = useState(1);
+  
 
   const onChange = (page) => {
     setCurrent(page);
@@ -69,8 +71,8 @@ export default function SearchRenderAllCards() {
     // console.log('1', checkTag)
   };
 
-  const filterPaginationHandler = (event) => {
-    loadFilterItemPagination({
+  const filterPaginationHandler = async (event) => {
+    const result = await loadFilterItemPagination({
       value: location.state.searchWord,
       check: {
         ...checkTag,
@@ -78,6 +80,8 @@ export default function SearchRenderAllCards() {
       },
       page: current,
     });
+    setItems(result.items)
+    setLength(result.length)
   };
 
   const sortLowHandler = (e) => {
@@ -237,7 +241,7 @@ export default function SearchRenderAllCards() {
                     
                     current={current}
                     onChange={onChange}
-                    total={50}
+                    total={length}
                   />
                 </div>
               </Footer>
