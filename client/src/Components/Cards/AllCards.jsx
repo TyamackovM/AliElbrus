@@ -33,12 +33,10 @@ export default function AllCards() {
 
 
   const [current, setCurrent] = useState(1);
+  
   const onChange = (page) => {
-    console.log(2323, page);
     setCurrent(page);
   };
-  
-
   
   const { id } = useParams();
   useEffect(() => {
@@ -250,7 +248,7 @@ export default function AllCards() {
             </Content>
             <Footer   style={{ textAlign: "center", marginTop: "50px" }}>
               <div  onClick={paginationHandler} >
-              <Pagination  current={current} onChange={onChange}  total={allFindItems} />
+              <Pagination current={current} onChange={onChange}  total={allFindItems} />
               </div>
             </Footer>
           </Layout>
