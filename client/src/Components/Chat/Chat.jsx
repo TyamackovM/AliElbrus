@@ -39,11 +39,11 @@ export default function Chat() {
     }
 
   return (
-    <div>Chat
-              <h2 id="users">Чат:</h2>
-      <hr />
+    <div>
+              {/* <h2 id="users">Чат:</h2> */}
+      {/* <hr /> */}
       <form name="chatForm" className="d-flex formChat">
-        <label htmlFor="exampleInput1" className="form-label">Введите сообщение</label>
+        <label htmlFor="exampleInput1" className="form-label">Введите сообщение </label>
         <input name="chatInp" onChange={handlerInput} type="text" className="form-control" id="exampleInput1" />
         <Button className={styles.btnReg} onClick={submitClick}  style={{ marginLeft: "3px" }}>Отправить</Button>
       </form>
