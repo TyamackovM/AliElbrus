@@ -64,6 +64,7 @@ export default function SearchRenderAllCards() {
     // });
     // const responseToJSON = await response.json();
 
+    console.log("current", current)
     const result = await loadFilterItemPagination({
       value: location.state.searchWord,
       check: {
