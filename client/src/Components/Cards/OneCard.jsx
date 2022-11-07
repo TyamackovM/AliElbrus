@@ -11,16 +11,19 @@ import { Avatar, Card } from "antd";
 const { Meta } = Card;
 export default function OneCard({ el }) {
   const selectCardHandler = (event) => {
-    console.log(event);
+    // console.log(event);
   };
   return (
     <Card
       key={el.id}
       onClick={selectCardHandler}
       style={{
-        width: 200,
-        borderRadius: "5px",
-        boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
+
+        width: '200px',
+        height: '347px',
+        borderRadius: '5px',
+        boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)"
+
       }}
       cover={
         <img

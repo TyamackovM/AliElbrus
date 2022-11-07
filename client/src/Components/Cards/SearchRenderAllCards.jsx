@@ -131,7 +131,7 @@ export default function SearchRenderAllCards() {
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
       >
-        <div style={{ width: "85%" }}>
+        <div style={{ width: "80%" }}>
           <Layout>
             <Sider
               style={{
@@ -203,4 +203,4 @@ export default function SearchRenderAllCards() {
     spinner
   );
 }
-// asfafsfasasfasfa
+
