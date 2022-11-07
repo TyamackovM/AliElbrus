@@ -3,7 +3,7 @@ const { Category } = require("../../../db/models");
 const { Item } = require("../../../db/models");
 
 router.post("/", async (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
   const numItems = 10;
   const { page, category } = req.body;
   const fixNumberCategory = +category;
@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
     where: { category_id: fixNumberCategory },
     raw: true,
   });
-  console.log(items);
+  //console.log(items);
   res.json({ items, length: itemsNum.length });
 });
 
