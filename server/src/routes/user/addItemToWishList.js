@@ -1,8 +1,13 @@
 const router = require('express').Router();
-const { User } = require('../../../db/models');
+const { User, Item, WishList } = require('../../../db/models');
 
-router.post('/', (req, res) => {
-  console.log('req: ', req.body);
+router.post('/', async (req, res) => {
+  const {user_id, item_id} = req.body
+  try {
+    await WishList.create ({user_id, item_id})
+  } catch (error) {
+    res.send(`Error while loading items! ${error}`)
+  }
   
 })
 
