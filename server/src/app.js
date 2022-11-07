@@ -18,7 +18,9 @@ const itemsToSliderRouter = require('./routes/items/itemsToSliderRouter');
 const findItemFromInput = require('./routes/items/findItemFromInput');
 const addItemToWishList = require('./routes/user/addItemToWishList');
 const findItemCategoryFilter = require('./routes/items/findItemCategoryFilter');
-const loadItempagination = require('./routes/items/loadItempagination');
+const loadItemPagination = require('./routes/items/loadItempagination');
+const loadItemFilterPagination = require('./routes/items/loadItemFilterPagination');
+
 
 
 
@@ -57,7 +59,8 @@ app.use('/find-slider', itemsToSliderRouter);
 app.use('/check-item', findItemFromInput);
 app.use('/add-item-to-wish-list', addItemToWishList);
 app.use('/filter-category', findItemCategoryFilter);
-app.use('/get-next-page', loadItempagination);
+app.use('/get-next-page', loadItemPagination);
+app.use('/get-next-filter-page', loadItemFilterPagination);
 
 
 const httpServer = app.listen(CURRENT_PORT ?? 5000, () => {

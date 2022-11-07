@@ -13,7 +13,7 @@ import SearchRenderOneCard from "./SearchRenderOneCard";
 import { v4 as uuidv4 } from "uuid";
 import filterMap from "../../helpers/filterMapFunction";
 import FormFilter from "./FormFilter";
-import {loadFilterItemPagination} from '../../helpers/loadFilterItemPagination'
+import { loadFilterItemPagination } from "../../helpers/loadFilterItemPagination";
 const { Header, Footer, Sider, Content } = Layout;
 
 export default function SearchRenderAllCards() {
@@ -22,9 +22,14 @@ export default function SearchRenderAllCards() {
   const [checkTag, setCheckTag] = useState({});
   const location = useLocation();
   const [items, setItems] = useState(location.state.searchResult);
-  const [filterTags, setFilterTags] = useState(location.state.searchResult)
+  const [filterTags, setFilterTags] = useState(location.state.searchResult);
   const [arrSize, setArrSize] = useState();
   const [arrColor, setArrColor] = useState();
+  const [current, setCurrent] = useState(1);
+
+  const onChange = (page) => {
+    setCurrent(page);
+  };
 
   // const [valueCheck, setValueCheck] = useState(1);
 
@@ -57,14 +62,17 @@ export default function SearchRenderAllCards() {
     // setValueCheck(event.target.value);
     // console.log('1', checkTag)
   };
-  
-  // заготовка под пагинацию, по аналогии с allcards.js
-  // const filterPaginationHandler = (event) => {
-  //   loadFilterItemPagination({ 
-  //     value: location.state.searchWord, 
-  //     check: { ...checkTag, [event.target.name]: event.target.value,
-  //     page: event.target.innerText }})
-  // }
+
+  const filterPaginationHandler = (event) => {
+    loadFilterItemPagination({
+      value: location.state.searchWord,
+      check: {
+        ...checkTag,
+        [event.target.name]: event.target.value,
+      },
+      page: current,
+    });
+  };
 
   const sortLowHandler = (e) => {
     const spred = [...items];
@@ -125,7 +133,6 @@ export default function SearchRenderAllCards() {
     </div>
   );
 
-
   useEffect(() => {
     if (filterTags) {
       const res = filterMap(filterTags);
@@ -133,7 +140,6 @@ export default function SearchRenderAllCards() {
       setArrColor(res.color);
     }
   }, [filterTags]);
-
 
   return !loading ? (
     <>
@@ -177,9 +183,18 @@ export default function SearchRenderAllCards() {
                   </Form.Item>
                 </Form>
 
-                <FormFilter array={arrSize} name="size" handler={handler} />
-                <FormFilter array={arrColor}  name="color" handler={handler} />
-
+                <FormFilter
+                  onClick={filterPaginationHandler}
+                  array={arrSize}
+                  name="size"
+                  handler={handler}
+                />
+                <FormFilter
+                  onClick={filterPaginationHandler}
+                  array={arrColor}
+                  name="color"
+                  handler={handler}
+                />
               </div>
             </Sider>
             <Layout>
@@ -201,8 +216,13 @@ export default function SearchRenderAllCards() {
                 )}
               </Content>
               <Footer style={{ textAlign: "center", marginTop: "50px" }}>
-                <div >
-                <Pagination defaultCurrent={1} total={50} />
+                <div onClick={filterPaginationHandler}>
+                  <Pagination
+                    
+                    current={current}
+                    onChange={onChange}
+                    total={50}
+                  />
                 </div>
               </Footer>
             </Layout>
@@ -214,4 +234,3 @@ export default function SearchRenderAllCards() {
     spinner
   );
 }
-
