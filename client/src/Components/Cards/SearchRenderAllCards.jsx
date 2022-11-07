@@ -58,12 +58,13 @@ export default function SearchRenderAllCards() {
     // console.log('1', checkTag)
   };
   
-  const filterPaginationHandler = (event) => {
-    loadFilterItemPagination({ 
-      value: location.state.searchWord, 
-      check: { ...checkTag, [event.target.name]: event.target.value,
-      page: event.target.innerText }})
-  }
+  // заготовка под пагинацию, по аналогии с allcards.js
+  // const filterPaginationHandler = (event) => {
+  //   loadFilterItemPagination({ 
+  //     value: location.state.searchWord, 
+  //     check: { ...checkTag, [event.target.name]: event.target.value,
+  //     page: event.target.innerText }})
+  // }
 
   const sortLowHandler = (e) => {
     const spred = [...items];
@@ -176,8 +177,8 @@ export default function SearchRenderAllCards() {
                   </Form.Item>
                 </Form>
 
-                <FormFilter array={arrSize} onClick={filterPaginationHandler} name="size" handler={handler} />
-                <FormFilter array={arrColor} onClick={filterPaginationHandler} name="color" handler={handler} />
+                <FormFilter array={arrSize} name="size" handler={handler} />
+                <FormFilter array={arrColor}  name="color" handler={handler} />
 
               </div>
             </Sider>
@@ -200,7 +201,7 @@ export default function SearchRenderAllCards() {
                 )}
               </Content>
               <Footer style={{ textAlign: "center", marginTop: "50px" }}>
-                <div onClick={filterPaginationHandler}>
+                <div >
                 <Pagination defaultCurrent={1} total={50} />
                 </div>
               </Footer>
