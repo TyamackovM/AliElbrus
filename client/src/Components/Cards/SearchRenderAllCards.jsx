@@ -25,6 +25,11 @@ export default function SearchRenderAllCards() {
   const [filterTags, setFilterTags] = useState(location.state.searchResult)
   const [arrSize, setArrSize] = useState();
   const [arrColor, setArrColor] = useState();
+  const [arrBrand, setArrBrand] = useState();
+  const [arrProcessor, setArrProcessor] = useState();
+  const [arrDisplay, setArrDisplay] = useState();
+  const [arrGender, setArrGender] = useState();
+  const [arrStyle, setArrStyle] = useState();
 
   // const [valueCheck, setValueCheck] = useState(1);
 
@@ -78,11 +83,6 @@ export default function SearchRenderAllCards() {
     setItems(sort);
   };
 
-  const mouseHandler = (event) => {
-    setCheckTag({ ...checkTag, [event.target.name]: event.target.innerText });
-    console.log("checkTagMouse", checkTag);
-  };
-
   setTimeout(() => {
     setLoading(false);
   }, 500);
@@ -131,6 +131,11 @@ export default function SearchRenderAllCards() {
       const res = filterMap(filterTags);
       setArrSize(res.size);
       setArrColor(res.color);
+      setArrBrand(res.brand);
+      setArrProcessor(res.processor);
+      setArrDisplay(res.display);
+      setArrGender(res.gender);
+      setArrStyle(res.style);
     }
   }, [filterTags]);
 
@@ -147,7 +152,7 @@ export default function SearchRenderAllCards() {
                 boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
                 borderRadius: "5px",
                 backgroundColor: "white",
-                height: "565px",
+                height: "697px",
                 position: "sticky",
                 top: "55px",
               }}
@@ -177,8 +182,30 @@ export default function SearchRenderAllCards() {
                   </Form.Item>
                 </Form>
 
-                <FormFilter array={arrSize} name="size" handler={handler} />
-                <FormFilter array={arrColor}  name="color" handler={handler} />
+
+
+                  {arrSize.length ? (
+                    <FormFilter array={arrSize} name="size" handler={handler} />
+                  ) : ('')}
+                  {arrColor.length ? (
+                    <FormFilter array={arrColor} name="color" handler={handler} />
+                  ) : ('')}
+                  {arrBrand.length ? (
+                    <FormFilter array={arrBrand} name="brand" handler={handler} />
+                  ) : ('')}
+                  {arrProcessor.length ? (
+                    <FormFilter array={arrProcessor} name="processor" handler={handler} />
+                  ) : ('')}
+                  {arrDisplay.length ? (
+                    <FormFilter array={arrDisplay} name="display" handler={handler} />
+                  ) : ('')}
+                  {arrGender.length ? (
+                    <FormFilter array={arrGender} name="gender" handler={handler} />
+                  ) : ('')}
+                  {arrStyle.length ? (
+                    <FormFilter array={arrStyle} name="style" handler={handler} />
+                  ) : ('')}
+
 
               </div>
             </Sider>
@@ -194,9 +221,11 @@ export default function SearchRenderAllCards() {
                   spinnerSort
                 ) : (
                   <div className={styles.mainDiv}>
+                    {/* <div style={{ display: 'flex', height: '397px'}}> */}
                     {items?.map((el) => (
                       <SearchRenderOneCard el={el} key={el.id} />
                     ))}
+                    {/* </div> */}
                   </div>
                 )}
               </Content>

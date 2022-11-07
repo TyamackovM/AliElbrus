@@ -17,8 +17,10 @@ const editEmail = require('./routes/user/editEmail');
 const itemsToSliderRouter = require('./routes/items/itemsToSliderRouter');
 const findItemFromInput = require('./routes/items/findItemFromInput');
 const addItemToWishList = require('./routes/user/addItemToWishList');
+const deleteWishList = require('./routes/user/deleteWishList')
 const findItemCategoryFilter = require('./routes/items/findItemCategoryFilter');
 const loadItempagination = require('./routes/items/loadItempagination');
+
 
 
 
@@ -56,6 +58,7 @@ app.use('/edit-email', editEmail);
 app.use('/find-slider', itemsToSliderRouter);
 app.use('/check-item', findItemFromInput);
 app.use('/add-item-to-wish-list', addItemToWishList);
+app.use('/delete-item-from-wish-list', deleteWishList)
 app.use('/filter-category', findItemCategoryFilter);
 app.use('/get-next-page', loadItempagination);
 

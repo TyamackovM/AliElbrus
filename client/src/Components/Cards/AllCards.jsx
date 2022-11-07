@@ -21,10 +21,16 @@ export default function AllCards() {
   const [loading, setLoading] = useState(true);
   const [loadingSort, setLoadingSort] = useState(true);
   const [checkTag, setCheckTag] = useState({});
+  const [filterItems, setFilterItems] = useState();
   const [arrSize, setArrSize] = useState();
   const [arrColor, setArrColor] = useState();
-  const [filterItems, setFilterItems] = useState();
   const [allFindItems, setallFindItems] = useState()
+  const [arrBrand, setArrBrand] = useState();
+  const [arrProcessor, setArrProcessor] = useState();
+  const [arrDisplay, setArrDisplay] = useState();
+  const [arrGender, setArrGender] = useState();
+  const [arrStyle, setArrStyle] = useState();
+
 
   const [current, setCurrent] = useState(1);
   const onChange = (page) => {
@@ -63,6 +69,7 @@ export default function AllCards() {
       },
       body: JSON.stringify({
         check: { ...checkTag, [event.target.name]: event.target.value },
+        categId: id,
       }),
     });
     const responseToJSON = await response.json();
@@ -90,6 +97,11 @@ export default function AllCards() {
       const res = filterMap(filterItems);
       setArrSize(res.size);
       setArrColor(res.color);
+      setArrBrand(res.brand);
+      setArrProcessor(res.processor);
+      setArrDisplay(res.display);
+      setArrGender(res.gender);
+      setArrStyle(res.style);
     }
   }, [filterItems]);
 
@@ -146,7 +158,7 @@ export default function AllCards() {
               boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
               borderRadius: "5px",
               backgroundColor: "white",
-              height: "565px",
+              height: "697px",
               position: "sticky",
               top: "55px",
               // widht: '50px'
@@ -172,9 +184,50 @@ export default function AllCards() {
                   </Radio.Group>
                 </Form.Item>
               </Form>
-              <FormFilter array={arrSize} name="size" handler={handler} />
 
-              <FormFilter array={arrColor} name="color" handler={handler} />
+              {arrSize?.length ? (
+                <FormFilter array={arrSize} name="size" handler={handler} />
+              ) : (
+                ""
+              )}
+              {arrColor?.length ? (
+                <FormFilter array={arrColor} name="color" handler={handler} />
+              ) : (
+                ""
+              )}
+              {arrBrand?.length ? (
+                <FormFilter array={arrBrand} name="brand" handler={handler} />
+              ) : (
+                ""
+              )}
+              {arrProcessor?.length ? (
+                <FormFilter
+                  array={arrProcessor}
+                  name="processor"
+                  handler={handler}
+                />
+              ) : (
+                ""
+              )}
+              {arrDisplay?.length ? (
+                <FormFilter
+                  array={arrDisplay}
+                  name="display"
+                  handler={handler}
+                />
+              ) : (
+                ""
+              )}
+              {arrGender?.length ? (
+                <FormFilter array={arrGender} name="gender" handler={handler} />
+              ) : (
+                ""
+              )}
+              {arrStyle?.length ? (
+                <FormFilter array={arrStyle} name="style" handler={handler} />
+              ) : (
+                ""
+              )}
             </div>
           </Sider>
           <Layout>
@@ -186,14 +239,14 @@ export default function AllCards() {
               }}
             >
               {!loadingSort ? (
-                  spinnerSort
-                ) : (
-                  <div className={styles.mainDiv}>
-                    {allItems?.map((el) => (
-                      <OneCard el={el} key={el.id} />
-                    ))}
-                  </div>
-                )}
+                spinnerSort
+              ) : (
+                <div className={styles.mainDiv}>
+                  {allItems?.map((el) => (
+                    <OneCard el={el} key={el.id} />
+                  ))}
+                </div>
+              )}
             </Content>
             <Footer   style={{ textAlign: "center", marginTop: "50px" }}>
               <div  onClick={paginationHandler} >
@@ -208,3 +261,5 @@ export default function AllCards() {
     spinner
   );
 }
+
+//fgdfgfdgfgfdg
