@@ -5,6 +5,7 @@
         'Content-Type': 'application/json',
       },
       body: JSON.stringify( value ),
+      credentials: "include",
     });
     return res.json();
   }

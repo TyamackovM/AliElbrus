@@ -13,7 +13,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useLocation } from "react-router-dom";
 import filterMap from "../../helpers/filterMapFunction";
 import FormFilter from "./FormFilter";
-import {loadItempagination} from '../../helpers/loadItemPagination'
+import { loadItempagination } from "../../helpers/loadItemPagination";
 const { Header, Footer, Sider, Content } = Layout;
 
 export default function AllCards() {
@@ -24,13 +24,15 @@ export default function AllCards() {
   const [filterItems, setFilterItems] = useState();
   const [arrSize, setArrSize] = useState();
   const [arrColor, setArrColor] = useState();
-  const [allFindItems, setallFindItems] = useState()
+  const [allFindItems, setallFindItems] = useState();
   const [arrBrand, setArrBrand] = useState();
   const [arrProcessor, setArrProcessor] = useState();
   const [arrDisplay, setArrDisplay] = useState();
   const [arrGender, setArrGender] = useState();
   const [arrStyle, setArrStyle] = useState();
+
   const { id } = useParams();
+
   const [current, setCurrent] = useState(1);
   
   const onChange = async (page) => {
@@ -42,6 +44,7 @@ export default function AllCards() {
     setFilterItems(result.items);
     setallFindItems(result.length)
   };
+
   
   useEffect(() => {
     if (id) {
@@ -61,6 +64,7 @@ export default function AllCards() {
   //  setFilterItems(result.items);
 
   // };
+
 
   const handler = async (event) => {
     setCheckTag({ ...checkTag, [event.target.name]: event.target.value });
@@ -152,7 +156,7 @@ export default function AllCards() {
 
   return !loading ? (
     <div
-     style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
+      style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
     >
       <div style={{ width: "80%" }}>
         <Layout>
