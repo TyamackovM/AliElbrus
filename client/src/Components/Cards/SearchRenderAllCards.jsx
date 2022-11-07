@@ -116,6 +116,7 @@ export default function SearchRenderAllCards() {
     </div>
   );
 
+
   useEffect(() => {
     if (filterTags) {
       const res = filterMap(filterTags);
@@ -123,6 +124,7 @@ export default function SearchRenderAllCards() {
       setArrColor(res.color);
     }
   }, [filterTags]);
+
 
   return !loading ? (
     <>
@@ -165,8 +167,10 @@ export default function SearchRenderAllCards() {
                     </Radio.Group>
                   </Form.Item>
                 </Form>
+
                 <FormFilter array={arrSize} name="size" handler={handler} />
                 <FormFilter array={arrColor} name="color" handler={handler} />
+
               </div>
             </Sider>
             <Layout>

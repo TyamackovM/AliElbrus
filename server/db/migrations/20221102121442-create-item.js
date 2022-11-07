@@ -24,17 +24,29 @@ module.exports = {
       color: {
         type: Sequelize.TEXT
       },
-
-      category_id: {
+      brand: {
+        type: Sequelize.TEXT
+      },
+      processor: {
+        type: Sequelize.TEXT
+      },
+      display: {
+        type: Sequelize.TEXT
+      },
+      gender: {
+        type: Sequelize.TEXT
+      },
+      style: {
+        type: Sequelize.TEXT
+      },
+       category_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Categories',
           key: 'id'
         }
       },
-      comment_id: {
-        type: Sequelize.INTEGER
-      },
+      
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

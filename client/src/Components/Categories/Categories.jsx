@@ -50,7 +50,7 @@ const items = [
     getItem("Tablets", "16"),
   ]),
   getItem("Consumer Electronics", "sub5", <CustomerServiceOutlined />, [
-    getItem("Laptops", "17"),
+    getItem("Cameras", "17"),
     getItem("TVs", "18"),
     getItem("Drones", "19"),
   ]),
