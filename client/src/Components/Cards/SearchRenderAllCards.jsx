@@ -118,17 +118,17 @@ export default function SearchRenderAllCards() {
   //! главный компонент
 
   const res = filterMap(location.state.searchResult);
-  setArrSize(res.size);
-  setArrColor(res.color);
+  // setArrSize(res.size);
+  // setArrColor(res.color);
 
-  // const filter = location.state.searchResult
-  //   .filter((el) => el.color)
-  //   .map((el) => el.color);
-  // const filter2 = location.state.searchResult
-  //   .filter((el) => el.size)
-  //   .map((el) => el.size);
-  // const arr = [...new Set(filter)];
-  // const arr2 = [...new Set(filter2)];
+  const filter = location.state.searchResult
+    .filter((el) => el.color)
+    .map((el) => el.color);
+  const filter2 = location.state.searchResult
+    .filter((el) => el.size)
+    .map((el) => el.size);
+  const arr = [...new Set(filter)];
+  const arr2 = [...new Set(filter2)];
 
   // const itemsArray = location.state.searchResult;
   return !loading ? (
@@ -173,11 +173,11 @@ export default function SearchRenderAllCards() {
                   </Form.Item>
                 </Form>
 
-                <FormFilter array={arrSize} name="size" handler={handler} />
+                {/* <FormFilter array={arrSize} name="size" handler={handler} />
 
-                <FormFilter array={arrColor} name="color" handler={handler} />
+                <FormFilter array={arrColor} name="color" handler={handler} />  */}
 
-                {/* <div className={styles.div_size}>
+                 <div className={styles.div_size}>
                     <div className={styles.div_span}>
                       <span className={styles.span}>Size</span>
                     </div>
@@ -215,7 +215,7 @@ export default function SearchRenderAllCards() {
                     </form>
 
                     </div>
-                  </div> */}
+                  </div>
               </div>
             </Sider>
             <Layout>
