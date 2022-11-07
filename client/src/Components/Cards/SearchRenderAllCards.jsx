@@ -241,7 +241,7 @@ export default function SearchRenderAllCards() {
                     
                     current={current}
                     onChange={onChange}
-                    total={length}
+                    total={20}
                   />
                 </div>
               </Footer>

@@ -5,10 +5,10 @@ const { Op } = require('sequelize');
 
 
 router.post("/", async (req, res) => {
-  console.log(req.body);
-  const numItems = 10;
+  console.log('req.body',req.body);
+  const numItems = 5;
   const { page, value } = req.body;
-  const fixNumberCategory = +category;
+  // const fixNumberCategory = +category;
   const nextitems = page * numItems - numItems;
   const items = await Item.findAll({
     where: {

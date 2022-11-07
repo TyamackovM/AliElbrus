@@ -4,7 +4,7 @@ const { Item } = require("../../../db/models");
 
 router.post("/", async (req, res) => {
   console.log(req.body);
-  const numItems = 10;
+  const numItems = 5;
   const { page, category } = req.body;
   const fixNumberCategory = +category;
   const nextitems = page * numItems - numItems;
@@ -18,7 +18,6 @@ router.post("/", async (req, res) => {
     where: { category_id: fixNumberCategory },
     raw: true,
   });
-  console.log(items);
   res.json({ items, length: itemsNum.length });
 });
 

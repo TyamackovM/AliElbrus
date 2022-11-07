@@ -30,32 +30,37 @@ export default function AllCards() {
   const [arrDisplay, setArrDisplay] = useState();
   const [arrGender, setArrGender] = useState();
   const [arrStyle, setArrStyle] = useState();
-
-
+  const { id } = useParams();
   const [current, setCurrent] = useState(1);
   
-  const onChange = (page) => {
+  const onChange = async (page) => {
+    console.log('page', page);
     setCurrent(page);
+    const result = await loadItempagination({page: current, category: id})
+    console.log(result.items);
+    setAllItems(result.items)
+    setFilterItems(result.items);
+    setallFindItems(result.length)
   };
   
-  const { id } = useParams();
   useEffect(() => {
     if (id) {
       (async function () {
+        console.log('current', current);
         const result = await loadItempagination({page: current, category: id})
         setAllItems(result.items)
         setFilterItems(result.items);
         setallFindItems(result.length)
       })();
     }
-  }, [id]);
+  }, [current]);
   
-  const paginationHandler = async (event) => {
-   const result = await loadItempagination({page: current, category: id})
-   setAllItems(result.items)
-   setFilterItems(result.items);
+  // const paginationHandler = async (event) => {
+  //  const result = await loadItempagination({page: current, category: id})
+  //  setAllItems(result.items)
+  //  setFilterItems(result.items);
 
-  };
+  // };
 
   const handler = async (event) => {
     setCheckTag({ ...checkTag, [event.target.name]: event.target.value });
@@ -247,8 +252,8 @@ export default function AllCards() {
               )}
             </Content>
             <Footer   style={{ textAlign: "center", marginTop: "50px" }}>
-              <div  onClick={paginationHandler} >
-              <Pagination current={current} onChange={onChange}  total={allFindItems} />
+              <div>
+              <Pagination current={current} onChange={onChange}  total={allFindItems * 2} />
               </div>
             </Footer>
           </Layout>
