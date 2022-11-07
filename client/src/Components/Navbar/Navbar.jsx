@@ -46,7 +46,7 @@ const Navbar = () => {
   };
 
   return (
-    <>
+    < div className={styles.navbar}>
       <div className={styles.banner_container}>
         <Link href="#" className={styles.banner}></Link>
       </div>
@@ -97,7 +97,7 @@ const Navbar = () => {
         </div>
       </Space>
       {/* <hr style={{background: '#959595b9'}}/> */}
-    </>
+    </div>
   );
 };
 export default Navbar;
