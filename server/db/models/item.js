@@ -19,9 +19,13 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.TEXT,
     size: DataTypes.TEXT,
     color: DataTypes.TEXT,
-    category_id: DataTypes.INTEGER,
-    comment_id: DataTypes.INTEGER
-  }, {
+    brand: DataTypes.TEXT,
+    processor: DataTypes.TEXT,
+    display: DataTypes.TEXT,
+    gender: DataTypes.TEXT,
+    style: DataTypes.TEXT,
+    category_id: DataTypes.INTEGER
+    }, {
     sequelize,
     modelName: 'Item',
   });
