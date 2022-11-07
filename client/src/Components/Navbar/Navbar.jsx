@@ -44,7 +44,7 @@ const Navbar = () => {
   };
 
   return (
-    < div className={styles.navbar}>
+    <div className={styles.navbar}>
       <div className={styles.banner_container}>
         <Link href="#" className={styles.banner}></Link>
       </div>
@@ -113,7 +113,7 @@ const Navbar = () => {
           </div>
         </div>
       </Space>
-    </>
+    </div>
   );
 };
 export default Navbar;
