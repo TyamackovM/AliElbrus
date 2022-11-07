@@ -32,8 +32,8 @@ export default function AllCards() {
   const [arrStyle, setArrStyle] = useState();
 
   const [current, setCurrent] = useState(1);
+  
   const onChange = (page) => {
-    console.log(2323, page);
     setCurrent(page);
   };
 
@@ -247,6 +247,7 @@ export default function AllCards() {
                 </div>
               )}
             </Content>
+
             <Footer style={{ textAlign: "center", marginTop: "50px" }}>
               <div onClick={paginationHandler}>
                 <Pagination
@@ -254,6 +255,7 @@ export default function AllCards() {
                   onChange={onChange}
                   total={allFindItems}
                 />
+
               </div>
             </Footer>
           </Layout>
