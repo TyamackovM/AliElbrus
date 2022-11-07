@@ -37,7 +37,7 @@ export default function AllCards() {
 
   const handler = async (event) => {
     setCheckTag({ ...checkTag, [event.target.name]: event.target.value });
-    console.log("checkTag", checkTag);
+    // console.log("checkTag", checkTag);
     const response = await fetch("http://localhost:4000/filter-category", {
       method: "POST",
       headers: {

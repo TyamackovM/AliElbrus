@@ -21,8 +21,10 @@ export default function SearchRenderAllCards() {
   const [checkTag, setCheckTag] = useState({});
   const location = useLocation();
   const [items, setItems] = useState(location.state.searchResult);
+  const [filterTags, setFilterTags] = useState(location.state.searchResult)
   const [arrSize, setArrSize] = useState();
   const [arrColor, setArrColor] = useState();
+
   // const [valueCheck, setValueCheck] = useState(1);
 
   // const onChange = (e) => {
@@ -32,7 +34,6 @@ export default function SearchRenderAllCards() {
 
   const handler = async (event) => {
     setCheckTag({ ...checkTag, [event.target.name]: event.target.value });
-
     const response = await fetch("http://localhost:4000/check-item", {
       method: "POST",
       headers: {
@@ -115,22 +116,14 @@ export default function SearchRenderAllCards() {
     </div>
   );
 
-  //! главный компонент
+  useEffect(() => {
+    if (filterTags) {
+      const res = filterMap(filterTags);
+      setArrSize(res.size);
+      setArrColor(res.color);
+    }
+  }, [filterTags]);
 
-  const res = filterMap(location.state.searchResult);
-  // setArrSize(res.size);
-  // setArrColor(res.color);
-
-  const filter = location.state.searchResult
-    .filter((el) => el.color)
-    .map((el) => el.color);
-  const filter2 = location.state.searchResult
-    .filter((el) => el.size)
-    .map((el) => el.size);
-  const arr = [...new Set(filter)];
-  const arr2 = [...new Set(filter2)];
-
-  // const itemsArray = location.state.searchResult;
   return !loading ? (
     <>
       <div
@@ -172,50 +165,8 @@ export default function SearchRenderAllCards() {
                     </Radio.Group>
                   </Form.Item>
                 </Form>
-
-                {/* <FormFilter array={arrSize} name="size" handler={handler} />
-
-                <FormFilter array={arrColor} name="color" handler={handler} />  */}
-
-                 <div className={styles.div_size}>
-                    <div className={styles.div_span}>
-                      <span className={styles.span}>Size</span>
-                    </div>
-                    <div className={styles.content}>
-
-                  <form>
-                    <div style={{display: 'flex', flexDirection: 'column' }}>                    
-                      {arr2.map((el) => (
-                        <div>
-                          <input id={el} type='radio' onChange={handler} value={el}  name='size' />
-                          <label for={el}>{el}</label>  
-                        </div>
-                        ))}                    
-                    </div>
-                    </form>
-
-
-                    </div>
-                  </div>
-                  <div className={styles.div_color}>
-                    <div className={styles.div_span}>
-                      <span className={styles.span}>Color</span>
-                    </div>
-                    <div className={styles.div_content}>
-                      
-                      <form>
-                    <div style={{display: 'flex', flexDirection: 'column' }}>                    
-                      {arr.map((el) => (
-                        <div>
-                        <input id={el} type='radio' onChange={handler} value={el}  name='color' />
-                        <label for={el}>{el}</label>  
-                        </div>
-                        ))}                    
-                    </div>
-                    </form>
-
-                    </div>
-                  </div>
+                <FormFilter array={arrSize} name="size" handler={handler} />
+                <FormFilter array={arrColor} name="color" handler={handler} />
               </div>
             </Sider>
             <Layout>
@@ -248,3 +199,4 @@ export default function SearchRenderAllCards() {
     spinner
   );
 }
+// asfafsfasasfasfa
