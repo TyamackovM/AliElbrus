@@ -67,14 +67,14 @@ export default function Person() {
   ) : (
     <div>
       <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}
+        style={{ display: "flex", justifyContent: "center", marginTop: "90px" }}
       >
         <Avatar
           style={{ backgroundColor: "#a622ffb9" }}
           icon={<UserOutlined />}
         />
       </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ display: "flex", justifyContent: "center",  }}>
         <p style={{ fontWeight: "bold", fontSize: "17px" }}>Welcome to AliElbrus</p>
       </div>
       <div style={{ display: "flex", justifyContent: "space-evenly" }}>
