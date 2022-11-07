@@ -7,9 +7,12 @@ const { Op } = require('sequelize');
 router.post("/", async (req, res) => {
   console.log('req.body',req.body);
   const numItems = 5;
-  const { page, value } = req.body;
+  const { page, value, check } = req.body;
   // const fixNumberCategory = +category;
   const nextitems = page * numItems - numItems;
+  if(check){
+
+  }
   const items = await Item.findAll({
     where: {
         title: {
@@ -30,7 +33,7 @@ router.post("/", async (req, res) => {
       },
     raw: true,
   });
-  console.log(items);
+  console.log('items', items);
   res.json({ items, length: itemsNum.length });
 });
 
