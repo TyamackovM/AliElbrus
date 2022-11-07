@@ -12,6 +12,8 @@ router.post('/', async (req, res) => {
         ...check,
       },
       raw: true,
+      offset: 0,
+      limit: 5,
     });
     
     res.json(findItems);

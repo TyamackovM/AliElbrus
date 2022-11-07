@@ -5,7 +5,9 @@ const { WishList } = require("../../../db/models");
 
 router.post("/", async (req, res) => {
 
-  const numItems = 10;
+  console.log(req.body);
+  const numItems = 5;
+
   const { page, category } = req.body;
   const fixNumberCategory = +category;
   const nextitems = page * numItems - numItems;
@@ -19,6 +21,7 @@ router.post("/", async (req, res) => {
     where: { category_id: fixNumberCategory },
     raw: true,
   });
+
   const likes = await WishList.findAll({where: { user_id: req.session.newUserId}, raw: true })
   const likedItems = items.map(item => {
     likes.forEach(like => {

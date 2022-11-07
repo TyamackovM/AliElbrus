@@ -31,14 +31,34 @@ export default function SearchRenderAllCards() {
   const [arrGender, setArrGender] = useState();
   const [arrStyle, setArrStyle] = useState();
   const [current, setCurrent] = useState(1);
+  const [length, setLength] = useState(10);
+  
 
-  const onChange = (page) => {
-    setCurrent(page);
-  };
-
-
+  const onChange = async (page, event) => {
+    console.log('page do', page);
+    setCurrent(page); 
+    setTimeout( async () => {
+      setLoadingSort(true);
+      console.log('current do', current);
+      setCurrent(page); 
+      
+      const result = await loadFilterItemPagination({
+        value: location.state.searchWord,
+        check: {
+          check: checkTag,  
+        },
+        page: page,
+      });
+      console.log('page posle', page);
+      console.log('current posle', current);
+      
+      setItems(result.items)
+      setLength(result.length)
+    }, 100);
+    };
+    
+    
   // const [valueCheck, setValueCheck] = useState(1);
-
   // const onChange = (e) => {
   //   console.log('radio checked', e.target.value);
   //   setValueCheck(e.target.value);
@@ -46,39 +66,43 @@ export default function SearchRenderAllCards() {
 
   const handler = async (event) => {
     setCheckTag({ ...checkTag, [event.target.name]: event.target.value });
-    const response = await fetch("http://localhost:4000/check-item", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    // const response = await fetch("http://localhost:4000/check-item", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     value: location.state.searchWord,
+    //     check: { ...checkTag, [event.target.name]: event.target.value },
+    //     // property: event.target.name,
+    //     // tag: event.target.innerText,
+    //   }),
+    // });
+    // const responseToJSON = await response.json();
+    setCurrent(1)
+    console.log("current", current)
+    const result = await loadFilterItemPagination({
+      value: location.state.searchWord,
+      check: {
+        check: { ...checkTag, [event.target.name]: event.target.value },  
       },
-      body: JSON.stringify({
-        value: location.state.searchWord,
-        check: { ...checkTag, [event.target.name]: event.target.value },
-        // property: event.target.name,
-        // tag: event.target.innerText,
-      }),
+      page: current,
     });
-    const responseToJSON = await response.json();
+    setItems(result.items)
+    setLength(result.length)
 
     setLoadingSort(false);
     setTimeout(() => {
       setLoadingSort(true);
     }, 500);
-    setItems(responseToJSON);
+    // setItems(responseToJSON);
     // setValueCheck(event.target.value);
     // console.log('1', checkTag)
   };
 
-  const filterPaginationHandler = (event) => {
-    loadFilterItemPagination({
-      value: location.state.searchWord,
-      check: {
-        ...checkTag,
-        [event.target.name]: event.target.value,
-      },
-      page: current,
-    });
-  };
+  // const filterPaginationHandler = async (event) => {
+
+  // };
 
   const sortLowHandler = (e) => {
     const spred = [...items];
@@ -189,25 +213,25 @@ export default function SearchRenderAllCards() {
                   </Form.Item>
                 </Form>
                   {arrSize.length ? (
-                    <FormFilter array={arrSize} name="size" handler={handler} />
+                    <FormFilter array={arrSize} name="size" onChange={onChange} handler={handler} />
                   ) : ('')}
                   {arrColor.length ? (
-                    <FormFilter array={arrColor} name="color" handler={handler} />
+                    <FormFilter array={arrColor} name="color" onChange={onChange} handler={handler} />
                   ) : ('')}
                   {arrBrand.length ? (
-                    <FormFilter array={arrBrand} name="brand" handler={handler} />
+                    <FormFilter array={arrBrand} name="brand" onChange={onChange} handler={handler} />
                   ) : ('')}
                   {arrProcessor.length ? (
-                    <FormFilter array={arrProcessor} name="processor" handler={handler} />
+                    <FormFilter array={arrProcessor} name="processor" onChange={onChange} handler={handler} />
                   ) : ('')}
                   {arrDisplay.length ? (
-                    <FormFilter array={arrDisplay} name="display" handler={handler} />
+                    <FormFilter array={arrDisplay} name="display" onChange={onChange} handler={handler} />
                   ) : ('')}
                   {arrGender.length ? (
-                    <FormFilter array={arrGender} name="gender" handler={handler} />
+                    <FormFilter array={arrGender} name="gender" onChange={onChange} handler={handler} />
                   ) : ('')}
                   {arrStyle.length ? (
-                    <FormFilter array={arrStyle} name="style" handler={handler} />
+                    <FormFilter array={arrStyle} name="style" onChange={onChange} handler={handler} />
                   ) : ('')}
               </div>
             </Sider>
@@ -232,12 +256,12 @@ export default function SearchRenderAllCards() {
                 )}
               </Content>
               <Footer style={{ textAlign: "center", marginTop: "50px" }}>
-                <div onClick={filterPaginationHandler}>
+                <div>
                   <Pagination
                     
                     current={current}
                     onChange={onChange}
-                    total={50}
+                    total={length * 2}
                   />
                 </div>
               </Footer>
