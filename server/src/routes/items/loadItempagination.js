@@ -4,7 +4,7 @@ const { Item } = require("../../../db/models");
 const { WishList } = require("../../../db/models");
 
 router.post("/", async (req, res) => {
-  //console.log(req.body);
+
   const numItems = 10;
   const { page, category } = req.body;
   const fixNumberCategory = +category;
@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
     });
     return item;
   })
-  //console.log('LIKED ITEMS', likedItems);
+  
   res.json({ likedItems, length: itemsNum.length });
 });
 
