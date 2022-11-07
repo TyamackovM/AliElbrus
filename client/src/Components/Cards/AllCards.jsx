@@ -95,6 +95,22 @@ export default function AllCards() {
     setLoading(false);
   }, 500);
 
+  const spinnerSort = (
+    <div style={{ display: "flex", justifyContent: "center", height: "300px" }}>
+      <div
+        style={{
+          alignItems: "center",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Space size="middle">
+          <Spin size="large" />
+        </Space>
+      </div>
+    </div>
+  );
+
   const [form] = Form.useForm();
   const [requiredMark, setRequiredMarkType] = useState("");
   const onRequiredTypeChange = ({ requiredMarkValue }) => {
@@ -151,11 +167,15 @@ export default function AllCards() {
                 margin: "0 10px",
               }}
             >
-              <div className={styles.mainDiv}>
-                {allItems?.map((el) => (
-                  <OneCard el={el} key={el.id} />
-                ))}
-              </div>
+              {!loadingSort ? (
+                  spinnerSort
+                ) : (
+                  <div className={styles.mainDiv}>
+                    {allItems?.map((el) => (
+                      <OneCard el={el} key={el.id} />
+                    ))}
+                  </div>
+                )}
             </Content>
             <Footer style={{ textAlign: "center", marginTop: "50px" }}>
               <Pagination defaultCurrent={1} total={50} />

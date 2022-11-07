@@ -116,6 +116,7 @@ export default function SearchRenderAllCards() {
     </div>
   );
 
+
   useEffect(() => {
     if (filterTags) {
       const res = filterMap(filterTags);
@@ -124,12 +125,13 @@ export default function SearchRenderAllCards() {
     }
   }, [filterTags]);
 
+
   return !loading ? (
     <>
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
       >
-        <div style={{ width: "85%" }}>
+        <div style={{ width: "80%" }}>
           <Layout>
             <Sider
               style={{
@@ -165,8 +167,10 @@ export default function SearchRenderAllCards() {
                     </Radio.Group>
                   </Form.Item>
                 </Form>
+
                 <FormFilter array={arrSize} name="size" handler={handler} />
                 <FormFilter array={arrColor} name="color" handler={handler} />
+
               </div>
             </Sider>
             <Layout>
@@ -199,4 +203,4 @@ export default function SearchRenderAllCards() {
     spinner
   );
 }
-// asfafsfasasfasfa
+
