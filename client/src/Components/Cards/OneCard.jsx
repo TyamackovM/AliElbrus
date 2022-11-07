@@ -18,27 +18,23 @@ export default function OneCard({ el }) {
       key={el.id}
       onClick={selectCardHandler}
       style={{
-
         width: '200px',
         height: '347px',
         borderRadius: '5px',
         boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)"
-
       }}
       cover={
         <img
           className={styles.image}
           alt="Items_image"
-          style={{ borderRadius: "5px 5px 0px 0px" }}
+          style={{ borderRadius: "5px 5px 0px 0px", width: '200px', height: '260px' }}
           src={el.image}
         />
       }
-      // actions={[
-      //  <EllipsisOutlined key="ellipsis" />,
-      // ]}
     >
       <div className={styles.card_bottom}>
         <span className={styles.price}>{"$" + el.price}</span>
+        {/* <div>{el.category_id}</div> */}
         <div className={styles.heart}>
           <HeartOutlined className={styles.icon_card_heart} />
         </div>
