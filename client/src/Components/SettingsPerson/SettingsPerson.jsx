@@ -16,7 +16,7 @@ import { useEffect } from "react";
 
 const contentStyle = {
   width: "180px",
-  height: "150px",
+  height: "250px",
   // color: "#fff",
   lineHeight: "160px",
   textAlign: "center",
@@ -52,12 +52,14 @@ export default function SettingsPerson() {
         credentials: "include",
       });
       const itemsAll = await userFindBack.json();
-      if (itemsAll.lenght) {
+      if (itemsAll.length) {
         setFindItem(true);
         setItemsSlide(itemsAll);
       }
     })();
   }, []);
+
+  console.log("slide", itemsSlide);
 
   // const i = Math.floor(Math.random() * (itemsSlide.length - 1) + 1);
   // console.log('123', i)
@@ -106,13 +108,6 @@ export default function SettingsPerson() {
               mode="inline"
               defaultSelectedKeys={["4"]}
               items={items}
-              // {[UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
-              //   (icon, index) => ({
-              //     key: String(index + 1),
-              //     icon: React.createElement(icon),
-              //     label: `nav ${index + 1}`,
-              //   }),
-              // )}
             />
           </Sider>
           <Layout>
@@ -140,7 +135,7 @@ export default function SettingsPerson() {
                 justifyContent: "center",
                 alignItems: "center",
                 background: "white",
-                height: "170px",
+                height: "270px",
                 backgroundColor: "white",
                 borderRadius: "5px",
                 boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
@@ -151,38 +146,28 @@ export default function SettingsPerson() {
                   style={{
                     backgroundColor: "red",
                     width: "180px",
-                    height: "150px",
+                    height: "250px",
                     marginTop: "11px",
                   }}
                 >
                   {/* //! Логика слайдера */}
-                  {findItem ? (
-                    <Carousel autoplay>
-                      <div>
-                        <img
-                          src={itemsSlide[0]["Items.image"]}
-                          style={contentStyle}
-                        />
-                      </div>
-                      <div>
-                        <img
-                          src={itemsSlide[1]["Items.image"]}
-                          style={contentStyle}
-                        />
-                      </div>
-                      <div>
-                        <img
-                          src={itemsSlide[2]["Items.image"]}
-                          style={contentStyle}
-                        />
-                      </div>
-                      <div>
-                        <img
-                          src={itemsSlide[3]["Items.image"]}
-                          style={contentStyle}
-                        />
-                      </div>
-                    </Carousel>
+                  {itemsSlide.length ? (
+                    <Link to="/category/13">
+                      <Carousel autoplay>
+                        <div>
+                          <img src={itemsSlide[0].image} style={contentStyle} />
+                        </div>
+                        <div>
+                          <img src={itemsSlide[1].image} style={contentStyle} />
+                        </div>
+                        <div>
+                          <img src={itemsSlide[2].image} style={contentStyle} />
+                        </div>
+                        <div>
+                          <img src={itemsSlide[3].image} style={contentStyle} />
+                        </div>
+                      </Carousel>
+                    </Link>
                   ) : (
                     <Carousel autoplay>
                       <div>
