@@ -35,23 +35,29 @@ export default function SearchRenderAllCards() {
   
 
   const onChange = async (page, event) => {
-    setCurrent(page);
-    console.log('current do', current);
-
-    const result = await loadFilterItemPagination({
-      value: location.state.searchWord,
-      check: {
-        check: checkTag,  
-      },
-      page: current,
-    });
-    console.log('current posle', current);
-
-    setItems(result.items)
-    setLength(result.length)
-  };
-
-
+    console.log('page do', page);
+    setCurrent(page); 
+    setTimeout( async () => {
+      setLoadingSort(true);
+      console.log('current do', current);
+      setCurrent(page); 
+      
+      const result = await loadFilterItemPagination({
+        value: location.state.searchWord,
+        check: {
+          check: checkTag,  
+        },
+        page: page,
+      });
+      console.log('page posle', page);
+      console.log('current posle', current);
+      
+      setItems(result.items)
+      setLength(result.length)
+    }, 100);
+    };
+    
+    
   // const [valueCheck, setValueCheck] = useState(1);
   // const onChange = (e) => {
   //   console.log('radio checked', e.target.value);
@@ -163,7 +169,7 @@ export default function SearchRenderAllCards() {
       setArrGender(res.gender);
       setArrStyle(res.style);
     }
-  }, [filterTags, current]);
+  }, [filterTags]);
 
   return !loading ? (
     <>
