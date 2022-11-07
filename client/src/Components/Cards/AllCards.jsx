@@ -168,14 +168,14 @@ export default function AllCards() {
               }}
             >
               {!loadingSort ? (
-                  spinnerSort
-                ) : (
-                  <div className={styles.mainDiv}>
-                    {allItems?.map((el) => (
-                      <OneCard el={el} key={el.id} />
-                    ))}
-                  </div>
-                )}
+                spinnerSort
+              ) : (
+                <div className={styles.mainDiv}>
+                  {allItems?.map((el) => (
+                    <OneCard el={el} key={el.id} />
+                  ))}
+                </div>
+              )}
             </Content>
             <Footer style={{ textAlign: "center", marginTop: "50px" }}>
               <Pagination defaultCurrent={1} total={50} />
@@ -188,3 +188,5 @@ export default function AllCards() {
     spinner
   );
 }
+
+//fgdfgfdgfgfdg
