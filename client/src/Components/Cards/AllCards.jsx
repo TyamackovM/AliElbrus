@@ -166,28 +166,49 @@ export default function AllCards() {
                 </Form.Item>
               </Form>
 
-                {arrSize.length ? (
-                  <FormFilter array={arrSize} name="size" handler={handler} />
-                ) : ('')}
-                {arrColor.length ? (
-                  <FormFilter array={arrColor} name="color" handler={handler} />
-                ) : ('')}
-                {arrBrand.length ? (
-                  <FormFilter array={arrBrand} name="brand" handler={handler} />
-                ) : ('')}
-                {arrProcessor.length ? (
-                  <FormFilter array={arrProcessor} name="processor" handler={handler} />
-                ) : ('')}
-                {arrDisplay.length ? (
-                  <FormFilter array={arrDisplay} name="display" handler={handler} />
-                ) : ('')}
-                {arrGender.length ? (
-                  <FormFilter array={arrGender} name="gender" handler={handler} />
-                ) : ('')}
-                {arrStyle.length ? (
-                  <FormFilter array={arrStyle} name="style" handler={handler} />
-                ) : ('')}
-
+              {arrSize?.length ? (
+                <FormFilter array={arrSize} name="size" handler={handler} />
+              ) : (
+                ""
+              )}
+              {arrColor?.length ? (
+                <FormFilter array={arrColor} name="color" handler={handler} />
+              ) : (
+                ""
+              )}
+              {arrBrand?.length ? (
+                <FormFilter array={arrBrand} name="brand" handler={handler} />
+              ) : (
+                ""
+              )}
+              {arrProcessor?.length ? (
+                <FormFilter
+                  array={arrProcessor}
+                  name="processor"
+                  handler={handler}
+                />
+              ) : (
+                ""
+              )}
+              {arrDisplay?.length ? (
+                <FormFilter
+                  array={arrDisplay}
+                  name="display"
+                  handler={handler}
+                />
+              ) : (
+                ""
+              )}
+              {arrGender?.length ? (
+                <FormFilter array={arrGender} name="gender" handler={handler} />
+              ) : (
+                ""
+              )}
+              {arrStyle?.length ? (
+                <FormFilter array={arrStyle} name="style" handler={handler} />
+              ) : (
+                ""
+              )}
             </div>
           </Sider>
           <Layout>
