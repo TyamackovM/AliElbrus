@@ -3,7 +3,7 @@ const { Category } = require('../../../db/models');
 const { Item } = require('../../../db/models');
 
 router.get('/', async (req, res) => {
-  const items = await Category.findAll({ where: { id: 1 }, raw: true, include: Item })
+  const items = await Item.findAll({ where: { category_id: id }, raw: true })
   res.json(items)  
 })
 

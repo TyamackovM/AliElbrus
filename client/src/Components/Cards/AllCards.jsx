@@ -13,6 +13,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useLocation } from "react-router-dom";
 import filterMap from "../../helpers/filterMapFunction";
 import FormFilter from "./FormFilter";
+import {loadItempagination} from '../../helpers/loadItemPagination'
 const { Header, Footer, Sider, Content } = Layout;
 
 export default function AllCards() {
@@ -23,17 +24,34 @@ export default function AllCards() {
   const [arrSize, setArrSize] = useState();
   const [arrColor, setArrColor] = useState();
   const [filterItems, setFilterItems] = useState();
+  const [allFindItems, setallFindItems] = useState()
 
+  const [current, setCurrent] = useState(1);
+  const onChange = (page) => {
+    console.log(2323, page);
+    setCurrent(page);
+  };
+  
+
+  
   const { id } = useParams();
   useEffect(() => {
     if (id) {
       (async function () {
-        const allItems = await getAllCardsFetch(id);
-        setAllItems(allItems);
-        setFilterItems(allItems);
+        const result = await loadItempagination({page: current, category: id})
+        setAllItems(result.items)
+        setFilterItems(result.items);
+        setallFindItems(result.length)
       })();
     }
   }, [id]);
+  
+  const paginationHandler = async (event) => {
+   const result = await loadItempagination({page: current, category: id})
+   setAllItems(result.items)
+   setFilterItems(result.items);
+
+  };
 
   const handler = async (event) => {
     setCheckTag({ ...checkTag, [event.target.name]: event.target.value });
@@ -119,7 +137,7 @@ export default function AllCards() {
 
   return !loading ? (
     <div
-      style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
+     style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
     >
       <div style={{ width: "80%" }}>
         <Layout>
@@ -177,8 +195,10 @@ export default function AllCards() {
                   </div>
                 )}
             </Content>
-            <Footer style={{ textAlign: "center", marginTop: "50px" }}>
-              <Pagination defaultCurrent={1} total={50} />
+            <Footer   style={{ textAlign: "center", marginTop: "50px" }}>
+              <div  onClick={paginationHandler} >
+              <Pagination  current={current} onChange={onChange}  total={allFindItems} />
+              </div>
             </Footer>
           </Layout>
         </Layout>

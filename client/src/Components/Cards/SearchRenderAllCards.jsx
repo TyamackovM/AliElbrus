@@ -13,6 +13,7 @@ import SearchRenderOneCard from "./SearchRenderOneCard";
 import { v4 as uuidv4 } from "uuid";
 import filterMap from "../../helpers/filterMapFunction";
 import FormFilter from "./FormFilter";
+import {loadFilterItemPagination} from '../../helpers/loadFilterItemPagination'
 const { Header, Footer, Sider, Content } = Layout;
 
 export default function SearchRenderAllCards() {
@@ -46,8 +47,8 @@ export default function SearchRenderAllCards() {
         // tag: event.target.innerText,
       }),
     });
-
     const responseToJSON = await response.json();
+
     setLoadingSort(false);
     setTimeout(() => {
       setLoadingSort(true);
@@ -56,6 +57,13 @@ export default function SearchRenderAllCards() {
     // setValueCheck(event.target.value);
     // console.log('1', checkTag)
   };
+  
+  const filterPaginationHandler = (event) => {
+    loadFilterItemPagination({ 
+      value: location.state.searchWord, 
+      check: { ...checkTag, [event.target.name]: event.target.value,
+      page: event.target.innerText }})
+  }
 
   const sortLowHandler = (e) => {
     const spred = [...items];
@@ -168,8 +176,8 @@ export default function SearchRenderAllCards() {
                   </Form.Item>
                 </Form>
 
-                <FormFilter array={arrSize} name="size" handler={handler} />
-                <FormFilter array={arrColor} name="color" handler={handler} />
+                <FormFilter array={arrSize} onClick={filterPaginationHandler} name="size" handler={handler} />
+                <FormFilter array={arrColor} onClick={filterPaginationHandler} name="color" handler={handler} />
 
               </div>
             </Sider>
@@ -192,7 +200,9 @@ export default function SearchRenderAllCards() {
                 )}
               </Content>
               <Footer style={{ textAlign: "center", marginTop: "50px" }}>
+                <div onClick={filterPaginationHandler}>
                 <Pagination defaultCurrent={1} total={50} />
+                </div>
               </Footer>
             </Layout>
           </Layout>
