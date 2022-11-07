@@ -43,18 +43,23 @@ export default function Person() {
       </div>
       <div style={{ display: "flex", justifyContent: "space-evenly", marginBottom: '7px' }}>
         <Link to='/account/info' style={{ fontSize: "13px" }}>Account</Link>
-        <Link to='account/orders' style={{ fontSize: "13px" }}>Orders</Link>
-        <Link to='/chat' style={{ fontSize: "13px" }}>Messages</Link>
+        <Link to='/account/orders' style={{ fontSize: "13px" }}>Orders</Link>
+        <Link to='/account/chat' style={{ fontSize: "13px" }}>Messages</Link>
       </div>
       <div style={{width: '190px', height: '180px', display: 'flex', justifyContent: 'center'}}>
         <div className={style.bottomBlock}>
           <div className={style.bottomFirst}>
             <p className={style.exc}>Exclusive offers</p>
             <p className={style.newMem}>Just for new AliElbrus members!</p>
+            <p className={style.newPrice}>for $1:</p>
           </div>
           <div className={style.bottomSecond}></div>
           <div className={style.bottomThird}>
-
+            <div>
+              <Link to='/category/20'>
+                <img style={{width: '175px', height: '75px'}} src="https://ae01.alicdn.com/kf/S8c549e878e6241f394747bf1abe16316l/Women-s-Watches-Brand-Sport-Style-Fashion-Ladies-Watch-Leather-Watch-Women-Girls-Female-Quartz-Wristwatches.jpg_Q90.jpg" alt="meow" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -62,14 +67,14 @@ export default function Person() {
   ) : (
     <div>
       <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}
+        style={{ display: "flex", justifyContent: "center", marginTop: "90px" }}
       >
         <Avatar
           style={{ backgroundColor: "#a622ffb9" }}
           icon={<UserOutlined />}
         />
       </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ display: "flex", justifyContent: "center",  }}>
         <p style={{ fontWeight: "bold", fontSize: "17px" }}>Welcome to AliElbrus</p>
       </div>
       <div style={{ display: "flex", justifyContent: "space-evenly" }}>
