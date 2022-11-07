@@ -13,7 +13,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useLocation } from "react-router-dom";
 import filterMap from "../../helpers/filterMapFunction";
 import FormFilter from "./FormFilter";
-import {loadItempagination} from '../../helpers/loadItemPagination'
+import { loadItempagination } from "../../helpers/loadItemPagination";
 const { Header, Footer, Sider, Content } = Layout;
 
 export default function AllCards() {
@@ -24,39 +24,38 @@ export default function AllCards() {
   const [filterItems, setFilterItems] = useState();
   const [arrSize, setArrSize] = useState();
   const [arrColor, setArrColor] = useState();
-  const [allFindItems, setallFindItems] = useState()
+  const [allFindItems, setallFindItems] = useState();
   const [arrBrand, setArrBrand] = useState();
   const [arrProcessor, setArrProcessor] = useState();
   const [arrDisplay, setArrDisplay] = useState();
   const [arrGender, setArrGender] = useState();
   const [arrStyle, setArrStyle] = useState();
 
-
   const [current, setCurrent] = useState(1);
   const onChange = (page) => {
     console.log(2323, page);
     setCurrent(page);
   };
-  
 
-  
   const { id } = useParams();
   useEffect(() => {
     if (id) {
       (async function () {
-        const result = await loadItempagination({page: current, category: id})
-        setAllItems(result.items)
-        setFilterItems(result.items);
-        setallFindItems(result.length)
+        const result = await loadItempagination({
+          page: current,
+          category: id,
+        });
+        setAllItems(result.likedItems);
+        setFilterItems(result.likedItems);
+        setallFindItems(result.length);
       })();
     }
   }, [id]);
-  
-  const paginationHandler = async (event) => {
-   const result = await loadItempagination({page: current, category: id})
-   setAllItems(result.items)
-   setFilterItems(result.items);
 
+  const paginationHandler = async (event) => {
+    const result = await loadItempagination({ page: current, category: id });
+    setAllItems(result.likedItems);
+    setFilterItems(result.likedItems);
   };
 
   const handler = async (event) => {
@@ -149,7 +148,7 @@ export default function AllCards() {
 
   return !loading ? (
     <div
-     style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
+      style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
     >
       <div style={{ width: "80%" }}>
         <Layout>
@@ -248,9 +247,13 @@ export default function AllCards() {
                 </div>
               )}
             </Content>
-            <Footer   style={{ textAlign: "center", marginTop: "50px" }}>
-              <div  onClick={paginationHandler} >
-              <Pagination  current={current} onChange={onChange}  total={allFindItems} />
+            <Footer style={{ textAlign: "center", marginTop: "50px" }}>
+              <div onClick={paginationHandler}>
+                <Pagination
+                  current={current}
+                  onChange={onChange}
+                  total={allFindItems}
+                />
               </div>
             </Footer>
           </Layout>
