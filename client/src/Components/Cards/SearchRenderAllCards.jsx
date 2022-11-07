@@ -36,7 +36,8 @@ export default function SearchRenderAllCards() {
 
   const onChange = async (page, event) => {
     setCurrent(page);
-    console.log("current", current);
+    console.log('current do', current);
+
     const result = await loadFilterItemPagination({
       value: location.state.searchWord,
       check: {
@@ -44,6 +45,8 @@ export default function SearchRenderAllCards() {
       },
       page: current,
     });
+    console.log('current posle', current);
+
     setItems(result.items)
     setLength(result.length)
   };
@@ -70,7 +73,7 @@ export default function SearchRenderAllCards() {
     //   }),
     // });
     // const responseToJSON = await response.json();
-
+    setCurrent(1)
     console.log("current", current)
     const result = await loadFilterItemPagination({
       value: location.state.searchWord,
