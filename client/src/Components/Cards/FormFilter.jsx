@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./AllCards.module.css";
 
 export default function FormFilter({ array, handler, name }) {
-  console.log("ARRAYYYY", array);
   return (
     <div className={styles.div_color}>
       <div className={styles.div_span}>
