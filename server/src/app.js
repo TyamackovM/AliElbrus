@@ -19,17 +19,16 @@ const findItemFromInput = require('./routes/items/findItemFromInput');
 const addItemToWishList = require('./routes/user/addItemToWishList');
 const deleteWishList = require('./routes/user/deleteWishList')
 const findItemCategoryFilter = require('./routes/items/findItemCategoryFilter');
-
-
+const getItemsFieldsForAdmin = require('./routes/items/getItemsFieldsForAdmin');
 const displayWishList = require('./routes/user/displayWishList')
-
 const loadItemPagination = require('./routes/items/loadItempagination');
 const loadItemFilterPagination = require('./routes/items/loadItemFilterPagination');
-
-
-
-
-
+const addItemToCart = require('./routes/user/addItemToCart')
+const displayCart = require('./routes/user/displayCart')
+const deleteItemFromCart = require('./routes/user/deleteItemFromCart')
+const addNewItem = require('./routes/items/addNewItem')
+const searchUserByEmail = require('./routes/user/searchUserByEmail')
+const updateUserStatus = require('./routes/user/updateStatus')
 
 const app = express();
 
@@ -67,13 +66,16 @@ app.use('/check-item', findItemFromInput);
 app.use('/add-item-to-wish-list', addItemToWishList);
 app.use('/delete-item-from-wish-list', deleteWishList)
 app.use('/filter-category', findItemCategoryFilter);
-
-
+app.use('/get-fields', getItemsFieldsForAdmin)
 app.use('/display-wishlist', displayWishList)
-
 app.use('/get-next-page', loadItemPagination);
 app.use('/get-next-filter-page', loadItemFilterPagination);
-
+app.use('/add-item-to-cart', addItemToCart);
+app.use('/delete-item-from-cart', deleteItemFromCart)
+app.use('/display-cart', displayCart)
+app.use('/add-new-item', addNewItem)
+app.use('/search-by-email', searchUserByEmail)
+app.use('/update-status', updateUserStatus)
 
 
 const httpServer = app.listen(CURRENT_PORT ?? 5000, () => {

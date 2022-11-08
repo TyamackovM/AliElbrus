@@ -153,7 +153,7 @@ export default function AllCards() {
     <div
       style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
     >
-      <div style={{ width: "80%" }}>
+      <div style={{ width: "72%" }}>
         <Layout>
           <Sider
             style={{
@@ -252,7 +252,9 @@ export default function AllCards() {
             </Content>
             <Footer   style={{ textAlign: "center", marginTop: "50px" }}>
               <div>
-              <Pagination current={current} onChange={onChange}  total={allFindItems * 2} />
+                {allFindItems>6 ? (
+                  <Pagination current={current} onChange={onChange}  total={allFindItems * 1.5} />
+                ) : ('')}              
               </div>
             </Footer>
           </Layout>

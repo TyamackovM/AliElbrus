@@ -31,7 +31,7 @@ export default function Main() {
 
   return !loading ? (
     <div style={{ display: "flex", justifyContent: "center",}}>
-      <div style={{ width: "80%" }}>
+      <div style={{ width: "72%" }}>
         <Layout>
           <Sider
             style={{
@@ -59,23 +59,28 @@ export default function Main() {
                   alignItems: "center",
                   borderRadius: "5px",
                   boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
+                  padding: '5px'
                 }}
               >
                 <SliderCarousel />
               </div>
             </Content>
-            <Footer style={{ padding: "60px 0px", margin: "5px 10px" }}>
+            <Footer style={{  padding: "0px 0px", margin: "10px 10px 0px 10px" }}>
               <div
                 style={{
-                  backgroundColor: "#fffafa",
+                  backgroundColor: "white",
+                  // background: '4520ab',
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                   borderRadius: "5px",
                   boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
+                  // padding: '5px',
                 }}
               >
-                <div>123</div>
+                {/* <div> */}
+                  <img style={{width: '550px', height: '150px', }} src='/img/newblock1.png' />
+                  {/* </div> */}
               </div>
             </Footer>
           </Layout>

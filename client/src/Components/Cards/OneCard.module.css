@@ -41,8 +41,7 @@ display: block;
 
 
 .heart {
-
-
+margin-right: 8px;
 width: 30px;
 height: 30px;
 /* box-shadow: 0 4px 8px 0 rgb(0 0 0 / 8%); */
@@ -53,6 +52,7 @@ border-radius: 50%;
 
 .price {
   font-size: 20px;
+  /* margin-right:10px ; */
 }
 
 .icon_card {

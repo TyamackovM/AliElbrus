@@ -1,6 +1,6 @@
 .price{
-    width: 350px;
-    height: 100px;
+    width: 115px;
+    height: 70px;
     background: rgb(176,61,195);
     background: linear-gradient(0deg, rgba(176,61,195,1) 77%, rgba(193,135,210,1) 86%);
     border-radius: 5px;
@@ -9,6 +9,7 @@
     margin-right: 20px;
     font-size: 9mm;
     color: black;
+    /* text-align: center; */
   }
 
   .btnReg {
