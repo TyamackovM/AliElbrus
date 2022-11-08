@@ -25,9 +25,10 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const searchHandler = async (value) => {
-    const searchResult = await checkItemFromInputInDB(value);
-
-    navigate("/search", { state: { searchResult, searchWord: value } });
+    const {findItems, length} = await checkItemFromInputInDB(value);
+    const searchResult = findItems
+    console.log('searchResult', searchResult.length);
+    navigate("/search", { state: { searchResult, length, searchWord: value } });
   };
 
   const handleLogout = async (e) => {
