@@ -19,6 +19,7 @@ import Cart from "./Components/Cart/Cart";
 import Chat from "./Components/Chat/Chat";
 import AllCards from "./Components/Cards/AllCards";
 import SearchRenderAllCards from "./Components/Cards/SearchRenderAllCards";
+import AdminCabinet from "./Components/AdminCabinet/AdminCabinet";
 
 
 
@@ -49,7 +50,7 @@ function App() {
           <Route path='testcard' element={<ItemCard></ItemCard>}></Route>
           <Route path='chat' element={<Chat />} />
 
-
+          <Route path='/admin-cabinet' element={<AdminCabinet/>}/>
           <Route path='/category/:id' element={<AllCards></AllCards>}></Route>
 
           {/* <Route path='/account' element={<SettingsPerson />} /> */}

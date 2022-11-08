@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AntDesignOutlined, UserOutlined } from "@ant-design/icons";
 import { Avatar, Divider, Tooltip, Button, Form, Input } from "antd";
 import { getUser, updateEmail } from "../../store/user/actionCreators";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import style from "./Account.module.css";
 
 export default function Account() {
@@ -225,6 +225,7 @@ export default function Account() {
             Change email
           </Button>
         </Form>
+        <Link to='/admin-cabinet'>aaaaaaaaaaaaaaaaaaaaaaaaa</Link>
       </div>
     </>
   );

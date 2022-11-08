@@ -59,7 +59,7 @@ export default function SettingsPerson() {
     })();
   }, []);
 
-  console.log("slide", itemsSlide);
+  // console.log("slide", itemsSlide);
 
   // const i = Math.floor(Math.random() * (itemsSlide.length - 1) + 1);
   // console.log('123', i)

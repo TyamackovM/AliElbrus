@@ -20,7 +20,7 @@ const addItemToWishList = require('./routes/user/addItemToWishList');
 const deleteWishList = require('./routes/user/deleteWishList')
 const findItemCategoryFilter = require('./routes/items/findItemCategoryFilter');
 const loadItempagination = require('./routes/items/loadItempagination');
-
+const getItemsFieldsForAdmin = require('./routes/items/getItemsFieldsForAdmin');
 
 
 
@@ -61,6 +61,7 @@ app.use('/add-item-to-wish-list', addItemToWishList);
 app.use('/delete-item-from-wish-list', deleteWishList)
 app.use('/filter-category', findItemCategoryFilter);
 app.use('/get-next-page', loadItempagination);
+app.use('/get-fields', getItemsFieldsForAdmin)
 
 
 const httpServer = app.listen(CURRENT_PORT ?? 5000, () => {
