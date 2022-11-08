@@ -59,8 +59,8 @@ export default function AdminPanel() {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', justifyContent: 'center',  }}>
+      <div style={{ display: 'flex', width: '300px' }}>
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-around' }}>
             Enter email:
@@ -99,6 +99,7 @@ export default function AdminPanel() {
                 </div>
               </div>
               <div>
+                <div>
                 <select
                   style={{
                     fontSize: '17px',
@@ -107,6 +108,8 @@ export default function AdminPanel() {
                     marginBottom: '10px',
                     borderRadius: '5px',
                     textAlign: 'center',
+                    display: 'flex',
+                    justifyContent: 'center'
                   }}
                   onChange={updateStatusHandler}
                   name="tag1"
@@ -118,7 +121,7 @@ export default function AdminPanel() {
                   <option value="admin">Admin</option>
                 </select>
 
-                {setUpdateResult ? <div>{updateResult}</div> : null}
+                {setUpdateResult ? <div style={{color: 'green', display: 'flex', justifyContent: 'center'}}>{updateResult}</div> : null}
                 <Button
                   className={style.btnReg}
                   onClick={saveStatusHandler}
@@ -129,6 +132,7 @@ export default function AdminPanel() {
                 >
                   Save
                 </Button>
+                </div>
               </div>
             </>
           ) : null}
