@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./OneCard.module.css";
-import { useSelector } from "react-redux";
+import { addItem } from "../../store/cart/actionCreators";
+import { useSelector, useDispatch } from "react-redux";
 import {
   EditOutlined,
   HeartOutlined,
@@ -15,22 +16,20 @@ const { Meta } = Card;
 
 
 export default function OneCard({ el }) {
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const user_id = useSelector((state) => state.user.id);
+
   const [likeFill, setLikeFill] = useState(el.liked ? true : false);
 
-  const selectCardHandler = async (event) => {
-    event.preventDefault();
+  const selectCardHandler = () => {};
 
-    const item_id = +event.target.parentNode.parentNode.id;
-
-    if (
-      !likeFill &&
-      event.target.tagName === "svg" &&
-      event.target.parentNode.parentNode.tagName === "BUTTON"
-    ) {
+  const likeHandler = async (event) => {
+    if (!likeFill) {
       setLikeFill(!likeFill);
-      console.log('like!!');
+      console.log("like!!");
       const response = await fetch(
         "http://localhost:4000/add-item-to-wish-list",
         {
@@ -38,11 +37,14 @@ export default function OneCard({ el }) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ user_id, item_id }),
+          body: JSON.stringify({ user_id, item_id: el.id }),
           credentials: "include",
         }
       );
-    } else {
+      console.log("LIKE");
+    }
+
+    if (likeFill) {
       setLikeFill(!likeFill);
       const response = await fetch(
         "http://localhost:4000/delete-item-from-wish-list",
@@ -51,17 +53,38 @@ export default function OneCard({ el }) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ user_id, item_id }),
+          body: JSON.stringify({ user_id, item_id: el.id }),
           credentials: "include",
         }
       );
+      console.log("UNLIKE");
     }
   };
+
+
+  const cartHandler = async (event) => {
+    console.log("user_id", user_id);
+    //setItemId(+event.target.parentNode.parentNode.id);
+    const response = await fetch("http://localhost:4000/add-item-to-cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user_id, item_id: el.id }),
+      credentials: "include",
+    });
+    const result = await response.json();
+
+    dispatch(addItem(1));
+  };
+
+
   function clickId() {
     console.log(el.id);
     navigate('/item-card', {state: {el}})
   }
   
+
   return (
     <Card
       key={el.id}
@@ -86,31 +109,38 @@ export default function OneCard({ el }) {
         />
       }
     >
-      <div className={styles.card_bottom} style={{}}>
+
+      <div id={el.id} className={styles.card_bottom}>
         <span className={styles.price}>{"$" + el.price}</span>
-        <div name="heart" className={styles.heart} style={{display: 'flex'}}>
-        <button
-          id={el.id}
-          style={{
-            border: "0px",
-            background: "none",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          {likeFill ? (
-            <HeartOutlined
-              style={{ color: "red" }}
-              className={styles.icon_card_heart}
-            />
-          ) : (
-            <HeartOutlined className={styles.icon_card_heart} />
-          )}
-        </button>
+        <div name="heart" className={styles.heart}>
+          <button
+            id={el.id}
+            style={{
+              border: "0px",
+              background: "none",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            {likeFill ? (
+              <HeartOutlined
+                onClick={likeHandler}
+                style={{ color: "red" }}
+                className={styles.icon_card_heart}
+              />
+            ) : (
+              <HeartOutlined
+                onClick={likeHandler}
+                className={styles.icon_card_heart}
+              />
+            )}
+          </button>
+        </div>
+        <ShoppingCartOutlined
+          onClick={cartHandler}
+          style={{ fontSize: "22px", color: "grey" }}
+        />
       </div>
-        <ShoppingCartOutlined style={{ fontSize: "22px", color: "grey", display: 'flex'}} />
-      </div>
-      
     </Card>
   );
 }

@@ -9,7 +9,7 @@ import styles from "../Cards/AllCards.module.css";
 export default function WishList() {
   const user_id = useSelector((state) => state.user.id);
 
-  const [cart, setCart] = useState();
+  const [wishList, setWishList] = useState();
   useEffect(() => {
     (async function () {
       const response = await fetch("http://localhost:4000/display-wishlist", {
@@ -21,11 +21,11 @@ export default function WishList() {
         credentials: "include",
       });
       const result = await response.json();
-
-      setCart(result.wishList);
+      //console.log(result);
+      setWishList(result.wishList);
     })();
   }, []);
-  console.log(cart);
+  //console.log(cart);
 
   return (
     <div style={{ display: 'flex',
@@ -33,7 +33,7 @@ export default function WishList() {
       gap: '40px',     
       marginLeft: '70px',     
       marginBottom: '20px'}}>
-      {cart?.map((el) => (
+      {wishList?.map((el) => (
         <OneWishList el={el} key={el.id} />
       ))}
     </div>
