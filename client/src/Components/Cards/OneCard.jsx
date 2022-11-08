@@ -10,9 +10,12 @@ import {
 } from "@ant-design/icons";
 import { Avatar, Card } from "antd";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const { Meta } = Card;
 
+
 export default function OneCard({ el }) {
+  const navigate = useNavigate();
   const user_id = useSelector((state) => state.user.id);
   const [likeFill, setLikeFill] = useState(el.liked ? true : false);
 
@@ -54,7 +57,11 @@ export default function OneCard({ el }) {
       );
     }
   };
-
+  function clickId() {
+    console.log(el.id);
+    navigate('/item-card', {state: {el}})
+  }
+  
   return (
     <Card
       key={el.id}
@@ -68,6 +75,7 @@ export default function OneCard({ el }) {
       cover={
         <img
           className={styles.image}
+          onClick={clickId}
           alt="Items_image"
           style={{
             borderRadius: "5px 5px 0px 0px",

@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import { Card, Rate, Button } from "antd";
 import styles from './ItemCard.module.css'
+import { useLocation } from "react-router-dom";
+import FormFilter from "../Cards/FormFilter";
+
+
+
+
 
 export default function ItemCard() {
+  const location = useLocation();
+  const [item, setItem] = useState(location.state.el);
+  console.log(item);
 
 
   const desc = ["terrible", "bad", "normal", "good", "wonderful"];
@@ -41,13 +50,8 @@ export default function ItemCard() {
     article: (
       <div>
         <img
-          src="https://ae01.alicdn.com/kf/S10fb6f2842074a02befb1438309551d9Z.jpg"
-          style={{ height: "500px", width: "880px" }}
-          alt="img"
-        />
-        <img
-          src="https://ae01.alicdn.com/kf/H5ca3dd1db69e45249d4d073824de4419y.jpg"
-          style={{ height: "500px", width: "880px", marginTop: "5px" }}
+          src={item.image}
+          // style={{ height: "500px", width: "880px" }}
           alt="img"
         />
       </div>
@@ -129,6 +133,7 @@ export default function ItemCard() {
             display: "flex",
             flexDirection: "row",
             alignContent: "center ",
+            justifyContent: "center",
           }}
         >
           <div
@@ -142,12 +147,12 @@ export default function ItemCard() {
           >
             <div>
               <img
-                src="https://www.seoclerk.com/pics/622332-1P9ruQ1533837156.jpg"
+               src={item.image}
                 alt=""
-                style={{ height: "420px", width: "800px" }}
+                style={{ height: "650px", width: "500px" }}
               />
             </div>
-            <div style={{ display: "flex", flexDirection: "row" }}>
+            {/* <div style={{ display: "flex", flexDirection: "row" }}>
               <img
                 style={{
                   height: "55px",
@@ -203,7 +208,7 @@ export default function ItemCard() {
                 src="https://ae01.alicdn.com/kf/H8ba6395b4a7b4316984601db583301efZ.jpg_.webp"
                 alt="Small"
               />
-            </div>
+            </div> */}
           </div>
           <div
             className="product-info"
@@ -216,10 +221,8 @@ export default function ItemCard() {
             }}
           >
             <div  style={{ marginTop: '20px', display: 'flex' ,justifyContent: 'center' }}>
-              <div style={{ width: '80%' }}>
-
-            BMAX S13A 13.3 Inch FHD Display Intel Celeron Processor N3350 8GB
-            RAM 128GB 256GB SSD Windows 10 System Laptop
+              <div style={{ width: '80%', fontSize: '25px' }}>
+              {item.title}
               </div>
             </div>
             <div
@@ -227,7 +230,7 @@ export default function ItemCard() {
             >
               <p></p>
               <div style={{ marginLeft: '15px' }}>
-              2000$
+              {item.price}$
               </div>
             </div>
             <div>
@@ -239,8 +242,30 @@ export default function ItemCard() {
                   marginLeft: '20px'
                 }}
               >
-                <p>Color:</p>
-                <img
+                <div>
+                  {item.size ? (
+                    <div name="size" >Size: {item.size}</div>
+                  ) : ('')}
+                  {item.color ? (
+                    <div name="color" >color: {item.color}</div>
+                  ) : ('')}
+                  {item.brand ? (
+                    <div name="brand" >brand: {item.brand}</div>
+                  ) : ('')}
+                  {item.processor ? (
+                    <div name="processor" >processor: {item.processor}</div>
+                  ) : ('')}
+                  {item.display ? (
+                    <div name="display" >display: {item.display}</div>
+                  ) : ('')}
+                  {item.gender ? (
+                    <div name="gender" >gender: {item.gender}</div>
+                  ) : ('')}
+                  {item.style ? (
+                    <div name="style" >style: {item.style}</div>
+                  ) : ('')}
+                </div>
+                {/* <img
                   style={{
                     height: "55px",
                     width: "64px",
@@ -283,7 +308,7 @@ export default function ItemCard() {
                   }}
                   src="https://sc01.alicdn.com/kf/HTB1tXFdPpXXXXaHXXXXq6xXFXXX1.jpg"
                   alt="Small"
-                />
+                /> */}
               </div>
             </div>
             <div  style={{ marginTop: '20px', marginLeft: '20px' }}>
