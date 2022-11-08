@@ -30,7 +30,6 @@ export default function AllCards() {
   const [arrDisplay, setArrDisplay] = useState();
   const [arrGender, setArrGender] = useState();
   const [arrStyle, setArrStyle] = useState();
-
   const { id } = useParams();
 
   const [current, setCurrent] = useState(1);
