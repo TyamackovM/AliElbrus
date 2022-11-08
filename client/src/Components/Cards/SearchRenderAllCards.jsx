@@ -172,7 +172,7 @@ export default function SearchRenderAllCards() {
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
       >
-        <div style={{ width: "80%" }}>
+        <div style={{ width: "72%" }}>
           <Layout>
             <Sider
               style={{
@@ -253,12 +253,12 @@ export default function SearchRenderAllCards() {
               </Content>
               <Footer style={{ textAlign: "center", marginTop: "50px" }}>
                 <div>
-                  <Pagination
-                    
+                  {length>6 ? (<Pagination                    
                     current={current}
                     onChange={onChange}
                     total={length * 2}
-                  />
+                  />):('')}
+                  
                 </div>
               </Footer>
             </Layout>

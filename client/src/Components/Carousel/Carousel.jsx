@@ -15,13 +15,13 @@ export default function SliderCarousel() {
     <Carousel style={{width: '550px', borderRadius: '5px'}} autoplay>
       <div>
         <Link to='/category/26'>
-          <img style={{width: '550px', height: '160px', }} src='/img/elbr.png' />
+          <img style={{width: '550px', height: '160px', borderRadius: '5px' }} src='/img/elbr.png' />
         </Link>
         {/* <h3 style={contentStyle}>1</h3> */}
       </div>
       <div>
         <Link to='/category/20'>
-          <img style={{width: '550px', height: '160px', }} src='/img/sale.png' />
+          <img style={{width: '550px', height: '160px',borderRadius: '5px' }} src='/img/sale2.png' />
         </Link>
         
       </div>

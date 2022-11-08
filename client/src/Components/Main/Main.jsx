@@ -31,7 +31,7 @@ export default function Main() {
 
   return !loading ? (
     <div style={{ display: "flex", justifyContent: "center",}}>
-      <div style={{ width: "80%" }}>
+      <div style={{ width: "72%" }}>
         <Layout>
           <Sider
             style={{
@@ -79,7 +79,7 @@ export default function Main() {
                 }}
               >
                 {/* <div> */}
-                  <img style={{width: '550px', height: '150px', }} src='/img/newblock.png' />
+                  <img style={{width: '550px', height: '150px', }} src='/img/newblock1.png' />
                   {/* </div> */}
               </div>
             </Footer>

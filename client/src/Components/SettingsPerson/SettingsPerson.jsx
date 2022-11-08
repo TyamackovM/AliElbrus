@@ -94,7 +94,7 @@ export default function SettingsPerson() {
 
   return !loading ? (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <div style={{ width: '80%' }}>
+      <div style={{ width: '72%' }}>
         <Layout>
           <Sider
             style={{ background: 'white', height: '100px' }}
