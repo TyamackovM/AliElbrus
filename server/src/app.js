@@ -25,6 +25,7 @@ const loadItemPagination = require('./routes/items/loadItempagination');
 const loadItemFilterPagination = require('./routes/items/loadItemFilterPagination');
 const addNewItem = require('./routes/items/addNewItem')
 const searchUserByEmail = require('./routes/user/searchUserByEmail')
+const updateUserStatus = require('./routes/user/updateStatus')
 
 const app = express();
 
@@ -68,6 +69,7 @@ app.use('/get-next-page', loadItemPagination);
 app.use('/get-next-filter-page', loadItemFilterPagination);
 app.use('/add-new-item', addNewItem)
 app.use('/search-by-email', searchUserByEmail)
+app.use('/update-status', updateUserStatus)
 
 const httpServer = app.listen(CURRENT_PORT ?? 5000, () => {
   console.log(`Server started ${CURRENT_PORT}`);

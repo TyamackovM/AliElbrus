@@ -3,6 +3,7 @@ import { Input, Space, Avatar } from 'antd';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { searchUserByEmail } from '../../helpers/searchUserByEmail';
+import updateUserStatus from '../../helpers/updateUserStatus';
 const { Search } = Input;
 
 const suffix = (
@@ -33,8 +34,10 @@ export default function AdminPanel() {
     }
   };
 
-  const updateStatusHandler = (event) => {
-    console.log('event: ', event.target.value);
+  const updateStatusHandler = async (event) => {
+    const newStatus = event.target.value
+    const email = findUser.email
+    updateUserStatus({ newStatus, email })
   };
 
   return (

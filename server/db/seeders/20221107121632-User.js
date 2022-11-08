@@ -24,7 +24,7 @@ async function seedAdmin() {
       login: 'Maksik',
       email: 'Maksik@alielbrus.com',
       password: hash,
-      status: null,
+      status: 'buyer',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
