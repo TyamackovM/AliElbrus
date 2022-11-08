@@ -75,7 +75,6 @@ function App() {
             ''
           )}
         </Route>
-      </Routes>
 
           {/* <Route path='/account' element={<SettingsPerson />} /> */}
           <Route path='/item-card' element={<ItemCard/>}/>
