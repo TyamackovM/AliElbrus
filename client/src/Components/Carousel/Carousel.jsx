@@ -1,5 +1,6 @@
 import { Carousel } from 'antd';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const contentStyle = {
   height: '160px',
@@ -13,16 +14,16 @@ export default function SliderCarousel() {
   return (
     <Carousel style={{width: '550px', borderRadius: '5px'}} autoplay>
       <div>
-        <h3 style={contentStyle}>1</h3>
+        <Link to='/category/26'>
+          <img style={{width: '550px', height: '160px', }} src='/img/elbr.png' />
+        </Link>
+        {/* <h3 style={contentStyle}>1</h3> */}
       </div>
       <div>
-        <h3 style={contentStyle}>2</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>3</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>4</h3>
+        <Link to='/category/20'>
+          <img style={{width: '550px', height: '160px', }} src='/img/sale.png' />
+        </Link>
+        
       </div>
     </Carousel>
   );
