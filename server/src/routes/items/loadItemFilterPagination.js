@@ -1,18 +1,16 @@
 const router = require("express").Router();
-const { Category } = require("../../../db/models");
-const { Item } = require("../../../db/models");
+// const { Category } = require("../../../db/models");
+const { Item, WishList } = require("../../../db/models");
 const { Op } = require('sequelize');
 
 
 router.post("/", async (req, res) => {
-  console.log('req.body',req.body);
   const numItems = 5;
   const { page, value, check } = req.body;
   const check2 = check.check
-  console.log("check2", check2);
   // const fixNumberCategory = +category;
   const nextitems = page * numItems - numItems;
-  const items = await Item.findAll({
+  const likedItems = await Item.findAll({
     where: {
         title: {
           [Op.substring]: value,
@@ -32,6 +30,17 @@ router.post("/", async (req, res) => {
       },
     raw: true,
   });
+
+  const likes = await WishList.findAll({where: { user_id: req.session.newUserId}, raw: true })
+  const items = likedItems.map(item => {
+    likes.forEach(like => {
+      if (Object.values(like).includes(item.id)) {
+        item.liked = true;
+      }
+    });
+    return item;
+  })  
+
   console.log('items', items);
   res.json({ items, length: itemsNum.length });
 });

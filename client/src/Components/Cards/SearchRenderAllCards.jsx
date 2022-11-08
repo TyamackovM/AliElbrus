@@ -31,7 +31,7 @@ export default function SearchRenderAllCards() {
   const [arrGender, setArrGender] = useState();
   const [arrStyle, setArrStyle] = useState();
   const [current, setCurrent] = useState(1);
-  const [length, setLength] = useState(10);
+  const [length, setLength] = useState(location.state.length);
   
 
   const onChange = async (page, event) => {
@@ -169,7 +169,7 @@ export default function SearchRenderAllCards() {
       setArrGender(res.gender);
       setArrStyle(res.style);
     }
-  }, [filterTags]);
+  }, [filterTags, current, length]);
 
   return !loading ? (
     <>

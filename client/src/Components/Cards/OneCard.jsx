@@ -27,6 +27,7 @@ export default function OneCard({ el }) {
       event.target.parentNode.parentNode.tagName === "BUTTON"
     ) {
       setLikeFill(!likeFill);
+      console.log('like!!');
       const response = await fetch(
         "http://localhost:4000/add-item-to-wish-list",
         {

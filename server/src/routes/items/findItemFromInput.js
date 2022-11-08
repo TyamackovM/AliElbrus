@@ -16,7 +16,16 @@ router.post('/', async (req, res) => {
       limit: 5,
     });
     
-    res.json(findItems);
+    const findItemsLength = await Item.findAll({
+      where: {
+        title: {
+          [Op.substring]: value,
+        },
+        ...check,
+      },
+      raw: true,
+    });
+    res.json({findItems, length: findItemsLength.length});
 });
 
 module.exports = router;
