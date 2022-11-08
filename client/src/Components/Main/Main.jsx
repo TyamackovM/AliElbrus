@@ -68,18 +68,18 @@ export default function Main() {
             <Footer style={{  padding: "0px 0px", margin: "10px 10px 0px 10px" }}>
               <div
                 style={{
-                  backgroundColor: "#fffafa",
+                  backgroundColor: "white",
                   // background: '4520ab',
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                   borderRadius: "5px",
                   boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-                  padding: '5px',
+                  // padding: '5px',
                 }}
               >
                 {/* <div> */}
-                  <img style={{width: '550px', height: '150px', }} src='/img/mainblock.png' />
+                  <img style={{width: '550px', height: '150px', }} src='/img/newblock.png' />
                   {/* </div> */}
               </div>
             </Footer>
