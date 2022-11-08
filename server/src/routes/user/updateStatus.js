@@ -2,18 +2,15 @@ const router = require('express').Router();
 const { User } = require('../../../db/models');
 
 router.post('/', async (req, res) => {
-  console.log(req.body);
   const { newStatus, email } = req.body;
-  // try {
-  const user = await User.update({ status: newStatus }, { where: { email } });
-  //   if (user) {
-  //     res.json(user);
-  //   } else {
-  //     res.json('NO');
-  //   }
-  // } catch (error) {
-  //   res.send(`Error while loading items! ${error}`);
-  // }
+  try {
+    await User.update({ status: newStatus }, { where: { email } });
+    console.log('newStatus: ', newStatus);
+    res.json({ newStatus, result: 'success' });
+  } catch (error) {
+    console.log('error: ', error);
+    res.json({ result: 'success' });
+  }
 });
 
 module.exports = router;
