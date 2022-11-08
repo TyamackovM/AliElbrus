@@ -20,18 +20,21 @@ router.post("/", async (req, res) => {
     where: { category_id: fixNumberCategory },
     raw: true,
   });
-
-  const likes = await WishList.findAll({where: { user_id: req.session.newUserId}, raw: true })
-  const likedItems = items.map(item => {
-    likes.forEach(like => {
-      if (Object.values(like).includes(item.id)) {
-        item.liked = true;
-      }
-    });
-    return item;
-  })
-  
-  res.json({ likedItems, length: itemsNum.length });
+  if(req.session.newUserId){
+    const likes = await WishList.findAll({where: { user_id: req.session.newUserId}, raw: true })
+    const likedItems = items.map(item => {
+      likes.forEach(like => {
+        if (Object.values(like).includes(item.id)) {
+          item.liked = true;
+        }
+      });
+      return item;
+    })
+    res.json({ likedItems, length: itemsNum.length });
+  } else{
+    const likedItems = items
+    res.json({ likedItems, length: itemsNum.length });
+  }
 });
 module.exports = router;
 
