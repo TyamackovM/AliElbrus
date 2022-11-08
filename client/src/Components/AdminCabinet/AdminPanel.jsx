@@ -44,8 +44,8 @@ export default function AdminPanel() {
     if (resultUpdate.result === 'success') {
       setFindUser({ ...findUser, status: resultUpdate.newStatus });
       setTimeout(() => {
-        setUpdateResult(null)
-      }, 3000)
+        setUpdateResult(null);
+      }, 3000);
       setUpdateResult(resultUpdate.result);
     } else {
       setUpdateResult('error');
