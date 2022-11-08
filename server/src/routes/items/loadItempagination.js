@@ -5,7 +5,7 @@ const { WishList } = require('../../../db/models');
 
 router.post('/', async (req, res) => {
   console.log(req.body);
-  const numItems = 5;
+  const numItems = 6;
 
   const { page, category } = req.body;
   const fixNumberCategory = +category;

@@ -172,7 +172,7 @@ export default function SearchRenderAllCards() {
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
       >
-        <div style={{ width: "80%" }}>
+        <div style={{ width: "72%" }}>
           <Layout>
             <Sider
               style={{
