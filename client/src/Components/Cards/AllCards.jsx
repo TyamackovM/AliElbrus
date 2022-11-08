@@ -253,7 +253,9 @@ export default function AllCards() {
             </Content>
             <Footer   style={{ textAlign: "center", marginTop: "50px" }}>
               <div>
-              <Pagination current={current} onChange={onChange}  total={allFindItems * 1.5} />
+                {allFindItems>6 ? (
+                  <Pagination current={current} onChange={onChange}  total={allFindItems * 1.5} />
+                ) : ('')}              
               </div>
             </Footer>
           </Layout>

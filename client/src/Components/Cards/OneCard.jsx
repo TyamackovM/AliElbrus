@@ -67,8 +67,8 @@ export default function OneCard({ el }) {
       key={el.id}
       onClick={selectCardHandler}
       style={{
-        width: "200px",
-        height: "347px",
+        width: "170px",
+        height: "270px",
         borderRadius: "5px",
         boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
       }}
@@ -79,19 +79,16 @@ export default function OneCard({ el }) {
           alt="Items_image"
           style={{
             borderRadius: "5px 5px 0px 0px",
-            width: "200px",
-            height: "260px",
+            width: "170px",
+            height: "210px",
           }}
           src={el.image}
         />
       }
     >
-      <div className={styles.card_bottom}>
+      <div className={styles.card_bottom} style={{}}>
         <span className={styles.price}>{"$" + el.price}</span>
-
-        <ShoppingCartOutlined style={{ fontSize: "22px", color: "grey" }} />
-      </div>
-      <div name="heart" className={styles.heart}>
+        <div name="heart" className={styles.heart} style={{display: 'flex'}}>
         <button
           id={el.id}
           style={{
@@ -111,6 +108,9 @@ export default function OneCard({ el }) {
           )}
         </button>
       </div>
+        <ShoppingCartOutlined style={{ fontSize: "22px", color: "grey", display: 'flex'}} />
+      </div>
+      
     </Card>
   );
 }

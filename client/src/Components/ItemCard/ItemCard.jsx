@@ -45,7 +45,7 @@ export default function ItemCard() {
       <div>
         <img
           src={item.image}
-          // style={{ height: "500px", width: "880px" }}
+          style={{ maxHeight: "500px", maxWidth: "880px" }}
           alt="img"
         />
       </div>
@@ -116,9 +116,9 @@ export default function ItemCard() {
   return (
     <div
       className="itemCard"
-      style={{ justifyContent: "center", display: "flex", marginTop: "10px" }}
+      style={{ justifyContent: "center", display: "flex", marginTop: "20px" }}
     >
-      <div style={{ display: "flex", flexDirection: "column", width: "80%" }}>
+      <div style={{ display: "flex", flexDirection: "column", width: "65%" }}>
         <div
           className="upper part"
           style={{
@@ -141,7 +141,7 @@ export default function ItemCard() {
               <img
                 src={item.image}
                 alt=""
-                style={{ height: "650px", width: "500px" }}
+                style={{ height: "450px", width: "350px" }}
               />
             </div>
           </div>
@@ -162,7 +162,7 @@ export default function ItemCard() {
                 justifyContent: "center",
               }}
             >
-              <div style={{ width: "80%", fontSize: "25px" }}>{item.title}</div>
+              <div style={{ width: "80%", fontSize: "15px" }}>{item.title}</div>
             </div>
             <div
               style={{
@@ -182,7 +182,7 @@ export default function ItemCard() {
               >
                 <div className={styles.price}>
                   <div >
-                    <div style={{ marginTop: "25px", marginLeft: '15px' }}>
+                    <div style={{ marginTop: "15px", marginLeft: '15px' }}>
                     {item.price}$</div>
 
                     </div>
@@ -197,7 +197,7 @@ export default function ItemCard() {
                       justifyContent: "center",
                     }}
                   >
-                    <div style={{ width: "80%", fontSize: "25px" }}>
+                    <div style={{ width: "80%", fontSize: "15px" }}>
                       {item.size ? (
                         <div name="size">Size: {item.size}</div>
                       ) : (
@@ -237,7 +237,7 @@ export default function ItemCard() {
                     <div
                       style={{
                         marginTop: "20px",
-                        fontSize: "25px",
+                        fontSize: "15px",
                         display: "flex",
                       }}
                     >
