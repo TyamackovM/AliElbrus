@@ -25,7 +25,7 @@ export default function Cart() {
   }, []);
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: 'center' }}>
       {cart?.map((el) => (
         <OneCart el={el} key={el.id} />
       ))}

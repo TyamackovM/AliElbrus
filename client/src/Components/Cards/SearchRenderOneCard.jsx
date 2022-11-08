@@ -10,8 +10,6 @@ import {
   ShoppingCartOutlined,
 } from "@ant-design/icons";
 import { Avatar, Card } from "antd";
-
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const { Meta } = Card;
 

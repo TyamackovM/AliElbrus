@@ -57,7 +57,7 @@ export default function Person() {
           <div className={style.bottomThird}>
             <div>
               <Link to='/category/20'>
-                <img style={{width: '175px', height: '75px', borderRadius: '7px'}} src='https://ae04.alicdn.com/kf/S2d756fd2d3b44463b17db5249dc5ffb0F/2022.jpg' alt="meow" />
+                <img style={{width: '175px', height: '75px', borderRadius: '7px'}} src='/img/person.png' alt="meow" />
               </Link>
             </div>
           </div>

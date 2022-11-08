@@ -87,6 +87,7 @@ export default function OneWishList({ el }) {
               background: "none",
               display: "flex",
               justifyContent: "center",
+              cursor: 'pointer'
             }}
           >
             {likeFill ? (
@@ -99,7 +100,7 @@ export default function OneWishList({ el }) {
             )}
           </button>
         </div>
-        <ShoppingCartOutlined style={{ fontSize: "22px", color: "grey" }} />
+        <ShoppingCartOutlined style={{ fontSize: "22px", color: "grey", cursor: 'pointer' }} />
       </div>
     </Card>
   );
