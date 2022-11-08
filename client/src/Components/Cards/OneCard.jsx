@@ -80,10 +80,7 @@ export default function OneCard({ el }) {
     >
       <div className={styles.card_bottom}>
         <span className={styles.price}>{"$" + el.price}</span>
-
-        <ShoppingCartOutlined style={{ fontSize: "22px", color: "grey" }} />
-      </div>
-      <div name="heart" className={styles.heart}>
+        <div name="heart" className={styles.heart}>
         <button
           id={el.id}
           style={{
@@ -103,6 +100,9 @@ export default function OneCard({ el }) {
           )}
         </button>
       </div>
+        <ShoppingCartOutlined style={{ fontSize: "22px", color: "grey" }} />
+      </div>
+    
     </Card>
   );
 }

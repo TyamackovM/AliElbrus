@@ -21,7 +21,7 @@ export default function WishList() {
         credentials: "include",
       });
       const result = await response.json();
-
+      //console.log(result);
       setCart(result.wishList);
     })();
   }, []);

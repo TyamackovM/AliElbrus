@@ -26,7 +26,7 @@ export default function SearchRenderOneCard({ el }) {
       event.target.parentNode.parentNode.tagName === "BUTTON"
     ) {
       setLikeFill(!likeFill);
-      console.log('like!!');
+      console.log("like!!");
       const response = await fetch(
         "http://localhost:4000/add-item-to-wish-list",
         {
@@ -54,78 +54,53 @@ export default function SearchRenderOneCard({ el }) {
     }
   };
 
-
-//   return (
-//     <Card
-//       key={el.id}
-//       onClick={selectCardHandler}
-//       style={{
-//         width: 200,
-//         height: '347px',
-//         borderRadius: '5px',
-//         boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)"
-//       }}
-//       cover={<img alt="Items_image" style={{borderRadius: '5px 5px 0px 0px',}} src={el.image} />}
-//     >
-//       <div className={styles.card_bottom}>
-//         <span className={styles.price}>{"$" + el.price}</span>
-//         <div className={styles.heart}>
-//           <HeartOutlined className={styles.icon_card_heart} />
-//         </div>
-//         <ShoppingCartOutlined style={{ fontSize: "22px", color: "grey" }} />
-//       </div>
-//     </Card>
-//   );
-// }
-
-return (
-  <Card
-    key={el.id}
-    onClick={selectCardHandler}
-    style={{
-      width: "200px",
-      height: "347px",
-      borderRadius: "5px",
-      boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-    }}
-    cover={
-      <img
-        className={styles.image}
-        alt="Items_image"
-        style={{
-          borderRadius: "5px 5px 0px 0px",
-          width: "200px",
-          height: "260px",
-        }}
-        src={el.image}
-      />
-    }
-  >
-    <div className={styles.card_bottom}>
-      <span className={styles.price}>{"$" + el.price}</span>
-
-      <ShoppingCartOutlined style={{ fontSize: "22px", color: "grey" }} />
-    </div>
-    <div name="heart" className={styles.heart}>
-      <button
-        id={el.id}
-        style={{
-          border: "0px",
-          background: "none",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        {likeFill ? (
-          <HeartOutlined
-            style={{ color: "red" }}
-            className={styles.icon_card_heart}
-          />
-        ) : (
-          <HeartOutlined className={styles.icon_card_heart} />
-        )}
-      </button>
-    </div>
-  </Card>
-);
+  return (
+    <Card
+      key={el.id}
+      onClick={selectCardHandler}
+      style={{
+        width: "200px",
+        height: "347px",
+        borderRadius: "5px",
+        boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
+      }}
+      cover={
+        <img
+          className={styles.image}
+          alt="Items_image"
+          style={{
+            borderRadius: "5px 5px 0px 0px",
+            width: "200px",
+            height: "260px",
+          }}
+          src={el.image}
+        />
+      }
+    >
+      <div className={styles.card_bottom}>
+        <span className={styles.price}>{"$" + el.price}</span>
+        <div name="heart" className={styles.heart}>
+          <button
+            id={el.id}
+            style={{
+              border: "0px",
+              background: "none",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            {likeFill ? (
+              <HeartOutlined
+                style={{ color: "red" }}
+                className={styles.icon_card_heart}
+              />
+            ) : (
+              <HeartOutlined className={styles.icon_card_heart} />
+            )}
+          </button>
+        </div>
+        <ShoppingCartOutlined style={{ fontSize: "22px", color: "grey" }} />
+      </div>
+    </Card>
+  );
 }
