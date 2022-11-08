@@ -23,7 +23,9 @@ const getItemsFieldsForAdmin = require('./routes/items/getItemsFieldsForAdmin');
 const displayWishList = require('./routes/user/displayWishList')
 const loadItemPagination = require('./routes/items/loadItempagination');
 const loadItemFilterPagination = require('./routes/items/loadItemFilterPagination');
-
+const addItemToCart = require('./routes/user/addItemToCart')
+const displayCart = require('./routes/user/displayCart')
+const deleteItemFromCart = require('./routes/user/deleteItemFromCart')
 const app = express();
 
 const { PORT, SESSION_SECRET } = process.env;
@@ -64,6 +66,9 @@ app.use('/get-fields', getItemsFieldsForAdmin)
 app.use('/display-wishlist', displayWishList)
 app.use('/get-next-page', loadItemPagination);
 app.use('/get-next-filter-page', loadItemFilterPagination);
+app.use('/add-item-to-cart', addItemToCart);
+app.use('/delete-item-from-cart', deleteItemFromCart)
+app.use('/display-cart', displayCart)
 
 const httpServer = app.listen(CURRENT_PORT ?? 5000, () => {
   console.log(`Server started ${CURRENT_PORT}`);

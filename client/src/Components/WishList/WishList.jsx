@@ -9,7 +9,7 @@ import styles from "../Cards/AllCards.module.css";
 export default function WishList() {
   const user_id = useSelector((state) => state.user.id);
 
-  const [cart, setCart] = useState();
+  const [wishList, setWishList] = useState();
   useEffect(() => {
     (async function () {
       const response = await fetch("http://localhost:4000/display-wishlist", {
@@ -22,14 +22,14 @@ export default function WishList() {
       });
       const result = await response.json();
       //console.log(result);
-      setCart(result.wishList);
+      setWishList(result.wishList);
     })();
   }, []);
-  console.log(cart);
+  //console.log(cart);
 
   return (
     <div className={styles.mainDiv}>
-      {cart?.map((el) => (
+      {wishList?.map((el) => (
         <OneWishList el={el} key={el.id} />
       ))}
     </div>

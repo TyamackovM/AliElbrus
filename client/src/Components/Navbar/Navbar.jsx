@@ -14,6 +14,9 @@ import { logoutUser } from "../../store/user/actionCreators";
 import { changeBooleanStateAC } from "../../store/modal/actionCreators";
 import { checkItemFromInputInDB } from "../../helpers/checkItemFromInputInDB";
 import { useState } from "react";
+import { useEffect } from "react";
+import { addItem, initItem } from "../../store/cart/actionCreators";
+
 const { Search } = Input;
 
 // const user = useSelector((state) => state.user);
@@ -21,13 +24,17 @@ const Navbar = () => {
   const [items, setItems] = useState(null);
   const modal = useSelector((state) => state.modal);
   const user = useSelector((state) => state.user);
+  const user_id = useSelector((state) => state.user.id);
+
+  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [result, setResult] = useState();
 
   const searchHandler = async (value) => {
-    const {findItems, length} = await checkItemFromInputInDB(value);
-    const searchResult = findItems
-    console.log('searchResult', searchResult.length);
+    const { findItems, length } = await checkItemFromInputInDB(value);
+    const searchResult = findItems;
+    console.log("searchResult", searchResult.length);
     navigate("/search", { state: { searchResult, length, searchWord: value } });
   };
 
@@ -37,12 +44,30 @@ const Navbar = () => {
       credentials: "include",
     });
     dispatch(logoutUser());
+    dispatch(initItem(0));
     navigate("/");
   };
 
   const modalPageHandler = (arg) => {
     dispatch(changeBooleanStateAC(arg));
   };
+
+  useEffect(() => {
+    (async function toBack() {
+      const response = await fetch("http://localhost:4000/add-item-to-cart", {
+        method: "DELETE", //SUPPOSED TO BE ANOTHER ROUTES, DID HAVE TIME TO WRITE ANOTHER ONE
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({}),
+        credentials: "include",
+      });
+      const result = await response.json();
+
+      dispatch(initItem(result.cart.length));
+      setResult(result.cart.length);
+    })();
+  }, [cart]);
 
   return (
     <>
@@ -55,6 +80,7 @@ const Navbar = () => {
             <span className={styles.logo_base}>AliElbrus</span>
           </Link>
         </div>
+
         <Search
           name="item"
           className={styles.input}
@@ -69,7 +95,7 @@ const Navbar = () => {
           >
             <ShoppingCartOutlined className={styles.icon_cart} />
             <div className={styles.cartnum}>
-              <span className={styles.span_number}>0</span>
+              <span className={styles.span_number}>{cart}</span>
               <Link onClick={() => modalPageHandler(true)}>Cart</Link>
             </div>
           </Link>
@@ -77,7 +103,7 @@ const Navbar = () => {
           <Link style={{ display: "flex" }} to="/account/cart">
             <ShoppingCartOutlined className={styles.icon_cart} />
             <div className={styles.cartnum}>
-              <span className={styles.span_number}>0</span>
+              <span className={styles.span_number}>{cart}</span>
               <Link to="/account/cart">Cart</Link>
             </div>
           </Link>

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styles from "./OneCard.module.css";
+import { addItem, deleteItem } from "../../store/cart/actionCreators";
+import { useSelector, useDispatch } from "react-redux";
 import {
   EditOutlined,
   HeartOutlined,
@@ -8,23 +10,18 @@ import {
   ShoppingCartOutlined,
 } from "@ant-design/icons";
 import { Avatar, Card } from "antd";
-import { useSelector } from "react-redux";
+
 const { Meta } = Card;
 
 export default function SearchRenderOneCard({ el }) {
+  const dispatch = useDispatch();
   const user_id = useSelector((state) => state.user.id);
   const [likeFill, setLikeFill] = useState(el.liked ? true : false);
 
-  const selectCardHandler = async (event) => {
-    event.preventDefault();
+  const selectCardHandler = async (event) => {};
 
-    const item_id = +event.target.parentNode.parentNode.id;
-
-    if (
-      !likeFill &&
-      event.target.tagName === "svg" &&
-      event.target.parentNode.parentNode.tagName === "BUTTON"
-    ) {
+  const likeHandler = async (event) => {
+    if (!likeFill) {
       setLikeFill(!likeFill);
       console.log("like!!");
       const response = await fetch(
@@ -34,11 +31,13 @@ export default function SearchRenderOneCard({ el }) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ user_id, item_id }),
+          body: JSON.stringify({ user_id, item_id: el.id }),
           credentials: "include",
         }
       );
-    } else {
+    }
+
+    if (likeFill) {
       setLikeFill(!likeFill);
       const response = await fetch(
         "http://localhost:4000/delete-item-from-wish-list",
@@ -47,11 +46,25 @@ export default function SearchRenderOneCard({ el }) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ user_id, item_id }),
+          body: JSON.stringify({ user_id, item_id: el.id }),
           credentials: "include",
         }
       );
     }
+  };
+
+  const cartHandler = async (event) => {
+    //setItemId(+event.target.parentNode.parentNode.id);
+    const response = await fetch("http://localhost:4000/add-item-to-cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user_id, item_id: el.id }),
+      credentials: "include",
+    });
+
+    dispatch(addItem(1));
   };
 
   return (
@@ -91,15 +104,22 @@ export default function SearchRenderOneCard({ el }) {
           >
             {likeFill ? (
               <HeartOutlined
+                onClick={likeHandler}
                 style={{ color: "red" }}
                 className={styles.icon_card_heart}
               />
             ) : (
-              <HeartOutlined className={styles.icon_card_heart} />
+              <HeartOutlined
+                onClick={likeHandler}
+                className={styles.icon_card_heart}
+              />
             )}
           </button>
         </div>
-        <ShoppingCartOutlined style={{ fontSize: "22px", color: "grey" }} />
+        <ShoppingCartOutlined
+          onClick={cartHandler}
+          style={{ fontSize: "22px", color: "grey" }}
+        />
       </div>
     </Card>
   );
