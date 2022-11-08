@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import getItemsFieldsForAdmin from '../../helpers/getItemsFieldsForAdmin';
 
-import OneInput from './OneInput';
 import addNewItemToDB from "../../helpers/addNewItemToDB";
 
 const text = `

@@ -24,6 +24,7 @@ const displayWishList = require('./routes/user/displayWishList')
 const loadItemPagination = require('./routes/items/loadItempagination');
 const loadItemFilterPagination = require('./routes/items/loadItemFilterPagination');
 const addNewItem = require('./routes/items/addNewItem')
+const searchUserByEmail = require('./routes/user/searchUserByEmail')
 
 const app = express();
 
@@ -66,6 +67,7 @@ app.use('/display-wishlist', displayWishList)
 app.use('/get-next-page', loadItemPagination);
 app.use('/get-next-filter-page', loadItemFilterPagination);
 app.use('/add-new-item', addNewItem)
+app.use('/search-by-email', searchUserByEmail)
 
 const httpServer = app.listen(CURRENT_PORT ?? 5000, () => {
   console.log(`Server started ${CURRENT_PORT}`);

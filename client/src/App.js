@@ -20,6 +20,7 @@ import Chat from './Components/Chat/Chat';
 import AllCards from './Components/Cards/AllCards';
 import SearchRenderAllCards from './Components/Cards/SearchRenderAllCards';
 import AdminCabinet from './Components/AdminCabinet/AdminCabinet';
+import AdminPanel from './Components/AdminCabinet/AdminPanel';
 
 function App() {
   const dispatch = useDispatch();
@@ -60,6 +61,11 @@ function App() {
           <Route path="chat" element={<Chat />} />
           {user.status === 'admin' || user.status === 'seller' ? (
             <Route path="upload-items" element={<AdminCabinet />} />
+          ) : (
+            ''
+          )}
+          {user.status === 'admin' ? (
+            <Route path="admin-panel" element={<AdminPanel />} />
           ) : (
             ''
           )}

@@ -87,6 +87,9 @@ export default function SettingsPerson() {
     user.status === 'admin' || user.status === 'seller'
       ? getItem(<Link to="/account/upload-items">Upload items</Link>, 6)
       : '',
+    user.status === 'admin'
+      ? getItem(<Link to="/account/admin-panel">Admin panel</Link>, 7)
+      : '',
   ];
 
   return !loading ? (
