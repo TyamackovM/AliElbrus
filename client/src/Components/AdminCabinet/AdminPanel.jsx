@@ -18,7 +18,7 @@ const suffix = (
 );
 
 export default function AdminPanel() {
-  const [findUser, setFindUser] = useState({email: '', status: ''});
+  const [findUser, setFindUser] = useState({ email: '', status: '' });
   const [notFindUser, setNotFindUser] = useState(false);
   const [okFindUser, setOkFindUser] = useState(false);
   const [newStatus, setNewStatus] = useState();
@@ -37,13 +37,12 @@ export default function AdminPanel() {
     }
   };
 
-  useEffect(() => {
-  }, [findUser])
+  useEffect(() => {}, [findUser]);
 
   const saveStatusHandler = async () => {
     const resultUpdate = await updateUserStatus(newStatus);
     if (resultUpdate.result === 'success') {
-      setFindUser({...findUser, status: resultUpdate.newStatus })      
+      setFindUser({ ...findUser, status: resultUpdate.newStatus });
       setUpdateResult(resultUpdate.result);
     } else {
       setUpdateResult('error');
@@ -55,8 +54,7 @@ export default function AdminPanel() {
     const email = findUser.email;
     setNewStatus({ newStatus, email });
   };
-  
-  console.log('newStatus: ', newStatus);
+
   return (
     <div>
       <div>
@@ -73,17 +71,17 @@ export default function AdminPanel() {
         {notFindUser ? <div>User not found</div> : null}
         {okFindUser ? (
           <>
-            <div>Текущий статус: {findUser.status}</div>
+            <div>Current status: {findUser.status}</div>
             <div style={{ display: 'flex', marginTop: '10px' }}>
               <Avatar
                 style={{
                   backgroundColor: '#b700ff',
                 }}
               >
-                {/* {findUser.login[0].toUpperCase()} */}
+                {findUser.login[0].toUpperCase()}
               </Avatar>
               <div style={{ margin: '5px', fontSize: '20px' }}>
-                {/* {findUser.login} */}
+                {findUser.login}
               </div>
             </div>
             <div>
