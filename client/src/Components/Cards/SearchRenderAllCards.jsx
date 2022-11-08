@@ -169,7 +169,7 @@ export default function SearchRenderAllCards() {
       setArrGender(res.gender);
       setArrStyle(res.style);
     }
-  }, [filterTags]);
+  }, [filterTags, current, length]);
 
   return !loading ? (
     <>

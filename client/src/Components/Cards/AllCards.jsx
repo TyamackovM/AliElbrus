@@ -36,12 +36,10 @@ export default function AllCards() {
   const [current, setCurrent] = useState(1);
   
   const onChange = async (page) => {
-    console.log('page', page);
     setCurrent(page);
     const result = await loadItempagination({page: current, category: id})
-    console.log(result.items);
-    setAllItems(result.items)
-    setFilterItems(result.items);
+    setAllItems(result.likedItems)
+    setFilterItems(result.likedItems);
     setallFindItems(result.length)
   };
 
@@ -49,10 +47,9 @@ export default function AllCards() {
   useEffect(() => {
     if (id) {
       (async function () {
-        console.log('current', current);
         const result = await loadItempagination({page: current, category: id})
-        setAllItems(result.items)
-        setFilterItems(result.items);
+        setAllItems(result.likedItems)
+        setFilterItems(result.likedItems);
         setallFindItems(result.length)
       })();
     }
@@ -62,7 +59,6 @@ export default function AllCards() {
   //  const result = await loadItempagination({page: current, category: id})
   //  setAllItems(result.items)
   //  setFilterItems(result.items);
-
   // };
 
 

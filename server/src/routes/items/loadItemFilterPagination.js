@@ -1,15 +1,13 @@
 const router = require("express").Router();
-const { Category } = require("../../../db/models");
+// const { Category } = require("../../../db/models");
 const { Item } = require("../../../db/models");
 const { Op } = require('sequelize');
 
 
 router.post("/", async (req, res) => {
-  console.log('req.body',req.body);
   const numItems = 5;
   const { page, value, check } = req.body;
   const check2 = check.check
-  console.log("check2", check2);
   // const fixNumberCategory = +category;
   const nextitems = page * numItems - numItems;
   const items = await Item.findAll({
@@ -32,7 +30,7 @@ router.post("/", async (req, res) => {
       },
     raw: true,
   });
-  console.log('items', items);
+  console.log('itemsNum', itemsNum.length);
   res.json({ items, length: itemsNum.length });
 });
 
