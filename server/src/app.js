@@ -19,17 +19,10 @@ const findItemFromInput = require('./routes/items/findItemFromInput');
 const addItemToWishList = require('./routes/user/addItemToWishList');
 const deleteWishList = require('./routes/user/deleteWishList')
 const findItemCategoryFilter = require('./routes/items/findItemCategoryFilter');
-
-
+const getItemsFieldsForAdmin = require('./routes/items/getItemsFieldsForAdmin');
 const displayWishList = require('./routes/user/displayWishList')
-
 const loadItemPagination = require('./routes/items/loadItempagination');
 const loadItemFilterPagination = require('./routes/items/loadItemFilterPagination');
-
-
-
-
-
 
 const app = express();
 
@@ -67,14 +60,10 @@ app.use('/check-item', findItemFromInput);
 app.use('/add-item-to-wish-list', addItemToWishList);
 app.use('/delete-item-from-wish-list', deleteWishList)
 app.use('/filter-category', findItemCategoryFilter);
-
-
+app.use('/get-fields', getItemsFieldsForAdmin)
 app.use('/display-wishlist', displayWishList)
-
 app.use('/get-next-page', loadItemPagination);
 app.use('/get-next-filter-page', loadItemFilterPagination);
-
-
 
 const httpServer = app.listen(CURRENT_PORT ?? 5000, () => {
   console.log(`Server started ${CURRENT_PORT}`);
