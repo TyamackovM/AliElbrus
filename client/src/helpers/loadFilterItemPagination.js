@@ -6,6 +6,7 @@ export async function loadFilterItemPagination(obj) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(obj),
+      credentials: "include"
     })
     return response.json();
 }
