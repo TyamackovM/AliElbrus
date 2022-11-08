@@ -80,7 +80,6 @@ export default function SearchRenderOneCard({ el }) {
 //   );
 // }
 function clickId() {
-  console.log(el.id);
   navigate('/item-card', {state: {el}})
 }
 
