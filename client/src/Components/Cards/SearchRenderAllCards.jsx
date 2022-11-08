@@ -35,11 +35,9 @@ export default function SearchRenderAllCards() {
   
 
   const onChange = async (page, event) => {
-    console.log('page do', page);
     setCurrent(page); 
     setTimeout( async () => {
       setLoadingSort(true);
-      console.log('current do', current);
       setCurrent(page); 
       
       const result = await loadFilterItemPagination({
@@ -49,8 +47,6 @@ export default function SearchRenderAllCards() {
         },
         page: page,
       });
-      console.log('page posle', page);
-      console.log('current posle', current);
       
       setItems(result.items)
       setLength(result.length)

@@ -47,14 +47,14 @@ function App() {
           <Route path='/login' element={<Main />} />
           <Route path='/search' element={<SearchRenderAllCards />} />
 
-          <Route path='testcard' element={<ItemCard></ItemCard>}></Route>
+          <Route path='item-card' element={<ItemCard></ItemCard>}></Route>
           <Route path='chat' element={<Chat />} />
 
           <Route path='/admin-cabinet' element={<AdminCabinet/>}/>
           <Route path='/category/:id' element={<AllCards></AllCards>}></Route>
 
           {/* <Route path='/account' element={<SettingsPerson />} /> */}
-          <Route path='/testcard' element={<ItemCard/>}/>
+          <Route path='/item-card' element={<ItemCard/>}/>
            <Route path='/account' element={<SettingsPerson />}>
             <Route path='info' element={<Account />} />
             <Route path='wish-list' element={<WishList />} />
@@ -63,8 +63,6 @@ function App() {
             <Route path='chat' element={<Chat />} />
           </Route>      
         </Routes>
-        
-        <Link to='testcard'>testcard</Link>
         <FooterPage />   
       </div>
   );

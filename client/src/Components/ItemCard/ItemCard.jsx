@@ -1,27 +1,30 @@
 import React, { useState } from "react";
 import { Card, Rate, Button } from "antd";
-import styles from './ItemCard.module.css'
+import styles from "./ItemCard.module.css";
+import { useLocation } from "react-router-dom";
+import FormFilter from "../Cards/FormFilter";
 
 export default function ItemCard() {
-
+  const location = useLocation();
+  const [item, setItem] = useState(location.state.el);
+  console.log(item);
 
   const desc = ["terrible", "bad", "normal", "good", "wonderful"];
   const [value, setValue] = useState(3);
-  
+
   const [quantity, setQuantity] = useState(1);
 
   function quantityMinus() {
-    if(quantity > 1){
-      setQuantity(quantity - 1)
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
     }
   }
 
   function quantityPlus() {
-    if(quantity >= 0){
-      setQuantity(quantity + 1)
+    if (quantity >= 0) {
+      setQuantity(quantity + 1);
     }
   }
-
 
   const tabListNoTitle = [
     {
@@ -41,13 +44,8 @@ export default function ItemCard() {
     article: (
       <div>
         <img
-          src="https://ae01.alicdn.com/kf/S10fb6f2842074a02befb1438309551d9Z.jpg"
-          style={{ height: "500px", width: "880px" }}
-          alt="img"
-        />
-        <img
-          src="https://ae01.alicdn.com/kf/H5ca3dd1db69e45249d4d073824de4419y.jpg"
-          style={{ height: "500px", width: "880px", marginTop: "5px" }}
+          src={item.image}
+          // style={{ height: "500px", width: "880px" }}
           alt="img"
         />
       </div>
@@ -120,15 +118,14 @@ export default function ItemCard() {
       className="itemCard"
       style={{ justifyContent: "center", display: "flex", marginTop: "10px" }}
     >
-      <div
-        style={{ display: "flex", flexDirection: "column", width: "80%" }}
-      >
+      <div style={{ display: "flex", flexDirection: "column", width: "80%" }}>
         <div
           className="upper part"
           style={{
             display: "flex",
             flexDirection: "row",
             alignContent: "center ",
+            justifyContent: "center",
           }}
         >
           <div
@@ -142,66 +139,9 @@ export default function ItemCard() {
           >
             <div>
               <img
-                src="https://www.seoclerk.com/pics/622332-1P9ruQ1533837156.jpg"
+                src={item.image}
                 alt=""
-                style={{ height: "420px", width: "800px" }}
-              />
-            </div>
-            <div style={{ display: "flex", flexDirection: "row" }}>
-              <img
-                style={{
-                  height: "55px",
-                  width: "64px",
-                  boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-                  borderRadius: "5px",
-                  marginLeft: "3px",
-                }}
-                src="https://ae01.alicdn.com/kf/He7a1a79551e34549bb6aa60604426ab1u.jpg_.webp"
-                alt="Small"
-              />
-              <img
-                style={{
-                  height: "55px",
-                  width: "64px",
-                  boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-                  borderRadius: "5px",
-                  marginLeft: "3px",
-                }}
-                src="https://ae01.alicdn.com/kf/H641af7a4841445b1b09900815ad67b91S.jpg_.webp"
-                alt="Small"
-              />
-              <img
-                style={{
-                  height: "55px",
-                  width: "64px",
-                  boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-                  borderRadius: "5px",
-                  marginLeft: "3px",
-                }}
-                src="https://ae01.alicdn.com/kf/Hfcfc14af7b95485d85da6ebf0ff02e62u.jpg_.webp"
-                alt="Small"
-              />
-              <img
-                style={{
-                  height: "55px",
-                  width: "64px",
-                  boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-                  borderRadius: "5px",
-                  marginLeft: "3px",
-                }}
-                src="https://ae01.alicdn.com/kf/H4978ab939fee414a953b4a2bd54e269a9.jpg_.webp"
-                alt="Small"
-              />
-              <img
-                style={{
-                  height: "55px",
-                  width: "64px",
-                  boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-                  borderRadius: "5px",
-                  marginLeft: "3px",
-                }}
-                src="https://ae01.alicdn.com/kf/H8ba6395b4a7b4316984601db583301efZ.jpg_.webp"
-                alt="Small"
+                style={{ height: "650px", width: "500px" }}
               />
             </div>
           </div>
@@ -210,95 +150,128 @@ export default function ItemCard() {
             style={{
               display: "flex",
               flexDirection: "column",
-              marginLeft: "10px",
+              // marginLeft: "10px",
               boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
               borderRadius: "5px",
             }}
           >
-            <div  style={{ marginTop: '20px', display: 'flex' ,justifyContent: 'center' }}>
-              <div style={{ width: '80%' }}>
-
-            BMAX S13A 13.3 Inch FHD Display Intel Celeron Processor N3350 8GB
-            RAM 128GB 256GB SSD Windows 10 System Laptop
-              </div>
+            <div
+              style={{
+                marginTop: "20px",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <div style={{ width: "80%", fontSize: "25px" }}>{item.title}</div>
             </div>
             <div
-              className={styles.price}
+              style={{
+                marginTop: "20px",
+                display: "flex",
+                justifyContent: "center",
+              }}
             >
-              <p></p>
-              <div style={{ marginLeft: '15px' }}>
-              2000$
-              </div>
-            </div>
-            <div>
               <div
                 style={{
+                  width: "80%",
+                  fontSize: "25px",
                   display: "flex",
-                  flexDirection: "row",
-                  marginTop: "20px",
-                  marginLeft: '20px'
+                  justifyContent: "center",
+                  flexDirection: "column",
                 }}
               >
-                <p>Color:</p>
-                <img
-                  style={{
-                    height: "55px",
-                    width: "64px",
-                    boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-                    borderRadius: "5px",
-                    marginLeft: "3px",
-                  }}
-                  src="https://rynek.ru/files/products/51l8ji0ktol._sx425_.300x300.jpg?8c33423e7233e14746fa9a8c730559cb"
-                  alt="Small"
-                />
-                <img
-                  style={{
-                    height: "55px",
-                    width: "64px",
-                    boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-                    borderRadius: "5px",
-                    marginLeft: "3px",
-                  }}
-                  src="https://fast-store.ru/image/cache/catalog/new/ce09a1df144a6f74d5723e38e7d51e3b-1200x800.jpg"
-                  alt="Small"
-                />
-                <img
-                  style={{
-                    height: "55px",
-                    width: "64px",
-                    boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-                    borderRadius: "5px",
-                    marginLeft: "3px",
-                  }}
-                  src="https://avatars.mds.yandex.net/get-mpic/4529531/img_id7748686726389981995.jpeg/orig"
-                  alt="Small"
-                />
-                <img
-                  style={{
-                    height: "55px",
-                    width: "64px",
-                    boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-                    borderRadius: "5px",
-                    marginLeft: "3px",
-                  }}
-                  src="https://sc01.alicdn.com/kf/HTB1tXFdPpXXXXaHXXXXq6xXFXXX1.jpg"
-                  alt="Small"
-                />
+                <div className={styles.price}>
+                  <div >
+                    <div style={{ marginTop: "25px", marginLeft: '15px' }}>
+                    {item.price}$</div>
+
+                    </div>
+                </div>
+                <div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      marginTop: "20px",
+                      // marginLeft: "20px",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <div style={{ width: "80%", fontSize: "25px" }}>
+                      {item.size ? (
+                        <div name="size">Size: {item.size}</div>
+                      ) : (
+                        ""
+                      )}
+                      {item.color ? (
+                        <div name="color">Color: {item.color}</div>
+                      ) : (
+                        ""
+                      )}
+                      {item.brand ? (
+                        <div name="brand">Brand: {item.brand}</div>
+                      ) : (
+                        ""
+                      )}
+                      {item.processor ? (
+                        <div name="processor">Processor: {item.processor}</div>
+                      ) : (
+                        ""
+                      )}
+                      {item.display ? (
+                        <div name="display">Display: {item.display}</div>
+                      ) : (
+                        ""
+                      )}
+                      {item.gender ? (
+                        <div name="gender">Gender: {item.gender}</div>
+                      ) : (
+                        ""
+                      )}
+                      {item.style ? (
+                        <div name="style">Style: {item.style}</div>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                    <div
+                      style={{
+                        marginTop: "20px",
+                        fontSize: "25px",
+                        display: "flex",
+                      }}
+                    >
+                      <div>
+                        <p>Quantity:</p>
+                        <Button
+                          className={styles.btnReg}
+                          onClick={quantityMinus}
+                          style={{ marginRight: "15px" }}
+                        >
+                          -
+                        </Button>
+                        {quantity}
+                        <Button
+                          className={styles.btnReg}
+                          onClick={quantityPlus}
+                          style={{ marginLeft: "15px" }}
+                        >
+                          +
+                        </Button>
+                      </div>
+                    </div>
+                    <div style={{ marginTop: "20px"}}>
+                      <Button className={styles.btnReg}>Buy now</Button>
+                      <Button
+                        className={styles.btnReg}
+                        style={{ marginLeft: "3px" }}
+                      >
+                        Add card
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div  style={{ marginTop: '20px', marginLeft: '20px' }}>
-              <p>
-              Quantity:
-              </p>
-            <Button className={styles.btnReg} onClick={quantityMinus} style={{ marginRight: "15px", marginLeft: '29px' }}>-</Button>
-            {quantity}
-            <Button className={styles.btnReg}  onClick={quantityPlus} style={{ marginLeft: "15px" }}>+</Button>
-            </div>
-            <div style={{ marginTop: '20px', marginLeft: '20px' }}>
-              <Button className={styles.btnReg} >Buy now</Button>
-              <Button className={styles.btnReg}  style={{ marginLeft: "3px" }}>
-                Add card
-              </Button>
             </div>
           </div>
         </div>
@@ -325,10 +298,6 @@ export default function ItemCard() {
               }}
             >
               {contentListNoTitle[activeTabKey2]}
-              {/* <div>Detail-1</div>
-        <div>Detail-2</div>
-        <div>Detail-3</div>
-        <div>Detail-4</div> */}
             </Card>
           </div>
         </div>
