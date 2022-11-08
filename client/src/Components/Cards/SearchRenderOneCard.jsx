@@ -9,9 +9,11 @@ import {
 } from "@ant-design/icons";
 import { Avatar, Card } from "antd";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const { Meta } = Card;
 
 export default function SearchRenderOneCard({ el }) {
+  const navigate = useNavigate();
   const user_id = useSelector((state) => state.user.id);
   const [likeFill, setLikeFill] = useState(el.liked ? true : false);
 
@@ -77,6 +79,9 @@ export default function SearchRenderOneCard({ el }) {
 //     </Card>
 //   );
 // }
+function clickId() {
+  navigate('/item-card', {state: {el}})
+}
 
 return (
   <Card
@@ -90,6 +95,7 @@ return (
     }}
     cover={
       <img
+      onClick={clickId}
         className={styles.image}
         alt="Items_image"
         style={{

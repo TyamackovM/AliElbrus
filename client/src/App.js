@@ -48,8 +48,13 @@ function App() {
         <Route path="testcard" element={<ItemCard></ItemCard>}></Route>
         <Route path="chat" element={<Chat />} />
 
+
         <Route path="/admin-cabinet" element={<AdminCabinet />} />
         <Route path="/category/:id" element={<AllCards></AllCards>}></Route>
+
+          <Route path='item-card' element={<ItemCard></ItemCard>}></Route>
+          <Route path='chat' element={<Chat />} />
+
 
         {/* <Route path='/account' element={<SettingsPerson />} /> */}
         <Route path="/testcard" element={<ItemCard />} />
@@ -72,9 +77,18 @@ function App() {
         </Route>
       </Routes>
 
-      <Link to="testcard">testcard</Link>
-      <FooterPage />
-    </div>
+          {/* <Route path='/account' element={<SettingsPerson />} /> */}
+          <Route path='/item-card' element={<ItemCard/>}/>
+           <Route path='/account' element={<SettingsPerson />}>
+            <Route path='info' element={<Account />} />
+            <Route path='wish-list' element={<WishList />} />
+            <Route path='orders' element={<Orders />} />
+            <Route path='cart' element={<Cart />} />
+            <Route path='chat' element={<Chat />} />
+          </Route>      
+        </Routes>
+        <FooterPage />   
+      </div>
   );
 }
 
