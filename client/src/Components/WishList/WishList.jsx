@@ -28,7 +28,11 @@ export default function WishList() {
   //console.log(cart);
 
   return (
-    <div className={styles.mainDiv}>
+    <div style={{ display: 'flex',
+      flexWrap: 'wrap',
+      gap: '40px',     
+      marginLeft: '70px',     
+      marginBottom: '20px'}}>
       {wishList?.map((el) => (
         <OneWishList el={el} key={el.id} />
       ))}

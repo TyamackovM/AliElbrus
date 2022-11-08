@@ -35,11 +35,9 @@ export default function SearchRenderAllCards() {
   
 
   const onChange = async (page, event) => {
-    console.log('page do', page);
     setCurrent(page); 
     setTimeout( async () => {
       setLoadingSort(true);
-      console.log('current do', current);
       setCurrent(page); 
       
       const result = await loadFilterItemPagination({
@@ -49,8 +47,6 @@ export default function SearchRenderAllCards() {
         },
         page: page,
       });
-      console.log('page posle', page);
-      console.log('current posle', current);
       
       setItems(result.items)
       setLength(result.length)
@@ -176,7 +172,7 @@ export default function SearchRenderAllCards() {
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
       >
-        <div style={{ width: "80%" }}>
+        <div style={{ width: "72%" }}>
           <Layout>
             <Sider
               style={{
@@ -257,12 +253,12 @@ export default function SearchRenderAllCards() {
               </Content>
               <Footer style={{ textAlign: "center", marginTop: "50px" }}>
                 <div>
-                  <Pagination
-                    
+                  {length>6 ? (<Pagination                    
                     current={current}
                     onChange={onChange}
                     total={length * 2}
-                  />
+                  />):('')}
+                  
                 </div>
               </Footer>
             </Layout>

@@ -11,9 +11,12 @@ import {
 } from "@ant-design/icons";
 import { Avatar, Card } from "antd";
 
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const { Meta } = Card;
 
 export default function SearchRenderOneCard({ el }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const user_id = useSelector((state) => state.user.id);
   const [likeFill, setLikeFill] = useState(el.liked ? true : false);
@@ -63,17 +66,19 @@ export default function SearchRenderOneCard({ el }) {
       body: JSON.stringify({ user_id, item_id: el.id }),
       credentials: "include",
     });
-
-    dispatch(addItem(1));
+   dispatch(addItem(1));
   };
-
+  
+  function clickId() {
+  navigate('/item-card', {state: {el}})
+}
   return (
     <Card
       key={el.id}
       onClick={selectCardHandler}
       style={{
-        width: "200px",
-        height: "347px",
+        width: "170px",
+        height: "270px",
         borderRadius: "5px",
         boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
       }}
@@ -83,8 +88,8 @@ export default function SearchRenderOneCard({ el }) {
           alt="Items_image"
           style={{
             borderRadius: "5px 5px 0px 0px",
-            width: "200px",
-            height: "260px",
+            width: "170px",
+            height: "210px",
           }}
           src={el.image}
         />
@@ -123,4 +128,5 @@ export default function SearchRenderOneCard({ el }) {
       </div>
     </Card>
   );
+
 }

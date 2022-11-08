@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
       },
       raw: true,
       offset: 0,
-      limit: 5,
+      limit: 6,
     });
     
     const findItemsLength = await Item.findAll({

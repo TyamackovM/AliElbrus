@@ -20,6 +20,7 @@ module.exports = {
       },
       status: {
         type: Sequelize.STRING,
+        defaultValue: 'buyer'
       },
       wishListItem_id: {
         type: Sequelize.INTEGER,

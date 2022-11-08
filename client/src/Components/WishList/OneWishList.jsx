@@ -59,8 +59,8 @@ export default function OneWishList({ el }) {
       key={el.id}
       onClick={selectCardHandler}
       style={{
-        width: "200px",
-        height: "347px",
+        width: "170px",
+        height: "270px",
         borderRadius: "5px",
         boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
       }}
@@ -70,8 +70,8 @@ export default function OneWishList({ el }) {
           alt="Items_image"
           style={{
             borderRadius: "5px 5px 0px 0px",
-            width: "200px",
-            height: "260px",
+            width: "170px",
+            height: "210px",
           }}
           src={el["Item.image"]}
         />

@@ -3,7 +3,7 @@ const router = require("express").Router();
 const { Item, WishList } = require("../../../db/models");
 const { Op } = require('sequelize');
 router.post("/", async (req, res) => {
-  const numItems = 5;
+  const numItems = 6;
   const { page, value, check } = req.body;
   const check2 = check.check
   // const fixNumberCategory = +category;
@@ -46,15 +46,3 @@ router.post("/", async (req, res) => {
   }
 });
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-

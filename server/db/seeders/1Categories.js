@@ -131,6 +131,11 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date()
         },
+        {
+          name: 'Elbrus',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
       ],
       {}
     );

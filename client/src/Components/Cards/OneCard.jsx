@@ -11,10 +11,15 @@ import {
 } from "@ant-design/icons";
 import { Avatar, Card } from "antd";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const { Meta } = Card;
 
+
 export default function OneCard({ el }) {
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const user_id = useSelector((state) => state.user.id);
 
   const [likeFill, setLikeFill] = useState(el.liked ? true : false);
@@ -56,6 +61,7 @@ export default function OneCard({ el }) {
     }
   };
 
+
   const cartHandler = async (event) => {
     console.log("user_id", user_id);
     //setItemId(+event.target.parentNode.parentNode.id);
@@ -72,29 +78,38 @@ export default function OneCard({ el }) {
     dispatch(addItem(1));
   };
 
+
+  function clickId() {
+    console.log(el.id);
+    navigate('/item-card', {state: {el}})
+  }
+  
+
   return (
     <Card
       key={el.id}
       onClick={selectCardHandler}
       style={{
-        width: "200px",
-        height: "347px",
+        width: "170px",
+        height: "270px",
         borderRadius: "5px",
         boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
       }}
       cover={
         <img
           className={styles.image}
+          onClick={clickId}
           alt="Items_image"
           style={{
             borderRadius: "5px 5px 0px 0px",
-            width: "200px",
-            height: "260px",
+            width: "170px",
+            height: "210px",
           }}
           src={el.image}
         />
       }
     >
+
       <div id={el.id} className={styles.card_bottom}>
         <span className={styles.price}>{"$" + el.price}</span>
         <div name="heart" className={styles.heart}>

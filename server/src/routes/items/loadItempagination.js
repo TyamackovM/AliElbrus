@@ -4,7 +4,7 @@ const { Item } = require("../../../db/models");
 const { WishList } = require("../../../db/models");
 router.post("/", async (req, res) => {
   console.log(req.body);
-  const numItems = 5;
+  const numItems = 6;
   const { page, category } = req.body;
   const fixNumberCategory = +category;
   console.log('fixNumberCategory', fixNumberCategory);
@@ -14,7 +14,8 @@ router.post("/", async (req, res) => {
     raw: true,
     offset: nextitems,
     limit: numItems,
-  }); // { offset: 5, limit: 5 }
+  }); 
+  // { offset: 5, limit: 5 }
   const itemsNum = await Item.findAll({
     where: { category_id: fixNumberCategory },
     raw: true,
@@ -36,7 +37,6 @@ router.post("/", async (req, res) => {
   }
 });
 module.exports = router;
-
 
 
 
