@@ -59,57 +59,80 @@ export default function AdminPanel() {
   };
 
   return (
-    <div>
-      <div>
-        <div>Enter email:</div>
-        <Space direction="vertical">
-          <Search
-            placeholder="input search text"
-            allowClear
-            enterButton="Search"
-            size="large"
-            onSearch={onSearch}
-          />
-        </Space>
-        {notFindUser ? <div>User not found</div> : null}
-        {okFindUser ? (
-          <>
-            <div>Current status: {findUser.status}</div>
-            <div style={{ display: 'flex', marginTop: '10px' }}>
-              <Avatar
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ display: 'flex' }}>
+        <div>
+          <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+            Enter email:
+          </div>
+          <Space direction="vertical">
+            <Search
+              placeholder="input search text"
+              allowClear
+              enterButton="Search"
+              size="large"
+              onSearch={onSearch}
+            />
+          </Space>
+          {notFindUser ? <div>User not found</div> : null}
+          {okFindUser ? (
+            <>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                Current status: {findUser.status}
+              </div>
+              <div
                 style={{
-                  backgroundColor: '#b700ff',
+                  display: 'flex',
+                  marginTop: '10px',
+                  justifyContent: 'center',
                 }}
               >
-                {findUser.login[0].toUpperCase()}
-              </Avatar>
-              <div style={{ margin: '5px', fontSize: '20px' }}>
-                {findUser.login}
+                <Avatar
+                  style={{
+                    backgroundColor: '#b700ff',
+                  }}
+                >
+                  {findUser.login[0].toUpperCase()}
+                </Avatar>
+                <div style={{ margin: '5px', fontSize: '20px' }}>
+                  {findUser.login}
+                </div>
               </div>
-            </div>
-            <div>
               <div>
-                <select onChange={updateStatusHandler} name="tag1" id="cars">
+                <select
+                  style={{
+                    fontSize: '17px',
+                    width: '300px',
+                    height: '30px',
+                    marginBottom: '10px',
+                    borderRadius: '5px',
+                    textAlign: 'center',
+                  }}
+                  onChange={updateStatusHandler}
+                  name="tag1"
+                  id="cars"
+                >
                   <option>Choose a new role</option>
                   <option value="buyer">Buyer</option>
                   <option value="seller">Seller</option>
                   <option value="admin">Admin</option>
                 </select>
+
+                {setUpdateResult ? <div>{updateResult}</div> : null}
+                <Button
+                  className={style.btnReg}
+                  onClick={saveStatusHandler}
+                  style={{ width: '300px', height: '40px' }}
+                  type="primary"
+                  shape="round"
+                  htmlType="submit"
+                >
+                  Save
+                </Button>
               </div>
-              {setUpdateResult ? <div>{updateResult}</div> : null}
-              <Button
-                className={style.btnReg}
-                onClick={saveStatusHandler}
-                style={{ width: '300px', height: '40px' }}
-                type="primary"
-                shape="round"
-                htmlType="submit"
-              >
-                Save
-              </Button>
-            </div>
-          </>
-        ) : null}
+            </>
+          ) : null}
+        </div>
       </div>
     </div>
   );
