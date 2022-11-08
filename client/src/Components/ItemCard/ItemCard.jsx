@@ -150,7 +150,7 @@ export default function ItemCard() {
             style={{
               display: "flex",
               flexDirection: "column",
-              marginLeft: "10px",
+              // marginLeft: "10px",
               boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
               borderRadius: "5px",
             }}
@@ -171,10 +171,21 @@ export default function ItemCard() {
                 justifyContent: "center",
               }}
             >
-              <div style={{ width: "80%", fontSize: "25px" }}>
+              <div
+                style={{
+                  width: "80%",
+                  fontSize: "25px",
+                  display: "flex",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                }}
+              >
                 <div className={styles.price}>
-                  <p></p>
-                  <div style={{ marginLeft: "15px" }}>{item.price}$</div>
+                  <div >
+                    <div style={{ marginTop: "25px", marginLeft: '15px' }}>
+                    {item.price}$</div>
+
+                    </div>
                 </div>
                 <div>
                   <div
@@ -182,7 +193,7 @@ export default function ItemCard() {
                       display: "flex",
                       flexDirection: "column",
                       marginTop: "20px",
-                      marginLeft: "20px",
+                      // marginLeft: "20px",
                       justifyContent: "center",
                     }}
                   >
@@ -231,25 +242,25 @@ export default function ItemCard() {
                       }}
                     >
                       <div>
-                      <p>Quantity:</p>
-                      <Button
-                        className={styles.btnReg}
-                        onClick={quantityMinus}
-                        style={{ marginRight: "15px", marginLeft: "29px" }}
+                        <p>Quantity:</p>
+                        <Button
+                          className={styles.btnReg}
+                          onClick={quantityMinus}
+                          style={{ marginRight: "15px" }}
                         >
-                        -
-                      </Button>
-                      {quantity}
-                      <Button
-                        className={styles.btnReg}
-                        onClick={quantityPlus}
-                        style={{ marginLeft: "15px" }}
+                          -
+                        </Button>
+                        {quantity}
+                        <Button
+                          className={styles.btnReg}
+                          onClick={quantityPlus}
+                          style={{ marginLeft: "15px" }}
                         >
-                        +
-                      </Button>
+                          +
+                        </Button>
+                      </div>
                     </div>
-                        </div>
-                    <div style={{ marginTop: "20px", marginLeft: "20px" }}>
+                    <div style={{ marginTop: "20px"}}>
                       <Button className={styles.btnReg}>Buy now</Button>
                       <Button
                         className={styles.btnReg}
