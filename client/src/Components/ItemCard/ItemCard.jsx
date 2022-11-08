@@ -242,7 +242,7 @@ export default function ItemCard() {
                   marginLeft: '20px'
                 }}
               >
-                <div>
+                <div style={{ width: '80%', fontSize: '25px' }}>
                   {item.size ? (
                     <div name="size" >Size: {item.size}</div>
                   ) : ('')}
@@ -311,7 +311,7 @@ export default function ItemCard() {
                 /> */}
               </div>
             </div>
-            <div  style={{ marginTop: '20px', marginLeft: '20px' }}>
+            <div  style={{ marginTop: '20px', marginLeft: '20px', fontSize: '25px' }}>
               <p>
               Quantity:
               </p>
