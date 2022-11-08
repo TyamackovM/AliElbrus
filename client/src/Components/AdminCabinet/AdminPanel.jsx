@@ -43,6 +43,9 @@ export default function AdminPanel() {
     const resultUpdate = await updateUserStatus(newStatus);
     if (resultUpdate.result === 'success') {
       setFindUser({ ...findUser, status: resultUpdate.newStatus });
+      setTimeout(() => {
+        setUpdateResult(null)
+      }, 3000)
       setUpdateResult(resultUpdate.result);
     } else {
       setUpdateResult('error');
