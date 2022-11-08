@@ -1,11 +1,13 @@
+import style from "../Registr/Registr.module.css";
 import React, { useEffect } from 'react';
-
+import { Button, Form, Input } from "antd";
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import getItemsFieldsForAdmin from '../../helpers/getItemsFieldsForAdmin';
 
 import OneInput from './OneInput';
+import addNewItemToDB from "../../helpers/addNewItemToDB";
 
 const text = `
   A dog is a type of domesticated animal.
@@ -29,47 +31,50 @@ export default function AdminCabinet() {
   }, []);
 
   const handler = (event) => {
-    const qwe = event.target.value;
-    setInput1(qwe);
+    setInput1(event.target.value);
   };
 
   const handler2 = (event) => {
-    const qwe2 = event.target.value;
-    // setInput({ [event.target.value]:  })
-    setInput2(qwe2);
+    setInput2(event.target.value);
     setAllInputs({ ...allInputs, [input1]: input2 });
-    // console.log(allInputs, 888888888);
   };
 
   const handler3 = (event) => {
     setAllInputs({ ...allInputs, [event.target.name]: event.target.value });
   };
 
-  console.log(allInputs, '-----');
+  const saveHandler = () => {
+    addNewItemToDB(allInputs)
+  }
+
   return (
     <>
-      <div onClick={() => console.log(allFieldsArray)}>ФФФФФФФФФФФФФФФФФФФ</div>
-
       <div>
         <div>
-          <label for="cars">Choose a tag: </label>
+          <label for="cars">Choose a property: </label>
           <select onChange={handler} name="tag1" id="cars">
-            <option>Выбери тег</option>
+            <option>Выберите тег</option>
             <option value="color">Color</option>
             <option value="size">Size</option>
             <option value="brand">Brand</option>
             <option value="processor">Processor</option>
+            <option value="display">Display</option>
+            <option value="gender">Gender</option>
+            <option value="style">Style</option>
           </select>
           <input onChange={handler2} name="first" type="text" />
         </div>
-        <label for="cars">Choose a tag: </label>
+        <label for="cars">Choose a property: </label>
         <div>
           <select onChange={handler} name="cars" id="cars">
-            <option>Выбери тег</option>
+            <option>Выберите тег</option>
             <option value="color">Color</option>
             <option value="size">Size</option>
             <option value="brand">Brand</option>
             <option value="processor">Processor</option>
+            <option value="display">Display</option>
+            <option value="gender">Gender</option>
+            <option value="style">Style</option>
           </select>
           <input onChange={handler2} type="text" />
         </div>
@@ -111,6 +116,9 @@ export default function AdminCabinet() {
           <option value="24">Furniture</option>
           <option value="25">Decor</option>
         </select>
+        <Button className={style.btnReg} onClick={saveHandler} style={{width: '300px', height: '40px'}} type="primary" shape="round" htmlType="submit">
+          Save
+        </Button>
       </div>
     </>
   );

@@ -12,6 +12,22 @@ async function seedAdmin() {
       createdAt: new Date(),
       updatedAt: new Date(),
     },
+    {
+      login: 'Stepa',
+      email: 'stepa@alielbrus.com',
+      password: hash,
+      status: 'seller',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      login: 'Maksik',
+      email: 'Maksik@alielbrus.com',
+      password: hash,
+      status: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
   ];
 }
 

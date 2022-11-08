@@ -10,8 +10,9 @@ router.post('/', async (req, res) => {
      req.session.newUser = newUser.login;
      req.session.newUserEmail = newUser.email;
      req.session.newUserId = newUser.id;
+     req.session.newUserStatus = newUser.status;
      req.session.save(() => {
-      res.json({ login: newUser.login, email: newUser.email, id: newUser.id } );
+      res.json({ login: newUser.login, email: newUser.email, id: newUser.id, status: newUser.status } );
     });    
   } catch (error) {
     res.send(`Ошибка регистрации нового пользователя! ----> ${error}`);
