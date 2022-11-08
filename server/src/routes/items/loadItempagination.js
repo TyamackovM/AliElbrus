@@ -1,10 +1,9 @@
-const router = require("express").Router();
-const { Category } = require("../../../db/models");
-const { Item } = require("../../../db/models");
-const { WishList } = require("../../../db/models");
+const router = require('express').Router();
+const { Category } = require('../../../db/models');
+const { Item } = require('../../../db/models');
+const { WishList } = require('../../../db/models');
 
-router.post("/", async (req, res) => {
-
+router.post('/', async (req, res) => {
   console.log(req.body);
   const numItems = 5;
 
@@ -22,17 +21,24 @@ router.post("/", async (req, res) => {
     raw: true,
   });
 
-  const likes = await WishList.findAll({where: { user_id: req.session.newUserId}, raw: true })
-  const likedItems = items.map(item => {
-    likes.forEach(like => {
-      if (Object.values(like).includes(item.id)) {
-        item.liked = true;
-      }
+  if (req.session.newUserId) {
+    const likes = await WishList.findAll({
+      where: { user_id: req.session.newUserId },
+      raw: true,
     });
-    return item;
-  })
-  
-  res.json({ likedItems, length: itemsNum.length });
+    const likedItems = items.map((item) => {
+      likes.forEach((like) => {
+        if (Object.values(like).includes(item.id)) {
+          item.liked = true;
+        }
+      });
+      return item;
+    });
+
+    res.json({ likedItems, length: itemsNum.length });
+  } else {
+    res.json({ likedItems: items, length: itemsNum.length })
+  }
 });
 
 module.exports = router;

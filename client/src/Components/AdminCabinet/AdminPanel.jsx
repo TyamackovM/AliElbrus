@@ -1,9 +1,11 @@
+import style from '../Registr/Registr.module.css';
 import { AudioOutlined } from '@ant-design/icons';
-import { Input, Space, Avatar } from 'antd';
+import { Input, Space, Avatar, Button } from 'antd';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { searchUserByEmail } from '../../helpers/searchUserByEmail';
 import updateUserStatus from '../../helpers/updateUserStatus';
+import { useEffect } from 'react';
 const { Search } = Input;
 
 const suffix = (
@@ -16,10 +18,11 @@ const suffix = (
 );
 
 export default function AdminPanel() {
-  const [findUser, setFindUser] = useState();
+  const [findUser, setFindUser] = useState({ email: '', status: '' });
   const [notFindUser, setNotFindUser] = useState(false);
   const [okFindUser, setOkFindUser] = useState(false);
-  const user = useSelector((state) => state.user);
+  const [newStatus, setNewStatus] = useState();
+  const [updateResult, setUpdateResult] = useState();
 
   const onSearch = async (value) => {
     const result = await searchUserByEmail(value);
@@ -34,10 +37,25 @@ export default function AdminPanel() {
     }
   };
 
+  useEffect(() => {}, [findUser]);
+
+  const saveStatusHandler = async () => {
+    const resultUpdate = await updateUserStatus(newStatus);
+    if (resultUpdate.result === 'success') {
+      setFindUser({ ...findUser, status: resultUpdate.newStatus });
+      setTimeout(() => {
+        setUpdateResult(null);
+      }, 3000);
+      setUpdateResult(resultUpdate.result);
+    } else {
+      setUpdateResult('error');
+    }
+  };
+
   const updateStatusHandler = async (event) => {
-    const newStatus = event.target.value
-    const email = findUser.email
-    updateUserStatus({ newStatus, email })
+    const newStatus = event.target.value;
+    const email = findUser.email;
+    setNewStatus({ newStatus, email });
   };
 
   return (
@@ -56,6 +74,7 @@ export default function AdminPanel() {
         {notFindUser ? <div>User not found</div> : null}
         {okFindUser ? (
           <>
+            <div>Current status: {findUser.status}</div>
             <div style={{ display: 'flex', marginTop: '10px' }}>
               <Avatar
                 style={{
@@ -77,6 +96,17 @@ export default function AdminPanel() {
                   <option value="admin">Admin</option>
                 </select>
               </div>
+              {setUpdateResult ? <div>{updateResult}</div> : null}
+              <Button
+                className={style.btnReg}
+                onClick={saveStatusHandler}
+                style={{ width: '300px', height: '40px' }}
+                type="primary"
+                shape="round"
+                htmlType="submit"
+              >
+                Save
+              </Button>
             </div>
           </>
         ) : null}
