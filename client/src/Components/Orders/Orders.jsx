@@ -29,7 +29,7 @@ export default function Orders() {
       <div>
         <OrderMessage />
       </div>
-      <div>
+      <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
         {order?.map((el) => (
           <OneOrder el={el} key={el.id} />
         ))}
