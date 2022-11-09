@@ -21,10 +21,10 @@ export default function BottomMainBlock({ el }) {
       key={1}
       style={{
         width: '150px',
-        height: '200px',
+        height: '210px',
         borderRadius: '5px',
         boxShadow: '1px 1px 1px 1px rgba(167, 167, 167, 0.596)',
-        margin: '10px 0px 10px 0px',
+        margin: '10px 6px 10px 6px',
       }}
       cover={
         <div

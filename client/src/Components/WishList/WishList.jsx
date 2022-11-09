@@ -27,6 +27,7 @@ export default function WishList() {
   }, []);
 
   return (
+    <>
     <div
       style={{
         display: "flex",
@@ -40,5 +41,11 @@ export default function WishList() {
         <OneWishList el={el} key={el.id} />
       ))}
     </div>
+      {wishList?.length ? (
+        <></>
+      ) : (
+        <div style={{display: 'flex', justifyContent: 'center'}}>Your wish list is empty</div>
+      )}
+    </>
   );
 }

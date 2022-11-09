@@ -36,9 +36,15 @@ export default function Cart() {
         <OneCart el={el} key={el.id} />
       ))}
     </div>
+      {cart?.length ? (
+        <div style={{display: 'flex', justifyContent: 'center', marginTop: '10px', }}>
     <Link to='/account/address-form'>
-      <Button>Buy items</Button>
+        <Button style={{borderRadius: '5px', width: '200px'}}>Buy items</Button>
     </Link>
+    </div>
+      ) : (
+        <div style={{display: 'flex', justifyContent: 'center', padding: '22px'}}>Your cart is empty</div>
+      )}
     </div>
   )
 }
