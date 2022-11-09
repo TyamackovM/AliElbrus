@@ -182,8 +182,7 @@ export default function ItemCard() {
               >
                 <div className={styles.price}>
                   <div >
-                    <div style={{ marginTop: "15px", marginLeft: '15px' }}>
-                    {item.price}$</div>
+                    <div style={{ marginTop: "15px",  }}>{item.price}$</div>
 
                     </div>
                 </div>
