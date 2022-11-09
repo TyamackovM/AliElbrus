@@ -120,6 +120,7 @@ export default function Main() {
                 width: "100%",
                 backgroundColor: "white",
                 display: "flex",
+                flexWrap: 'wrap',
                 justifyContent: "center",
                 alignItems: "center",
                 borderRadius: "5px",
