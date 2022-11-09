@@ -19,7 +19,10 @@ router.delete('/', async (req, res) => {
   const {user_id, item_id} = req.body
   
     try {
-      await Cart.destroy ({where: {user_id, item_id}})
+      const {id} =  await Cart.findOne ({where: {user_id, item_id}})
+      await Cart.destroy ({where: {user_id, id}})
+
+      // await Cart.destroy ({where: {user_id, item_id}})
       const cart = await Cart.findAll({where: {user_id}, raw: true, include: Item })
       res.json({cart})
     } catch (error) {

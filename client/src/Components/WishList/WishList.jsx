@@ -21,18 +21,21 @@ export default function WishList() {
         credentials: "include",
       });
       const result = await response.json();
-      //console.log(result);
+
       setWishList(result.wishList);
     })();
   }, []);
-  //console.log(cart);
 
   return (
-    <div style={{ display: 'flex',
-      flexWrap: 'wrap',
-      gap: '40px',     
-      marginLeft: '70px',     
-      marginBottom: '20px'}}>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "40px",
+        marginLeft: "70px",
+        marginBottom: "20px",
+      }}
+    >
       {wishList?.map((el) => (
         <OneWishList el={el} key={el.id} />
       ))}
