@@ -104,6 +104,7 @@ export default function OneCard({ el }) {
             borderRadius: "5px 5px 0px 0px",
             width: "170px",
             height: "210px",
+            cursor: 'pointer'
           }}
           src={el.image}
         />

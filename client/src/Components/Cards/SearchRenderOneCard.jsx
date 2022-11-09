@@ -82,12 +82,14 @@ export default function SearchRenderOneCard({ el }) {
       }}
       cover={
         <img
+        onClick={clickId}
           className={styles.image}
           alt="Items_image"
           style={{
             borderRadius: "5px 5px 0px 0px",
             width: "170px",
             height: "210px",
+            cursor: 'pointer'
           }}
           src={el.image}
         />
