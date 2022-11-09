@@ -81,16 +81,19 @@ export default function SearchRenderOneCard({ el }) {
         boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
       }}
       cover={
+        <div style={{width: '170px', height: '210px'}}>
         <img
           className={styles.image}
           alt="Items_image"
           style={{
             borderRadius: "5px 5px 0px 0px",
-            width: "170px",
-            height: "210px",
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover'
           }}
           src={el.image}
         />
+        </div>
       }
     >
       <div className={styles.card_bottom}>

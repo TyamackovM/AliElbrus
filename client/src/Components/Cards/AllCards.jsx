@@ -181,8 +181,8 @@ export default function AllCards() {
                     <span className={styles.span}>Sort by price</span>
                   </div>
                   <Radio.Group>
-                    <Radio.Button onClick={sortLowHandler}>Low</Radio.Button>
-                    <Radio.Button onClick={sortHighHandler}>High</Radio.Button>
+                    <Radio.Button style={{borderColor: 'black', color: 'black'}} onClick={sortLowHandler}>Low</Radio.Button>
+                    <Radio.Button style={{borderColor: 'black', color: 'black'}} onClick={sortHighHandler}>High</Radio.Button>
                   </Radio.Group>
                 </Form.Item>
               </Form>
