@@ -16,6 +16,14 @@ import { useNavigate } from 'react-router-dom';
 const { Meta } = Card;
 
 export default function BottomMainBlock({ el }) {
+
+  const navigate = useNavigate();
+
+  function clickId() {
+    console.log(el.id);
+    navigate('/item-card', {state: {el}})
+  }
+
   return (
     <Card
       key={1}
@@ -36,6 +44,7 @@ export default function BottomMainBlock({ el }) {
         >
           <div style={{ width: '130px', height: '150px' }}>
             <img
+            onClick={clickId}
               className={styles.image}
               alt="Items_image"
               style={{
