@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import AdressForm from './AdressForm'
 import OneCart from "./OneCart";
 
 export default function Cart() {
@@ -18,17 +19,17 @@ export default function Cart() {
         credentials: "include",
       });
       const result = await response.json();
-      console.log("RESULT!!!!!!@###@#@", result);
       setCart(result.cart);
-      console.log("CART!@!!!!", cart);
     })();
   }, []);
+
 
   return (
     <div style={{ display: "flex", flexWrap: "wrap", justifyContent: 'center' }}>
       {cart?.map((el) => (
         <OneCart el={el} key={el.id} />
       ))}
+    <AdressForm/>
     </div>
   );
 }
