@@ -30,3 +30,27 @@ code {
   border-radius: 5px;
 }
 
+.ant-card-body {
+  padding: 12px !important;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):before {
+  background-color: black !important;
+}
+
+.ant-menu-item-selected a {
+  color: black !important;
+}
+
+.ant-menu-item-selected a:hover {
+  color: black !important;
+}
+
+.ant-menu-inline .ant-menu-item:after {
+  border-right: 3px solid rgb(200, 0, 255) !important;
+}
+
+.ant-btn:hover {
+  color: black !important;
+  border-color: rgb(200, 0, 255) !important;
+}

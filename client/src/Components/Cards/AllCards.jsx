@@ -11,6 +11,9 @@ import { Checkbox, Col, Row } from "antd";
 import { Button, Form, Input, Radio } from "antd";
 import { v4 as uuidv4 } from "uuid";
 import { useLocation } from "react-router-dom";
+import filterMap from "../../helpers/filterMapFunction";
+import FormFilter from "./FormFilter";
+import { loadItempagination } from "../../helpers/loadItemPagination";
 const { Header, Footer, Sider, Content } = Layout;
 
 export default function AllCards() {
@@ -18,33 +21,58 @@ export default function AllCards() {
   const [loading, setLoading] = useState(true);
   const [loadingSort, setLoadingSort] = useState(true);
   const [checkTag, setCheckTag] = useState({});
+  const [filterItems, setFilterItems] = useState();
   const [arrSize, setArrSize] = useState();
   const [arrColor, setArrColor] = useState();
-  const [filterItems, setFilterItems] = useState();
-  
+  const [allFindItems, setallFindItems] = useState();
+  const [arrBrand, setArrBrand] = useState();
+  const [arrProcessor, setArrProcessor] = useState();
+  const [arrDisplay, setArrDisplay] = useState();
+  const [arrGender, setArrGender] = useState();
+  const [arrStyle, setArrStyle] = useState();
   const { id } = useParams();
+
+  const [current, setCurrent] = useState(1);
+
+  const onChange = async (page) => {
+    setCurrent(page);
+    const result = await loadItempagination({ page: current, category: id });
+    setAllItems(result.likedItems);
+    setFilterItems(result.likedItems);
+    setallFindItems(result.length);
+  };
+
   useEffect(() => {
     if (id) {
       (async function () {
-        const allItems = await getAllCardsFetch(id);
-        setAllItems(allItems);
-        setFilterItems(allItems);
+        const result = await loadItempagination({
+          page: current,
+          category: id,
+        });
+        setAllItems(result.likedItems);
+        setFilterItems(result.likedItems);
+        setallFindItems(result.length);
       })();
     }
-  }, [id]);
+  }, [current]);
+
+  // const paginationHandler = async (event) => {
+  //  const result = await loadItempagination({page: current, category: id})
+  //  setAllItems(result.items)
+  //  setFilterItems(result.items);
+  // };
 
   const handler = async (event) => {
-    console.log(event.target.name);
-    console.log(event.target.innerText);
-    setCheckTag({...checkTag, [event.target.name]: event.target.innerText});
-    console.log('checkTag', checkTag)
+    setCheckTag({ ...checkTag, [event.target.name]: event.target.value });
+    // console.log("checkTag", checkTag);
     const response = await fetch("http://localhost:4000/filter-category", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        check: {...checkTag, [event.target.name]: event.target.innerText},
+        check: { ...checkTag, [event.target.name]: event.target.value },
+        categId: id,
       }),
     });
     const responseToJSON = await response.json();
@@ -55,20 +83,30 @@ export default function AllCards() {
     setAllItems(responseToJSON);
   };
 
+  const sortLowHandler = (e) => {
+    const spred = [...allItems];
+    const sort = spred.sort((min, max) => min.price - max.price);
+    setAllItems(sort);
+  };
+
+  const sortHighHandler = (e) => {
+    const spred = [...allItems];
+    const sort = spred.sort((min, max) => max.price - min.price);
+    setAllItems(sort);
+  };
+
   useEffect(() => {
     if (filterItems) {
-      const filter = filterItems
-      .filter((el) => el.color)
-      .map((el) => el.color);
-    const filter2 = filterItems
-      .filter((el) => el.size)
-      .map((el) => el.size);
-    const color = [...new Set(filter)];
-    const size = [...new Set(filter2)];
-    setArrSize(size);
-    setArrColor(color);
+      const res = filterMap(filterItems);
+      setArrSize(res.size);
+      setArrColor(res.color);
+      setArrBrand(res.brand);
+      setArrProcessor(res.processor);
+      setArrDisplay(res.display);
+      setArrGender(res.gender);
+      setArrStyle(res.style);
     }
-  }, [filterItems])
+  }, [filterItems]);
 
   const spinner = (
     <div style={{ display: "flex", justifyContent: "center", height: "300px" }}>
@@ -90,11 +128,21 @@ export default function AllCards() {
     setLoading(false);
   }, 500);
 
-
-
-  const onChange = (checkedValues) => {
-    console.log("checked = ", checkedValues);
-  };
+  const spinnerSort = (
+    <div style={{ display: "flex", justifyContent: "center", height: "300px" }}>
+      <div
+        style={{
+          alignItems: "center",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Space size="middle">
+          <Spin size="large" />
+        </Space>
+      </div>
+    </div>
+  );
 
   const [form] = Form.useForm();
   const [requiredMark, setRequiredMarkType] = useState("");
@@ -106,16 +154,16 @@ export default function AllCards() {
     <div
       style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
     >
-      <div style={{ width: "80%" }}>
+      <div style={{ width: "72%" }}>
         <Layout>
           <Sider
             style={{
               boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
               borderRadius: "5px",
               backgroundColor: "white",
-              height: "565px",
-              position: 'sticky',
-              top: '55px',
+              height: "697px",
+              position: "sticky",
+              top: "55px",
               // widht: '50px'
             }}
           >
@@ -134,65 +182,58 @@ export default function AllCards() {
                     <span className={styles.span}>Sort by price</span>
                   </div>
                   <Radio.Group>
-                    <Radio.Button value="optional">Low</Radio.Button>
-                    <Radio.Button value>High</Radio.Button>
+                    <Radio.Button style={{borderColor: 'black', color: 'black'}} onClick={sortLowHandler}>Low</Radio.Button>
+                    <Radio.Button style={{borderColor: 'black', color: 'black'}} onClick={sortHighHandler}>High</Radio.Button>
                   </Radio.Group>
                 </Form.Item>
               </Form>
-              <div className={styles.div_size}>
-                <div className={styles.div_span}>
-                  <span className={styles.span}>Size</span>
-                </div>
-                <div className={styles.content}>
-                  <Checkbox.Group
-                    style={{
-                      width: "100%",
-                    }}
-                    onChange={onChange}
-                  >
-                    <Col>
-                    {arrSize?.map((el) => (
-                          <button name='size' onClick={handler} key={uuidv4()}>
-                            {el}
-                          </button>
-                        ))}
-                    </Col>
-                  </Checkbox.Group>
-                </div>
-              </div>
-              <div className={styles.div_color}>
-                <div className={styles.div_span}>
-                  <span className={styles.span}>Color</span>
-                </div>
-                <div className={styles.div_content}>
-                  <Checkbox.Group
-                    style={{
-                      width: "100%",
-                    }}
-                    onChange={onChange}
-                  >
-                    <Col>
-                    {arrColor?.map((el) => (
-                          <button name='color' onClick={handler} key={uuidv4()}>
-                            {el}
-                          </button>
-                        ))}
-                    </Col>
-                  </Checkbox.Group>
-                </div>
-              </div>
+
+              {arrSize?.length ? (
+                <FormFilter array={arrSize} name="size" handler={handler} />
+              ) : (
+                ""
+              )}
+              {arrColor?.length ? (
+                <FormFilter array={arrColor} name="color" handler={handler} />
+              ) : (
+                ""
+              )}
+              {arrBrand?.length ? (
+                <FormFilter array={arrBrand} name="brand" handler={handler} />
+              ) : (
+                ""
+              )}
+              {arrProcessor?.length ? (
+                <FormFilter
+                  array={arrProcessor}
+                  name="processor"
+                  handler={handler}
+                />
+              ) : (
+                ""
+              )}
+              {arrDisplay?.length ? (
+                <FormFilter
+                  array={arrDisplay}
+                  name="display"
+                  handler={handler}
+                />
+              ) : (
+                ""
+              )}
+              {arrGender?.length ? (
+                <FormFilter array={arrGender} name="gender" handler={handler} />
+              ) : (
+                ""
+              )}
+              {arrStyle?.length ? (
+                <FormFilter array={arrStyle} name="style" handler={handler} />
+              ) : (
+                ""
+              )}
             </div>
           </Sider>
           <Layout>
-            {/* <Header
-              style={{
-                boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-                borderRadius: "5px",
-                backgroundColor: "white",
-                marginLeft: "40px",
-                height: "80px",
-              }}
-            ></Header> */}
             <Content
               style={{
                 display: "flex",
@@ -200,14 +241,28 @@ export default function AllCards() {
                 margin: "0 10px",
               }}
             >
-              <div className={styles.mainDiv}>
-                {allItems?.map((el) => (
-                  <OneCard el={el} key={el.id} />
-                ))}
-              </div>
+              {!loadingSort ? (
+                spinnerSort
+              ) : (
+                <div className={styles.mainDiv}>
+                  {allItems?.map((el) => (
+                    <OneCard el={el} key={el.id} />
+                  ))}
+                </div>
+              )}
             </Content>
             <Footer style={{ textAlign: "center", marginTop: "50px" }}>
-              <Pagination defaultCurrent={1} total={50} />
+              <div>
+                {allFindItems > 10 ? (
+                  <Pagination
+                    current={current}
+                    onChange={onChange}
+                    total={allFindItems}
+                  />
+                ) : (
+                  ""
+                )}
+              </div>
             </Footer>
           </Layout>
         </Layout>
@@ -217,3 +272,5 @@ export default function AllCards() {
     spinner
   );
 }
+
+//fgdfgfdgfgfdg

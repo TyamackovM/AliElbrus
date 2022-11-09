@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const { Op } = require('sequelize');
-const { Item } = require('../../../db/models');
+const { Item, WishList } = require('../../../db/models');
 
 router.post('/', async (req, res) => {
   const { value, check,} = req.body;
+  try {    
     const findItems = await Item.findAll({
       where: {
         title: {
@@ -12,8 +13,23 @@ router.post('/', async (req, res) => {
         ...check,
       },
       raw: true,
+      offset: 0,
+      limit: 10,
     });
-    res.json(findItems);
+    
+    const findItemsLength = await Item.findAll({
+      where: {
+        title: {
+          [Op.substring]: value,
+        },
+        ...check,
+      },
+      raw: true,
+    });
+    res.json({findItems, length: findItemsLength.length});
+  } catch (error) {
+    console.log('error: ', error);    
+  }
 });
 
 module.exports = router;

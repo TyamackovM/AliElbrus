@@ -1,7 +1,11 @@
 import {
-  AppstoreOutlined,
-  MailOutlined,
-  SettingOutlined,
+  StarOutlined,
+  SkinOutlined,
+  PhoneOutlined,
+  DesktopOutlined,
+  CustomerServiceOutlined,
+  SketchOutlined,
+  HomeOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
 
@@ -21,33 +25,44 @@ function getItem(label, key, icon, children, type) {
   };
 }
 const items = [
-  getItem("Women's Fashion", "sub1", <MailOutlined />, [
-    getItem("Dress", "1"),
-    getItem("Jeans", "woman-jeans"),
+  getItem("Women's Fashion", "sub1", <StarOutlined />, [
+    getItem("Dresses", "1"),
+    getItem("Hoodies", "2"),
+    getItem("Shirts", "3"),
+    getItem("Jeans", "4"),
+    getItem("Shoes", "5"),
   ]),
-  getItem("Men's Fashion", "sub2", <AppstoreOutlined />, [
-    getItem("T-shirts", "shirts"),
-    getItem("Jeans", "men-jeans"),
+  getItem("Men's Fashion", "sub2", <SkinOutlined />, [
+    getItem("Suits", "6"),
+    getItem("Jeans & Pants", "7"),
+    getItem("Sweaters", "8"),
+    getItem("Jackets", "9"),
+    getItem("Shoes", "10"),
   ]),
-  getItem("Phones & Telecommunications", "sub3", <SettingOutlined />, [
-    getItem("Option 9", "9"),
-    getItem("Option 11", "11"),
+  getItem("Phones & Telecommunications", "sub3", <PhoneOutlined />, [
+    getItem("Phones", "11"),
+    getItem("Walkie Talkie", "12"),
+    getItem("Accessories", "13"),
   ]),
-  getItem("Computer, Office & Security", "sub4", <SettingOutlined />, [
-    getItem("Option 12", "12"),
-    getItem("Option 13", "13"),
+  getItem("Computer, Office & Security", "sub4", <DesktopOutlined />, [
+    getItem("Laptops", "14"),
+    getItem("Desktops", "15"),
+    getItem("Tablets", "16"),
   ]),
-  getItem("Consumer Electronics", "sub5", <SettingOutlined />, [
-    getItem("Option 14", "14"),
-    getItem("Option 15", "15"),
+  getItem("Consumer Electronics", "sub5", <CustomerServiceOutlined />, [
+    getItem("Cameras", "17"),
+    getItem("TVs", "18"),
+    getItem("Drones", "19"),
   ]),
-  getItem("Jewelry & Watches", "sub6", <SettingOutlined />, [
-    getItem("Option 16", "16"),
-    getItem("Option 17", "17"),
+  getItem("Jewelry & Watches", "sub6", <SketchOutlined />, [
+    getItem("Watches", "20"),
+    getItem("Rings", "21"),
+    getItem("Earings", "22"),
   ]),
-  getItem("Home, Pet & Appliances", "sub7", <SettingOutlined />, [
-    getItem("Option 18", "18"),
-    getItem("Option 19", "19"),
+  getItem("Home, Pet & Appliances", "sub7", <HomeOutlined />, [
+    getItem("Cat Supplies", "23"),
+    getItem("Furniture", "24"),
+    getItem("Decor", "25"),
   ]),
 ];
 

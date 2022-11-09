@@ -7,9 +7,11 @@ import style from "../Registr/Registr.module.css";
 import { changeBooleanStateAC } from "../../store/modal/actionCreators";
 
 const LoginPage = () => {
+  const [input, setInput] = useState({ email: "", password: "" });
+  const [emailTrue, setEmailTrue] = useState(false);
+  const [passwordTrue, setPasswordTrue] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [input, setInput] = useState({ email: "", password: "" });
 
   const inputHandler = async (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -26,8 +28,20 @@ const LoginPage = () => {
       credentials: "include",
     });
     const toJson = await res.json();
-    if (toJson === "PasswordNotDone") alert("Incorrect password");
-    else if (toJson === "EmailNotDone") alert("Incorrect email");
+    if (toJson === "PasswordNotDone") {
+      setPasswordTrue(true);
+      setTimeout(() => {
+        setPasswordTrue(false)
+      }, 3000)
+      // alert("Incorrect password");
+    } 
+    else if (toJson === "EmailNotDone") {
+      setEmailTrue(true);
+      setTimeout(() => {
+        setEmailTrue(false)
+      }, 3000)
+      // alert("Incorrect email");
+    } 
     else {
       dispatch(getUser(toJson));
       // dispatch(changeBooleanStateAC(false))
@@ -92,6 +106,12 @@ const LoginPage = () => {
             style={{ width: "300px", borderRadius: "5px" }}
           />
         </Form.Item>
+        {passwordTrue ? (
+          <div style={{display: 'flex', justifyContent: 'center', color: 'red'}}>Incorrect password</div>
+        ) : (<></>)}
+        {emailTrue ? (
+          <div style={{display: 'flex', justifyContent: 'center', color: 'red'}}>Incorrect email</div>
+        ) : (<></>)}
       </div>
       <Button
         className={style.btnReg}

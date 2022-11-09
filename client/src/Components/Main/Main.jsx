@@ -4,10 +4,21 @@ import { Layout, Skeleton, Space, Spin } from "antd";
 import SliderCarousel from "../Carousel/Carousel";
 import Person from "../Person/Person";
 import RandomCards from "../RandomCards/RandomCards";
+import BottomMainBlock from "../BottomMainBlock/BottomMainBlock";
+import { useEffect } from 'react';
+import geItemForBottomMainBlock from '../../helpers/geItemForBottomMainBlock';
 
 export default function Main() {
   const [loading, setLoading] = useState(true);
+  const [dresses, setDresses] = useState(null)
   const { Header, Footer, Sider, Content } = Layout;
+
+  useEffect(() => {
+    (async function () {
+      const result = await geItemForBottomMainBlock();
+      setDresses(result)
+    })();
+  }, []);
 
   const spinner = (
     <div style={{ display: "flex", justifyContent: "center", height: "300px" }}>
@@ -31,7 +42,7 @@ export default function Main() {
 
   return !loading ? (
     <div style={{ display: "flex", justifyContent: "center",}}>
-      <div style={{ width: "80%" }}>
+      <div style={{ width: "72%" }}>
         <Layout>
           <Sider
             style={{
@@ -59,23 +70,28 @@ export default function Main() {
                   alignItems: "center",
                   borderRadius: "5px",
                   boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
+                  padding: '5px'
                 }}
               >
                 <SliderCarousel />
               </div>
             </Content>
-            <Footer style={{ padding: "60px 0px", margin: "5px 10px" }}>
+            <Footer style={{  padding: "0px 0px", margin: "10px 10px 0px 10px" }}>
               <div
                 style={{
-                  backgroundColor: "#fffafa",
+                  backgroundColor: "white",
+                  // background: '4520ab',
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                   borderRadius: "5px",
                   boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
+                  // padding: '5px',
                 }}
               >
-                <div>123</div>
+                {/* <div> */}
+                  <img style={{width: '550px', height: '150px', }} src='/img/newblock1.png' />
+                  {/* </div> */}
               </div>
             </Footer>
           </Layout>
@@ -102,15 +118,16 @@ export default function Main() {
             <div
               style={{
                 width: "100%",
-                backgroundColor: "#fffafa",
+                backgroundColor: "white",
                 display: "flex",
+                flexWrap: 'wrap',
                 justifyContent: "center",
                 alignItems: "center",
                 borderRadius: "5px",
                 boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
               }}
             >
-              <RandomCards />
+              {dresses?.map((el) => <BottomMainBlock el={el} key={el.id}/> )}  
             </div>
           </Content>
         </Layout>

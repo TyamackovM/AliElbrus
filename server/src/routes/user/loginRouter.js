@@ -11,8 +11,9 @@ router.post('/', async (req, res) => {
       req.session.newUser = user.login;
       req.session.newUserEmail = user.email;
       req.session.newUserId = user.id;
+      req.session.newUserStatus = user.status;
       req.session.save(() => {
-        res.json({ login: user.login, email: user.email, id: user.id } );
+        res.json({ login: user.login, email: user.email, id: user.id, status: user.status } );
       })
     } else {
       res.json('PasswordNotDone');

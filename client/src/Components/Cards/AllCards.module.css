@@ -1,11 +1,13 @@
 .mainDiv {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  justify-content: center;
+  gap: 20px;
  
-  margin-left: 80px;
+  margin-left: 20px;
  
   margin-bottom: 20px;
+  /* height: 347px; */
   
 }
 

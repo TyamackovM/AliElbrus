@@ -13,10 +13,12 @@ import WishList from "../WishList/WishList";
 import Account from "../Account/Account";
 import { Link, Route, Routes, Outlet } from "react-router-dom";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const contentStyle = {
-  width: "180px",
-  height: "150px",
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
   // color: "#fff",
   lineHeight: "160px",
   textAlign: "center",
@@ -27,6 +29,7 @@ export default function SettingsPerson() {
   const [loading, setLoading] = useState(true);
   const [itemsSlide, setItemsSlide] = useState({});
   const [findItem, setFindItem] = useState(false);
+  const user = useSelector((state) => state.user);
   const { Header, Footer, Sider, Content } = Layout;
 
   const spinner = (
@@ -52,12 +55,14 @@ export default function SettingsPerson() {
         credentials: "include",
       });
       const itemsAll = await userFindBack.json();
-      if (itemsAll.lenght) {
+      if (itemsAll.length) {
         setFindItem(true);
         setItemsSlide(itemsAll);
       }
     })();
   }, []);
+
+  // console.log("slide", itemsSlide);
 
   // const i = Math.floor(Math.random() * (itemsSlide.length - 1) + 1);
   // console.log('123', i)
@@ -79,19 +84,24 @@ export default function SettingsPerson() {
     getItem(<Link to="/account/wish-list">Wish List</Link>, 2),
     getItem(<Link to="/account/orders">Orders</Link>, 3),
     getItem(<Link to="/account/cart">Cart</Link>, 4),
+    getItem(<Link to="/account/chat">Chat</Link>, 5),
+    user.status === "admin" || user.status === "seller"
+      ? getItem(<Link to="/account/upload-items">Upload items</Link>, 6)
+      : "",
+    user.status === "admin"
+      ? getItem(<Link to="/account/admin-panel">Admin panel</Link>, 7)
+      : "",
   ];
 
   return !loading ? (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <div style={{ width: "80%" }}>
+      <div style={{ width: "72%" }}>
         <Layout>
           <Sider
             style={{ background: "white", height: "100px" }}
             breakpoint="lg"
             collapsedWidth="0"
-            onBreakpoint={(broken) => {
-              console.log(broken);
-            }}
+            onBreakpoint={(broken) => {}}
             onCollapse={(collapsed, type) => {
               console.log(collapsed, type);
             }}
@@ -106,13 +116,6 @@ export default function SettingsPerson() {
               mode="inline"
               defaultSelectedKeys={["4"]}
               items={items}
-              // {[UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
-              //   (icon, index) => ({
-              //     key: String(index + 1),
-              //     icon: React.createElement(icon),
-              //     label: `nav ${index + 1}`,
-              //   }),
-              // )}
             />
           </Sider>
           <Layout>
@@ -140,49 +143,40 @@ export default function SettingsPerson() {
                 justifyContent: "center",
                 alignItems: "center",
                 background: "white",
-                height: "170px",
+                height: "200px",
                 backgroundColor: "white",
                 borderRadius: "5px",
                 boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
               }}
             >
-              <div style={{ display: "flex" }}>
+              <div style={{ display: "flex", width: "180px",
+                    height: "200px", }}>
                 <div
                   style={{
                     backgroundColor: "red",
                     width: "180px",
-                    height: "150px",
+                    height: "180px",
                     marginTop: "11px",
                   }}
                 >
                   {/* //! Логика слайдера */}
-                  {findItem ? (
-                    <Carousel autoplay>
-                      <div>
-                        <img
-                          src={itemsSlide[0]["Items.image"]}
-                          style={contentStyle}
-                        />
-                      </div>
-                      <div>
-                        <img
-                          src={itemsSlide[1]["Items.image"]}
-                          style={contentStyle}
-                        />
-                      </div>
-                      <div>
-                        <img
-                          src={itemsSlide[2]["Items.image"]}
-                          style={contentStyle}
-                        />
-                      </div>
-                      <div>
-                        <img
-                          src={itemsSlide[3]["Items.image"]}
-                          style={contentStyle}
-                        />
-                      </div>
-                    </Carousel>
+                  {itemsSlide.length ? (
+                    <Link to="/category/13">
+                      <Carousel autoplay>
+                        <div style={{width: '180px', height: '180px'}}>
+                          <img src={itemsSlide[0].image} style={contentStyle} />
+                        </div>
+                        <div style={{width: '180px', height: '180px'}}>
+                          <img src={itemsSlide[1].image} style={contentStyle} />
+                        </div>
+                        <div style={{width: '180px', height: '180px'}}>
+                          <img src={itemsSlide[2].image} style={contentStyle} />
+                        </div>
+                        <div style={{width: '180px', height: '180px'}}>
+                          <img src={itemsSlide[3].image} style={contentStyle} />
+                        </div>
+                      </Carousel>
+                    </Link>
                   ) : (
                     <Carousel autoplay>
                       <div>
