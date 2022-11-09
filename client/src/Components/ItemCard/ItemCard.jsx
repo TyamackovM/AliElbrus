@@ -3,8 +3,12 @@ import { Card, Rate, Button } from "antd";
 import styles from "./ItemCard.module.css";
 import { useLocation } from "react-router-dom";
 import FormFilter from "../Cards/FormFilter";
+import { addItem } from "../../store/cart/actionCreators";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ItemCard() {
+  const user_id = useSelector((state) => state.user.id);
+  const dispatch = useDispatch(); 
   const location = useLocation();
   const [item, setItem] = useState(location.state.el);
   console.log(item);
@@ -112,6 +116,23 @@ export default function ItemCard() {
   const onTab2Change = (key) => {
     setActiveTabKey2(key);
   };
+
+  const cartHandler = async (event) => {
+    console.log("user_id", user_id);
+    //setItemId(+event.target.parentNode.parentNode.id);
+    const response = await fetch("http://localhost:4000/add-item-to-cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user_id, item_id: item.id }),
+      credentials: "include",
+    });
+    const result = await response.json();
+
+    dispatch(addItem(1));
+  };
+
 
   return (
     <div
@@ -260,12 +281,12 @@ export default function ItemCard() {
                       </div>
                     </div>
                     <div style={{ marginTop: "20px"}}>
-                      <Button className={styles.btnReg}>Buy now</Button>
                       <Button
+                      onClick={cartHandler}
                         className={styles.btnReg}
                         style={{ marginLeft: "3px" }}
                       >
-                        Add card
+                        Add cart
                       </Button>
                     </div>
                   </div>
