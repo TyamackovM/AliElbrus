@@ -26,14 +26,20 @@ export default function Orders() {
   }, []);
   return (
     <>
-      <div>
-        <OrderMessage />
-      </div>
-      <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
-        {order?.map((el) => (
-          <OneOrder el={el} key={el.id} />
-        ))}
-      </div>
+    {order?.length ? (
+    <>
+    <div>
+      <OrderMessage />
+    </div>
+    <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
+      {order?.map((el) => (
+        <OneOrder el={el} key={el.id} />
+      ))}
+    </div>
+  </>
+    ) : (
+   <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}}>No orders</div> 
+    )}
     </>
   );
 }

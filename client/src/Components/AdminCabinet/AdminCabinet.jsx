@@ -77,7 +77,7 @@ export default function AdminCabinet() {
         <div style={{color: 'green', fontSize: '23px', marginLeft: '10px'}}>Your items has been added!</div>
       </div>
     ) : (
-<div style={{ display: "flex", flexDirection: "column", width: "300px", marginLeft: '150px' }}>
+<div style={{ display: "flex", flexDirection: "column", width: "300px", marginLeft: '110px' }}>
 <div style={{ display: "flex", justifyContent: 'center' }}>
   <div style={{ display: "flex", justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
   <div>
