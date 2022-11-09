@@ -32,13 +32,13 @@ router.post("/", async (req, res) => {
     const likes = await WishList.findAll({where: { user_id: req.session.newUserId}, raw: true })
     const items = likedItems.map(item => {
       likes.forEach(like => {
-        if (Object.values(like).includes(item.id)) {
+        if (like.item_id === item.id) {
           item.liked = true;
         }
       });
       return item;
     })
-    console.log('items', items);
+    
     res.json({ items, length: itemsNum.length });
   } else{
     const items = likedItems

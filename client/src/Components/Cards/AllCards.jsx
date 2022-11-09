@@ -33,33 +33,34 @@ export default function AllCards() {
   const { id } = useParams();
 
   const [current, setCurrent] = useState(1);
-  
+
   const onChange = async (page) => {
     setCurrent(page);
-    const result = await loadItempagination({page: current, category: id})
-    setAllItems(result.likedItems)
+    const result = await loadItempagination({ page: current, category: id });
+    setAllItems(result.likedItems);
     setFilterItems(result.likedItems);
-    setallFindItems(result.length)
+    setallFindItems(result.length);
   };
 
-  
   useEffect(() => {
     if (id) {
       (async function () {
-        const result = await loadItempagination({page: current, category: id})
-        setAllItems(result.likedItems)
+        const result = await loadItempagination({
+          page: current,
+          category: id,
+        });
+        setAllItems(result.likedItems);
         setFilterItems(result.likedItems);
-        setallFindItems(result.length)
+        setallFindItems(result.length);
       })();
     }
   }, [current]);
-  
+
   // const paginationHandler = async (event) => {
   //  const result = await loadItempagination({page: current, category: id})
   //  setAllItems(result.items)
   //  setFilterItems(result.items);
   // };
-
 
   const handler = async (event) => {
     setCheckTag({ ...checkTag, [event.target.name]: event.target.value });
@@ -250,11 +251,17 @@ export default function AllCards() {
                 </div>
               )}
             </Content>
-            <Footer   style={{ textAlign: "center", marginTop: "50px" }}>
+            <Footer style={{ textAlign: "center", marginTop: "50px" }}>
               <div>
-                {allFindItems>10 ? (
-                  <Pagination current={current} onChange={onChange}  total={allFindItems} />
-                ) : ('')}              
+                {allFindItems > 10 ? (
+                  <Pagination
+                    current={current}
+                    onChange={onChange}
+                    total={allFindItems}
+                  />
+                ) : (
+                  ""
+                )}
               </div>
             </Footer>
           </Layout>
