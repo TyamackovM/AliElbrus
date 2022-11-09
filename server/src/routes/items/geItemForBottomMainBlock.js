@@ -17,8 +17,7 @@ router.get('/', async (req, res) => {
       const length = allItemsInCategory.length
       const randomIndexes = Math.floor(Math.random() * (length - 1) + 1)
       const getRandomItems = allItemsInCategory[randomIndexes]
-        result.push(getRandomItems)
-    
+        result.push(getRandomItems)    
       }
     } catch (error) {
       console.log('error: ', error);    
