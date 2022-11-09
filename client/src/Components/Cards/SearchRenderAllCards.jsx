@@ -253,10 +253,10 @@ export default function SearchRenderAllCards() {
               </Content>
               <Footer style={{ textAlign: "center", marginTop: "50px" }}>
                 <div>
-                  {length>6 ? (<Pagination                    
+                  {length>10 ? (<Pagination                    
                     current={current}
                     onChange={onChange}
-                    total={length * 2}
+                    total={length}
                   />):('')}
                   
                 </div>
