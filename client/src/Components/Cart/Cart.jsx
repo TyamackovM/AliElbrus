@@ -18,14 +18,14 @@ export default function Cart() {
         credentials: "include",
       });
       const result = await response.json();
-      console.log("RESULT!!!!!!@###@#@", result);
       setCart(result.cart);
-      console.log("CART!@!!!!", cart);
     })();
   }, []);
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: 'center' }}>
+    <div
+      style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+    >
       {cart?.map((el) => (
         <OneCart el={el} key={el.id} />
       ))}
