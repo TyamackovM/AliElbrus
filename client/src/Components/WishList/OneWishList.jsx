@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../Cards/OneCard.module.css";
-import { useSelector } from "react-redux";
+import { initItem, addItem } from "../../store/cart/actionCreators";
+import { useSelector, useDispatch } from "react-redux";
 import {
   EditOutlined,
   HeartOutlined,
@@ -13,45 +14,42 @@ import { useState } from "react";
 const { Meta } = Card;
 
 export default function OneWishList({ el }) {
-  console.log(el);
+  const dispatch = useDispatch();
   const user_id = useSelector((state) => state.user.id);
   const [likeFill, setLikeFill] = useState(el.liked ? true : false);
 
-  const selectCardHandler = async (event) => {
-    event.preventDefault();
+  const selectCardHandler = async (event) => {};
 
-    const item_id = +event.target.parentNode.parentNode.id;
-    console.log(event.target.parentNode.parentNode);
-    if (
-      event.target.tagName === "svg" &&
-      event.target.parentNode.parentNode.tagName === "BUTTON"
-    ) {
-      //   setLikeFill(!likeFill);
-      //   const response = await fetch(
-      //     "http://localhost:4000/add-item-to-wish-list",
-      //     {
-      //       method: "POST",
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //       },
-      //       body: JSON.stringify({ user_id, item_id }),
-      //       credentials: "include",
-      //     }
-      //   );
-      // } else {
-      setLikeFill(!likeFill);
-      const response = await fetch(
-        "http://localhost:4000/delete-item-from-wish-list",
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ user_id, item_id }),
-          credentials: "include",
-        }
-      );
-    }
+  const likeHandler = async (event) => {
+    setLikeFill(!likeFill);
+    const response = await fetch(
+      "http://localhost:4000/delete-item-from-wish-list",
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user_id, item_id: el["Item.id"] }),
+        credentials: "include",
+      }
+    );
+    console.log("UNLIKE");
+  };
+
+  const cartHandler = async (event) => {
+    const response = await fetch(
+      "http://localhost:4000/delete-item-from-wish-list-cart",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user_id, item_id: el["Item.id"] }),
+        credentials: "include",
+      }
+    );
+    const result = await response.json();
+    dispatch(initItem(result.cart.length));
   };
 
   return (
@@ -87,20 +85,27 @@ export default function OneWishList({ el }) {
               background: "none",
               display: "flex",
               justifyContent: "center",
-              cursor: 'pointer'
+              cursor: "pointer",
             }}
           >
             {likeFill ? (
               <HeartOutlined
+                onClick={likeHandler}
                 style={{ color: "red" }}
                 className={styles.icon_card_heart}
               />
             ) : (
-              <HeartOutlined className={styles.icon_card_heart} />
+              <HeartOutlined
+                onClick={likeHandler}
+                className={styles.icon_card_heart}
+              />
             )}
           </button>
         </div>
-        <ShoppingCartOutlined style={{ fontSize: "22px", color: "grey", cursor: 'pointer' }} />
+        <ShoppingCartOutlined
+          onClick={cartHandler}
+          style={{ fontSize: "22px", color: "grey", cursor: "pointer" }}
+        />
       </div>
     </Card>
   );
