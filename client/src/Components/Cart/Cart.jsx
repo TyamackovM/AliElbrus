@@ -31,7 +31,6 @@ export default function Cart() {
       {cart?.map((el) => (
         <OneCart el={el} key={el.id} />
       ))}
-    <AdressForm/>
     </div>
   );
 }
