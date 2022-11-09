@@ -45,26 +45,20 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Main />} />
         <Route path="/search" element={<SearchRenderAllCards />} />
-
         <Route path="testcard" element={<ItemCard></ItemCard>}></Route>
-        <Route path="chat" element={<Chat />} />
-
-
-        <Route path="/admin-cabinet" element={<AdminCabinet />} />
+        {/* <Route path="chat" element={<Chat />} /> */}
+        {/* <Route path="/admin-cabinet" element={<AdminCabinet />} /> */}
         <Route path="/category/:id" element={<AllCards></AllCards>}></Route>
-
           <Route path='item-card' element={<ItemCard></ItemCard>}></Route>
-          <Route path='chat' element={<Chat />} />
-
-
+          {/* <Route path='chat' element={<Chat />} /> */}
         {/* <Route path='/account' element={<SettingsPerson />} /> */}
-        <Route path="/testcard" element={<ItemCard />} />
+        {/* <Route path="/testcard" element={<ItemCard />} /> */}
         <Route path="/account" element={<SettingsPerson />}>
           <Route path="info" element={<Account />} />
           <Route path="wish-list" element={<WishList />} />
           <Route path="orders" element={<Orders />} />
           <Route path="cart" element={<Cart />} />
-          <Route path="adress-form" element={<AdressForm />}/>
+          <Route path="address-form" element={<AdressForm />}/>
           <Route path="chat" element={<Chat />} />
           {user.status === 'admin' || user.status === 'seller' ? (
             <Route path="upload-items" element={<AdminCabinet />} />
@@ -79,14 +73,14 @@ function App() {
         </Route>
 
           {/* <Route path='/account' element={<SettingsPerson />} /> */}
-          <Route path='/item-card' element={<ItemCard/>}/>
+          {/* <Route path='/item-card' element={<ItemCard/>}/>
            <Route path='/account' element={<SettingsPerson />}>
             <Route path='info' element={<Account />} />
             <Route path='wish-list' element={<WishList />} />
             <Route path='orders' element={<Orders />} />
             <Route path='cart' element={<Cart />} />
             <Route path='chat' element={<Chat />} />
-          </Route>      
+          </Route>       */}
         </Routes>
         <FooterPage />   
       </div>

@@ -19,7 +19,7 @@ const AdressForm = () => {
 
   const handleRegistr = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:4000/registr", {
+    const res = await fetch("http://localhost:4000/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -68,8 +68,8 @@ const AdressForm = () => {
           ]}
         >
           <Input
-            placeholder="County"
-            name="County"
+            placeholder="Country"
+            name="Country"
             onChange={inputHandler}
             style={{ width: "300px", borderRadius: "5px" }}
           />
