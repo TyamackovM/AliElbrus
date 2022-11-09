@@ -42,9 +42,9 @@ export default function Person() {
         <MessageOutlined style={{ fontSize: "20px", marginRight: "15px" }} />
       </div>
       <div style={{ display: "flex", justifyContent: "space-evenly", marginBottom: '7px' }}>
-        <Link to='/account/info' style={{ fontSize: "13px" }}>Account</Link>
-        <Link to='/account/orders' style={{ fontSize: "13px" }}>Orders</Link>
-        <Link to='/account/chat' style={{ fontSize: "13px" }}>Messages</Link>
+        <Link to='/account/info' style={{ fontSize: "13px", color: 'black' }}>Account</Link>
+        <Link to='/account/orders' style={{ fontSize: "13px", color: 'black' }}>Orders</Link>
+        <Link to='/account/chat' style={{ fontSize: "13px", color: 'black' }}>Messages</Link>
       </div>
       <div style={{width: '190px', height: '180px', display: 'flex', justifyContent: 'center'}}>
         <div className={style.bottomBlock}>
