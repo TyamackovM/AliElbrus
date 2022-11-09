@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import style from "../Registr/Registr.module.css";
 import { getUser } from "../../store/user/actionCreators";
 import { changeBooleanStateAC } from "../../store/modal/actionCreators";
+import { initItem, addItem } from "../../store/cart/actionCreators";
 import { Radio } from "antd";
 
 const AdressForm = () => {
@@ -12,6 +13,8 @@ const AdressForm = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const user_id = useSelector((state) => state.user.id);
 
   const inputHandler = async (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -39,6 +42,19 @@ const AdressForm = () => {
   // const onFinishFailed = (errorInfo) => {
   //   console.log("Failed:", errorInfo);
   // };
+
+  const orderHandler = async () => {
+    const response = await fetch("http://localhost:4000/create-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user_id }),
+      credentials: "include",
+    });
+    const result = await response.json();
+    dispatch(initItem(result.cart.length));
+  };
 
   return (
     <Form
@@ -113,13 +129,12 @@ const AdressForm = () => {
           <Radio value={1}>pay upon receipt</Radio>
           <Radio value={2}>pay now</Radio>
         </Radio.Group>
-
       </div>
 
       <Button
+        onClick={orderHandler}
         className={style.btnReg}
-  
-        style={{ width: "300px", height: "40px", margin: '17px' }}
+        style={{ width: "300px", height: "40px", margin: "17px" }}
         shape="round"
         htmlType="submit"
       >

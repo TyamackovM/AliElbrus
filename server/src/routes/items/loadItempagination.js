@@ -22,14 +22,20 @@ router.post("/", async (req, res) => {
   });
   if(req.session.newUserId){
     const likes = await WishList.findAll({where: { user_id: req.session.newUserId}, raw: true })
+  console.log("LIKES", likes);
     const likedItems = items.map(item => {
       likes.forEach(like => {
-        if (Object.values(like).includes(item.id)) {
+
+        if (like.item_id === item.id) {
+        
           item.liked = true;
+
         }
+
       });
       return item;
     })
+    console.log('LIKEDITEMS!!',likedItems);
     res.json({ likedItems, length: itemsNum.length });
   } else{
     const likedItems = items
