@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Item, Sequelize } = require('../../../db/models');
+const { Item } = require('../../../db/models');
 
 function getRandomCategory() {
   const categoriesQuantity = 26
