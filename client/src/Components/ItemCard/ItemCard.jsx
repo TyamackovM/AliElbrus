@@ -6,9 +6,11 @@ import FormFilter from "../Cards/FormFilter";
 import { addItem } from "../../store/cart/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
 import checkItem from "../../helpers/checkItem";
+import { changeBooleanStateAC } from "../../store/modal/actionCreators";
 
 export default function ItemCard() {
   const user_id = useSelector((state) => state.user.id);
+  const user = useSelector((state) => state.user)
   const dispatch = useDispatch(); 
   const location = useLocation();
   const [item, setItem] = useState(location.state.el);
@@ -40,9 +42,8 @@ export default function ItemCard() {
       setQuantity(quantity + 1);
     }
   }
-
-  const cartHandler = async (event) => {
-
+  console.log(333444);
+  const cartHandler = async () => {
     const response = await fetch("http://localhost:4000/add-many-item-to-cart", {
       method: "POST",
       headers: {
@@ -143,8 +144,9 @@ export default function ItemCard() {
     setActiveTabKey2(key);
   };
 
-
-
+  const modalPageHandler = async (arg) => {
+    dispatch(changeBooleanStateAC(arg));
+  };
 
   return (
     <div
@@ -295,13 +297,24 @@ export default function ItemCard() {
                       </div>
                     </div>
                     <div style={{ marginTop: "20px"}}>
-                      <Button
+                      {user.login ? (
+                        <Button
                       onClick={cartHandler}
                         className={styles.btnReg}
                         style={{ marginLeft: "3px" }}
                       >
                         Add cart
                       </Button>
+                      ) : (
+                        <Button
+                        onClick={() => modalPageHandler(true)}
+                        className={styles.btnReg}
+                        style={{ marginLeft: "3px" }}
+                      >
+                        Add cart
+                      </Button>
+                      )}
+                      
                     </div>
                   </div>
                 </div>
