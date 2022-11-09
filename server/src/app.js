@@ -35,6 +35,7 @@ const geItemForBottomMainBlock = require('./routes/items/geItemForBottomMainBloc
 const createOrder = require('./routes/user/createOrder')
 const checkOneItem = require('./routes/items/checkOneItem')
 const addManyItemToCart = require('./routes/items/add-many-item-to-cart')
+const displayOrders = require('./routes/user/displayOrders')
 
 
 
@@ -91,6 +92,7 @@ app.use('/update-status', updateUserStatus)
 app.use('/check-one-item', checkOneItem)
 app.use('/add-many-item-to-cart', addManyItemToCart)
 app.use('/get-item-main-bottom', geItemForBottomMainBlock)
+app.use('/display-orders', displayOrders)
 
 const httpServer = app.listen(CURRENT_PORT ?? 5000, () => {
   console.log(`Server started ${CURRENT_PORT}`);
