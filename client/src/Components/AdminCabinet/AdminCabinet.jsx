@@ -1,10 +1,10 @@
-import style from "../Registr/Registr.module.css";
-import React, { useEffect } from 'react';
+import style from "./Admin.module.css";
+import React, { useEffect } from "react";
 import { Button, Form, Input } from "antd";
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
-import getItemsFieldsForAdmin from '../../helpers/getItemsFieldsForAdmin';
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
+import getItemsFieldsForAdmin from "../../helpers/getItemsFieldsForAdmin";
 
 import addNewItemToDB from "../../helpers/addNewItemToDB";
 
@@ -43,81 +43,113 @@ export default function AdminCabinet() {
   };
 
   const saveHandler = () => {
-    addNewItemToDB(allInputs)
-  }
+    addNewItemToDB(allInputs);
+  };
 
   return (
     <>
-      <div>
-        <div>
-          <label for="cars">Choose a property: </label>
-          <select onChange={handler} name="tag1" id="cars">
-            <option>Выберите тег</option>
-            <option value="color">Color</option>
-            <option value="size">Size</option>
-            <option value="brand">Brand</option>
-            <option value="processor">Processor</option>
-            <option value="display">Display</option>
-            <option value="gender">Gender</option>
-            <option value="style">Style</option>
+      <div style={{ display: "flex", flexDirection: "column", width: "300px", marginLeft: '150px' }}>
+        <div style={{ display: "flex", justifyContent: 'center' }}>
+          <div style={{ display: "flex", justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
+          <div>
+            {/* <div>
+              <label for="cars">Choose a property: </label>
+            </div> */}
+            <select style={{width: '300px', margin: '10px 0px', height: '26px', fontSize: '18px', textAlign: 'center'}} onChange={handler} name="tag1" id="cars">
+              <option>Choose property</option>
+              <option value="color">Color</option>
+              <option value="size">Size</option>
+              <option value="brand">Brand</option>
+              <option value="processor">Processor</option>
+              <option value="display">Display</option>
+              <option value="gender">Gender</option>
+              <option value="style">Style</option>
+            </select>
+            <div>
+              <input style={{borderRadius: '6px', width: '300px'}} onChange={handler2} name="first" type="text" />
+            </div>
+          </div>
+          {/* <div>
+            <label for="cars">Choose a property: </label>
+          </div> */}
+          <div>
+            <select style={{width: '300px', margin: '10px 0px', height: '26px', fontSize: '18px', textAlign: 'center'}} onChange={handler} name="cars" id="cars">
+              <option>Choose property</option>
+              <option value="color">Color</option>
+              <option value="size">Size</option>
+              <option value="brand">Brand</option>
+              <option value="processor">Processor</option>
+              <option value="display">Display</option>
+              <option value="gender">Gender</option>
+              <option value="style">Style</option>
+            </select>
+            <div>
+              <input style={{borderRadius: '6px', width: '300px'}} onChange={handler2} type="text" />
+            </div>
+          </div>
+          <div>
+            <div>Price: </div>
+            <input
+              onChange={handler3}
+              placeholder="Price in $"
+              name="price"
+              type="text"
+              style={{borderRadius: '6px', width: '300px'}}
+            />
+          </div>
+          <div>
+            <div>Image:</div>
+            <input style={{borderRadius: '6px', width: '300px'}} onChange={handler3} placeholder="Your path" name="image" />
+          </div>
+          <div>
+            <div>Title: </div>
+            <input
+              onChange={handler3}
+              placeholder="Title your item"
+              name="title"
+              style={{borderRadius: '6px', width: '300px'}}
+            />
+          </div>
+          <select style={{width: '300px', margin: '10px 0px', height: '26px', fontSize: '18px', textAlign: 'center'}} onChange={handler3} name="category_id" id="cars">
+            <option>Choose category</option>
+            <option value="1">Dresses</option>
+            <option value="2">Women's hoodies</option>
+            <option value="3">Women's shirts</option>
+            <option value="4">Women's jeans</option>
+            <option value="5">Women's shoes</option>
+            <option value="6">Men's suits</option>
+            <option value="7">Men's jeans & pants</option>
+            <option value="8">Men's sweaters</option>
+            <option value="9">Men's jackets</option>
+            <option value="10">Men's shoes</option>
+            <option value="11">Phones</option>
+            <option value="12">Walkie Talkie</option>
+            <option value="13">Accessories</option>
+            <option value="14">Laptops</option>
+            <option value="15">Desktops</option>
+            <option value="16">Tablets</option>
+            <option value="17">Cameras</option>
+            <option value="18">TVs</option>
+            <option value="19">Drones</option>
+            <option value="20">Watches</option>
+            <option value="21">Rings</option>
+            <option value="22">Earings</option>
+            <option value="23">Cat Supplies</option>
+            <option value="24">Furniture</option>
+            <option value="25">Decor</option>
           </select>
-          <input onChange={handler2} name="first" type="text" />
+          <Button
+            className={style.btnReg}
+            onClick={saveHandler}
+            style={{ width: '300px', height: "40px" }}
+            type="primary"
+            shape="round"
+            htmlType="submit"
+          >
+            Save
+          </Button>
         </div>
-        <label for="cars">Choose a property: </label>
-        <div>
-          <select onChange={handler} name="cars" id="cars">
-            <option>Выберите тег</option>
-            <option value="color">Color</option>
-            <option value="size">Size</option>
-            <option value="brand">Brand</option>
-            <option value="processor">Processor</option>
-            <option value="display">Display</option>
-            <option value="gender">Gender</option>
-            <option value="style">Style</option>
-          </select>
-          <input onChange={handler2} type="text" />
         </div>
-        <div>
-          price: <input onChange={handler3} name="price" type="text" />$
-        </div>
-        <div>
-          Image
-          <input onChange={handler3} name="image" />
-        </div>
-        <div>
-          Title <input onChange={handler3} name="title" />
-        </div>
-        <select onChange={handler3} name="category_id" id="cars">
-          <option>Выберите категорию</option>
-          <option value="1">Dresses</option>
-          <option value="2">Women's hoodies</option>
-          <option value="3">Women's shirts</option>
-          <option value="4">Women's jeans</option>
-          <option value="5">Women's shoes</option>
-          <option value="6">Men's suits</option>
-          <option value="7">Men's jeans & pants</option>
-          <option value="8">Men's sweaters</option>
-          <option value="9">Men's jackets</option>
-          <option value="10">Men's shoes</option>
-          <option value="11">Phones</option>
-          <option value="12">Walkie Talkie</option>
-          <option value="13">Accessories</option>
-          <option value="14">Laptops</option>
-          <option value="15">Desktops</option>
-          <option value="16">Tablets</option>
-          <option value="17">Cameras</option>
-          <option value="18">TVs</option>
-          <option value="19">Drones</option>
-          <option value="20">Watches</option>
-          <option value="21">Rings</option>
-          <option value="22">Earings</option>
-          <option value="23">Cat Supplies</option>
-          <option value="24">Furniture</option>
-          <option value="25">Decor</option>
-        </select>
-        <Button className={style.btnReg} onClick={saveHandler} style={{width: '300px', height: '40px'}} type="primary" shape="round" htmlType="submit">
-          Save
-        </Button>
       </div>
     </>
   );
