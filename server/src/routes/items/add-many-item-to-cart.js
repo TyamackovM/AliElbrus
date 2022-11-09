@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
         i++
     }
    
-    // res.json({quantity})
+    res.json({quantity})
   } catch (error) {
     res.send(`Error while loading items! ${error}`)
   }

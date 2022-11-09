@@ -43,8 +43,7 @@ export default function ItemCard() {
 
   const cartHandler = async (event) => {
 
-    dispatch(addItem(quantity));
-    await fetch("http://localhost:4000/add-many-item-to-cart", {
+    const response = await fetch("http://localhost:4000/add-many-item-to-cart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,6 +51,9 @@ export default function ItemCard() {
       body: JSON.stringify({ user_id, item_id: item.id, quantity }),
       credentials: "include",
     });
+    const result = await response.json(); 
+    console.log('quantyty111', result );
+    dispatch(addItem(result.quantity));
   };
 
   const tabListNoTitle = [
