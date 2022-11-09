@@ -51,7 +51,7 @@ export default function OneCart({ el }) {
         >
           <>
             <Meta
-              avatar={<Avatar onClick={redirectHandler} src={el["Item.image"]} />}
+              avatar={<Avatar onClick={redirectHandler} style={{cursor: 'pointer' }} src={el["Item.image"]} />}
               title={el["Item.title"]}
               description={"$" + el["Item.price"]}
             />
