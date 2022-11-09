@@ -1,6 +1,6 @@
 import { Button, Form, Input, message } from "antd";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import style from "../Registr/Registr.module.css";
 import { getUser } from "../../store/user/actionCreators";
@@ -67,6 +67,7 @@ const AdressForm = () => {
         key,
         duration: 2,
       });
+      navigate('../orders')
     }, 2000);
   };
 
@@ -144,7 +145,7 @@ const AdressForm = () => {
           <Radio value={2}>pay now</Radio>
         </Radio.Group>
       </div>
-  <Link to='/account/orders'>
+
       <Button
         onClick={orderHandler}
         className={style.btnReg}
@@ -154,7 +155,6 @@ const AdressForm = () => {
       >
         Make an order
       </Button>
-      </Link>
     </Form>
   );
 };
