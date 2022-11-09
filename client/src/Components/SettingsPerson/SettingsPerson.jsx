@@ -1,27 +1,28 @@
-import React, { useState } from 'react';
-import Categories from '../Categories/Categories';
-import { Layout, Space, Spin, Carousel } from 'antd';
-import SliderCarousel from '../Carousel/Carousel';
-import Person from '../Person/Person';
+import React, { useState } from "react";
+import Categories from "../Categories/Categories";
+import { Layout, Space, Spin, Carousel } from "antd";
+import SliderCarousel from "../Carousel/Carousel";
+import Person from "../Person/Person";
 import {
   VideoCameraOutlined,
   UploadOutlined,
   UserOutlined,
-} from '@ant-design/icons';
-import { Breadcrumb, Menu } from 'antd';
-import WishList from '../WishList/WishList';
-import Account from '../Account/Account';
-import { Link, Route, Routes, Outlet } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+} from "@ant-design/icons";
+import { Breadcrumb, Menu } from "antd";
+import WishList from "../WishList/WishList";
+import Account from "../Account/Account";
+import { Link, Route, Routes, Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const contentStyle = {
-  width: '180px',
-  height: '250px',
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
   // color: "#fff",
-  lineHeight: '160px',
-  textAlign: 'center',
-  background: 'gray',
+  lineHeight: "160px",
+  textAlign: "center",
+  background: "gray",
 };
 
 export default function SettingsPerson() {
@@ -32,12 +33,12 @@ export default function SettingsPerson() {
   const { Header, Footer, Sider, Content } = Layout;
 
   const spinner = (
-    <div style={{ display: 'flex', justifyContent: 'center', height: '300px' }}>
+    <div style={{ display: "flex", justifyContent: "center", height: "300px" }}>
       <div
         style={{
-          alignItems: 'center',
-          display: 'flex',
-          justifyContent: 'center',
+          alignItems: "center",
+          display: "flex",
+          justifyContent: "center",
         }}
       >
         <Space size="middle">
@@ -49,9 +50,9 @@ export default function SettingsPerson() {
 
   useEffect(() => {
     (async function () {
-      const userFindBack = await fetch('http://localhost:4000/find-slider', {
-        method: 'GET',
-        credentials: 'include',
+      const userFindBack = await fetch("http://localhost:4000/find-slider", {
+        method: "GET",
+        credentials: "include",
       });
       const itemsAll = await userFindBack.json();
       if (itemsAll.length) {
@@ -84,21 +85,20 @@ export default function SettingsPerson() {
     getItem(<Link to="/account/orders">Orders</Link>, 3),
     getItem(<Link to="/account/cart">Cart</Link>, 4),
     getItem(<Link to="/account/chat">Chat</Link>, 5),
-    user.status === 'admin' || user.status === 'seller'
+    user.status === "admin" || user.status === "seller"
       ? getItem(<Link to="/account/upload-items">Upload items</Link>, 6)
-      : '',
-    user.status === 'admin'
+      : "",
+    user.status === "admin"
       ? getItem(<Link to="/account/admin-panel">Admin panel</Link>, 7)
-      : '',
-
+      : "",
   ];
 
   return !loading ? (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <div style={{ width: '72%' }}>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ width: "72%" }}>
         <Layout>
           <Sider
-            style={{ background: 'white', height: '100px' }}
+            style={{ background: "white", height: "100px" }}
             breakpoint="lg"
             collapsedWidth="0"
             onBreakpoint={(broken) => {}}
@@ -109,20 +109,20 @@ export default function SettingsPerson() {
             <div className="logo" />
             <Menu
               style={{
-                borderRadius: '5px',
-                boxShadow: '1px 1px 1px 1px rgba(167, 167, 167, 0.596)',
+                borderRadius: "5px",
+                boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
               }}
               theme="white"
               mode="inline"
-              defaultSelectedKeys={['4']}
+              defaultSelectedKeys={["4"]}
               items={items}
             />
           </Sider>
           <Layout>
             <Content
               style={{
-                margin: '0px 16px',
-                borderRadius: '10px',
+                margin: "0px 16px",
+                borderRadius: "10px",
               }}
             >
               <div
@@ -130,8 +130,8 @@ export default function SettingsPerson() {
                 style={{
                   padding: 24,
                   minHeight: 360,
-                  borderRadius: '5px',
-                  boxShadow: '1px 1px 1px 1px rgba(167, 167, 167, 0.596)',
+                  borderRadius: "5px",
+                  boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
                 }}
               >
                 <Outlet />
@@ -139,39 +139,40 @@ export default function SettingsPerson() {
             </Content>
             <Sider
               style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                background: 'white',
-                height: '270px',
-                backgroundColor: 'white',
-                borderRadius: '5px',
-                boxShadow: '1px 1px 1px 1px rgba(167, 167, 167, 0.596)',
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                background: "white",
+                height: "200px",
+                backgroundColor: "white",
+                borderRadius: "5px",
+                boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
               }}
             >
-              <div style={{ display: 'flex' }}>
+              <div style={{ display: "flex", width: "180px",
+                    height: "200px", }}>
                 <div
                   style={{
-                    backgroundColor: 'red',
-                    width: '180px',
-                    height: '250px',
-                    marginTop: '11px',
+                    backgroundColor: "red",
+                    width: "180px",
+                    height: "180px",
+                    marginTop: "11px",
                   }}
                 >
                   {/* //! Логика слайдера */}
                   {itemsSlide.length ? (
                     <Link to="/category/13">
                       <Carousel autoplay>
-                        <div>
+                        <div style={{width: '180px', height: '180px'}}>
                           <img src={itemsSlide[0].image} style={contentStyle} />
                         </div>
-                        <div>
+                        <div style={{width: '180px', height: '180px'}}>
                           <img src={itemsSlide[1].image} style={contentStyle} />
                         </div>
-                        <div>
+                        <div style={{width: '180px', height: '180px'}}>
                           <img src={itemsSlide[2].image} style={contentStyle} />
                         </div>
-                        <div>
+                        <div style={{width: '180px', height: '180px'}}>
                           <img src={itemsSlide[3].image} style={contentStyle} />
                         </div>
                       </Carousel>
