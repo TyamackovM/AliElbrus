@@ -66,7 +66,7 @@ export default function AdminCabinet() {
               <option value="style">Style</option>
             </select>
             <div>
-              <input style={{borderRadius: '6px', width: '300px'}} onChange={handler2} name="first" type="text" />
+              <input className={style.inpAll}  style={{borderRadius: '6px', width: '300px'}} onChange={handler2} name="first" type="text" />
             </div>
           </div>
           {/* <div>
@@ -84,12 +84,13 @@ export default function AdminCabinet() {
               <option value="style">Style</option>
             </select>
             <div>
-              <input style={{borderRadius: '6px', width: '300px'}} onChange={handler2} type="text" />
+              <input className={style.inpAll} style={{borderRadius: '6px', width: '300px', border: '1px solid grey'}} onChange={handler2} type="text" />
             </div>
           </div>
           <div>
             <div>Price: </div>
             <input
+            className={style.inpAll} 
               onChange={handler3}
               placeholder="Price in $"
               name="price"
@@ -99,11 +100,12 @@ export default function AdminCabinet() {
           </div>
           <div>
             <div>Image:</div>
-            <input style={{borderRadius: '6px', width: '300px'}} onChange={handler3} placeholder="Your path" name="image" />
+            <input className={style.inpAll} style={{borderRadius: '6px', width: '300px'}} onChange={handler3} placeholder="Your path" name="image" />
           </div>
           <div>
             <div>Title: </div>
             <input
+            className={style.inpAll} 
               onChange={handler3}
               placeholder="Title your item"
               name="title"

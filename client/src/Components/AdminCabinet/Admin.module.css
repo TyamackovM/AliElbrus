@@ -14,4 +14,13 @@
   background-color: rgb(226, 119, 250);
 }
 
+.inpAll {
+  border-radius: 6px;
+   width: 300px; 
+   border: 1px solid grey;
+}
+
+.inpAll:active {
+  border: 1px solid blue;
+}
 

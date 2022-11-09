@@ -21,6 +21,7 @@ import AllCards from './Components/Cards/AllCards';
 import SearchRenderAllCards from './Components/Cards/SearchRenderAllCards';
 import AdminCabinet from './Components/AdminCabinet/AdminCabinet';
 import AdminPanel from './Components/AdminCabinet/AdminPanel';
+import AdressForm from './Components/Cart/AdressForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ function App() {
           <Route path="wish-list" element={<WishList />} />
           <Route path="orders" element={<Orders />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="adress-form" element={<AdressForm />}/>
           <Route path="chat" element={<Chat />} />
           {user.status === 'admin' || user.status === 'seller' ? (
             <Route path="upload-items" element={<AdminCabinet />} />
