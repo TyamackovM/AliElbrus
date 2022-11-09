@@ -199,10 +199,10 @@ export default function SearchRenderAllCards() {
                       <span className={styles.span}>Sort by price</span>
                     </div>
                     <Radio.Group>
-                      <Radio.Button onClick={sortLowHandler} name="low">
+                      <Radio.Button style={{borderColor: 'black', color: 'black'}} onClick={sortLowHandler} name="low">
                         Low
                       </Radio.Button>
-                      <Radio.Button onClick={sortHighHandler} name="high">
+                      <Radio.Button style={{borderColor: 'black', color: 'black'}} onClick={sortHighHandler} name="high">
                         High
                       </Radio.Button>
                     </Radio.Group>

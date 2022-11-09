@@ -33,3 +33,7 @@ code {
 .ant-card-body {
   padding: 12px !important;
 }
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):before {
+  background-color: black !important;
+}

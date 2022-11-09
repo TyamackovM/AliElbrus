@@ -4,6 +4,7 @@ import { Layout, Skeleton, Space, Spin } from "antd";
 import SliderCarousel from "../Carousel/Carousel";
 import Person from "../Person/Person";
 import RandomCards from "../RandomCards/RandomCards";
+import BottomMainBlock from "../BottomMainBlock/BottomMainBlock";
 
 export default function Main() {
   const [loading, setLoading] = useState(true);
@@ -107,7 +108,7 @@ export default function Main() {
             <div
               style={{
                 width: "100%",
-                backgroundColor: "#fffafa",
+                backgroundColor: "white",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -115,7 +116,7 @@ export default function Main() {
                 boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
               }}
             >
-              <RandomCards />
+              <BottomMainBlock />
             </div>
           </Content>
         </Layout>

@@ -93,38 +93,50 @@ const Navbar = () => {
             style={{ display: "flex" }}
             onClick={() => modalPageHandler(true)}
           >
-            <ShoppingCartOutlined className={styles.icon_cart} />
+            <ShoppingCartOutlined style={{fontSize: '30px', marginTop: '3px'}} className={styles.icon_cart} />
+              <div style={{marginLeft: '4px'}}>
             <div className={styles.cartnum}>
               <span className={styles.span_number}>{cart}</span>
-              <Link onClick={() => modalPageHandler(true)}>Cart</Link>
+              <Link style={{color: 'black'}} onClick={() => modalPageHandler(true)}>Cart</Link>
+              </div>
             </div>
           </Link>
         ) : (
           <Link style={{ display: "flex" }} to="/account/cart">
-            <ShoppingCartOutlined className={styles.icon_cart} />
+            <ShoppingCartOutlined style={{fontSize: '30px', marginTop: '3px'}} className={styles.icon_cart} />
+            <div style={{marginLeft: '4px'}}>
             <div className={styles.cartnum}>
               <span className={styles.span_number}>{cart}</span>
-              <Link to="/account/cart">Cart</Link>
+              <Link style={{color: 'black'}} to="/account/cart">Cart</Link>
+              </div>
             </div>
           </Link>
         )}
         {!user.login ? (
+          <div style={{marginTop: '10px', marginBottom: '10px'}}>
           <Link
             style={{ display: "flex" }}
             onClick={() => modalPageHandler(true)}
           >
-            <HeartOutlined className={styles.icon_heart} />
-            <Link onClick={() => modalPageHandler(true)}>
-              Wish <br /> List
+            <HeartOutlined style={{fontSize: '30px', marginTop: '7px'}} className={styles.icon_heart} />
+            <div style={{marginLeft: '4px', width: '20px' }}>
+            <Link style={{color: 'black'}} onClick={() => modalPageHandler(true)}>
+              Wish  List
             </Link>
+            </div>
           </Link>
+          </div>
         ) : (
+          <div style={{marginTop: '10px', marginBottom: '10px'}}>
           <Link style={{ display: "flex" }} to="/account/wish-list">
-            <HeartOutlined className={styles.icon_heart} />
-            <Link to="/account/wish-list">
-              Wish <br /> List
+            <HeartOutlined style={{fontSize: '30px', marginTop: '7px'}} className={styles.icon_heart} />
+            <div style={{marginLeft: '4px', width: '32px', display: 'flex',  }}>
+            <Link style={{color: 'black'}} to="/account/wish-list">
+              Wish<br />List
             </Link>
+            </div>
           </Link>
+          </div>
         )}
         <UserOutlined className={styles.icon_cart} />
         <div className={styles.sign_join_my}>
@@ -132,7 +144,7 @@ const Navbar = () => {
             {!user.login ? (
               <ModalPage />
             ) : (
-              <Link onClick={handleLogout}>Logout</Link>
+              <Link style={{color: 'black'}} onClick={handleLogout}>Logout</Link>
             )}
           </div>
           <div>

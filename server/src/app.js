@@ -6,6 +6,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
+const path = require('path');
 
 const regRouter = require('./routes/user/regRouter');
 const loginRouter = require('./routes/user/loginRouter');
@@ -33,6 +34,7 @@ const updateUserStatus = require('./routes/user/updateStatus')
 const checkOneItem = require('./routes//items/checkOneItem')
 const addManyItemToCart = require('./routes//items/add-many-item-to-cart')
 
+
 const app = express();
 
 const { PORT, SESSION_SECRET } = process.env;
@@ -42,6 +44,7 @@ app.use(morgan('dev'));
 app.use(cors({ credentials: true, origin: ['http://localhost:3000'] }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '../public/')));
 
 const sessionConfig = {
   name: 'SessionAliElbrus',
