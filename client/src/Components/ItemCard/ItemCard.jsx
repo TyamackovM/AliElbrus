@@ -41,6 +41,19 @@ export default function ItemCard() {
     }
   }
 
+  const cartHandler = async (event) => {
+
+    dispatch(addItem(quantity));
+    await fetch("http://localhost:4000/add-many-item-to-cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user_id, item_id: item.id, quantity }),
+      credentials: "include",
+    });
+  };
+
   const tabListNoTitle = [
     {
       key: "article",
@@ -128,21 +141,7 @@ export default function ItemCard() {
     setActiveTabKey2(key);
   };
 
-  const cartHandler = async (event) => {
-    console.log("user_id", user_id);
-    //setItemId(+event.target.parentNode.parentNode.id);
-    const response = await fetch("http://localhost:4000/add-item-to-cart", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ user_id, item_id: item.id }),
-      credentials: "include",
-    });
-    const result = await response.json();
 
-    dispatch(addItem(1));
-  };
 
 
   return (
