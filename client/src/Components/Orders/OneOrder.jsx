@@ -28,7 +28,7 @@ export default function OneOrder({ el }) {
       >
         <>
           <Meta
-            avatar={<Avatar onClick={clickId} src={el["Item.image"]} />}
+            avatar={<Avatar onClick={clickId} style={{ cursor: 'pointer' }} src={el["Item.image"]} />}
             title={el["Item.title"]}
             description={"$" + el["Item.price"]}
           />
