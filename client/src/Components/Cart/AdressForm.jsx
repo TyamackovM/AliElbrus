@@ -1,4 +1,4 @@
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -44,6 +44,8 @@ const AdressForm = () => {
   // };
 
   const orderHandler = async () => {
+
+    const key = 'updatable';
     const response = await fetch("http://localhost:4000/create-order", {
       method: "POST",
       headers: {
@@ -54,6 +56,18 @@ const AdressForm = () => {
     });
     const result = await response.json();
     dispatch(initItem(result.cart.length));
+    
+    message.loading({
+      content: 'Processing...',
+      key,
+    });
+    setTimeout(() => {
+      message.success({
+        content: 'Your order is accepted, thank you!!',
+        key,
+        duration: 2,
+      });
+    }, 2000);
   };
 
   return (
