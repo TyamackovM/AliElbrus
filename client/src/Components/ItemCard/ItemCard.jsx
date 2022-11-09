@@ -42,9 +42,8 @@ export default function ItemCard() {
       setQuantity(quantity + 1);
     }
   }
-
-  const cartHandler = async (event) => {
-
+  console.log(333444);
+  const cartHandler = async () => {
     const response = await fetch("http://localhost:4000/add-many-item-to-cart", {
       method: "POST",
       headers: {
@@ -145,7 +144,7 @@ export default function ItemCard() {
     setActiveTabKey2(key);
   };
 
-  const modalPageHandler = (arg) => {
+  const modalPageHandler = async (arg) => {
     dispatch(changeBooleanStateAC(arg));
   };
 
@@ -298,7 +297,7 @@ export default function ItemCard() {
                       </div>
                     </div>
                     <div style={{ marginTop: "20px"}}>
-                      {user.length ? (
+                      {user.login ? (
                         <Button
                       onClick={cartHandler}
                         className={styles.btnReg}
