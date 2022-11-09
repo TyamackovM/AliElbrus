@@ -103,11 +103,14 @@ export default function OneCard({ el }) {
           alt="Items_image"
           style={{
             borderRadius: "5px 5px 0px 0px",
+
             // width: "170px",
             // height: "210px",
             width: '100%',
             height: '100%',
-            objectFit: 'cover'
+            objectFit: 'cover',
+            cursor: 'pointer'
+
           }}
           src={el.image}
         />
