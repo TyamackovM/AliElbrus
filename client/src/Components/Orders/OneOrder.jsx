@@ -14,7 +14,7 @@ export default function OneOrder({ el }) {
     <>
       <Card
         style={{
-          width: 300,
+          width: 250,
         }}
       >
         <>

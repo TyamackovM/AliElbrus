@@ -9,7 +9,7 @@ import { initItem, addItem } from "../../store/cart/actionCreators";
 import { Radio } from "antd";
 
 const AdressForm = () => {
-  const [input, setInput] = useState({ login: "", email: "", password: "" });
+  const [input, setInput] = useState({ country: "", city: "", address: "" });
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,29 +19,6 @@ const AdressForm = () => {
   const inputHandler = async (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
-
-  const handleRegistr = async (e) => {
-    e.preventDefault();
-    const res = await fetch("http://localhost:4000/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(input),
-      credentials: "include",
-    });
-    const toJson = await res.json();
-    dispatch(getUser(toJson));
-    // dispatch(changeBooleanStateAC(true))
-    navigate("/");
-  };
-
-  // const onFinish = (values) => {
-  //   console.log("Success:", values);
-  // };
-  // const onFinishFailed = (errorInfo) => {
-  //   console.log("Failed:", errorInfo);
-  // };
 
   const orderHandler = async () => {
 
@@ -90,7 +67,7 @@ const AdressForm = () => {
         }}
       >
         <Form.Item
-          name="address"
+          name="country"
           rules={[
             {
               required: true,
@@ -100,7 +77,24 @@ const AdressForm = () => {
         >
           <Input
             placeholder="Country"
-            name="Country"
+            name="country"
+            onChange={inputHandler}
+            style={{ width: "300px", borderRadius: "5px" }}
+          />
+        </Form.Item>
+
+        <Form.Item
+          name="city"
+          rules={[
+            {
+              required: true,
+              message: "Please input your city!",
+            },
+          ]}
+        >
+          <Input
+            placeholder="City"
+            name="city"
             onChange={inputHandler}
             style={{ width: "300px", borderRadius: "5px" }}
           />
@@ -111,30 +105,13 @@ const AdressForm = () => {
           rules={[
             {
               required: true,
-              message: "Please input your city!",
-            },
-          ]}
-        >
-          <Input
-            placeholder="City"
-            name="City"
-            onChange={inputHandler}
-            style={{ width: "300px", borderRadius: "5px" }}
-          />
-        </Form.Item>
-
-        <Form.Item
-          name="password"
-          rules={[
-            {
-              required: true,
               message: "Please input your address!",
             },
           ]}
         >
           <Input
             placeholder="Address"
-            name="Address"
+            name="address"
             onChange={inputHandler}
             style={{ width: "300px", borderRadius: "5px" }}
           />

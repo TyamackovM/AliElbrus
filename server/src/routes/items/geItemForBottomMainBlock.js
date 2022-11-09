@@ -8,7 +8,7 @@ function getRandomCategory() {
 }
 
 router.get('/', async (req, res) => {
-  const quantityOfCards = 10
+  const quantityOfCards = 24
   let counter = 0
   let result = []
   try {

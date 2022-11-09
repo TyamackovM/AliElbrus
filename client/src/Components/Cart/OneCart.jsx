@@ -45,7 +45,8 @@ export default function OneCart({ el }) {
       {display ? (
         <Card
           style={{
-            width: 300,
+            width: 240,
+
           }}
         >
           <>

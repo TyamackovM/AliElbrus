@@ -119,7 +119,7 @@ const Navbar = () => {
             onClick={() => modalPageHandler(true)}
           >
             <HeartOutlined style={{fontSize: '30px', marginTop: '7px'}} className={styles.icon_heart} />
-            <div style={{marginLeft: '4px', width: '20px' }}>
+            <div style={{marginLeft: '4px', width: '32px' }}>
             <Link style={{color: 'black'}} onClick={() => modalPageHandler(true)}>
               Wish  List
             </Link>
