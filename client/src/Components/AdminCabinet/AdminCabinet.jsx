@@ -54,7 +54,7 @@ export default function AdminCabinet() {
     });
     setTimeout(() => {
       message.success({
-        content: 'Your item has been added, thank you!',
+        content: 'Your item have been added, thank you!',
         key,
         duration: 2,
       });
@@ -69,12 +69,12 @@ export default function AdminCabinet() {
   return (
     <>
     {ok ? (
-      <div style={{width: '630px', display: 'flex', justifyContent: 'center'}}>
+      <div style={{width: '530px', display: 'flex', justifyContent: 'center'}}>
         
         {/* <div style={{display: 'flex', justifyContent: 'center'}}>
         <img style={{width: '30px', height: '30px'}} src='/img/ok.png' alt='ok'/>
         </div> */}
-        <div style={{color: 'green', fontSize: '23px', marginLeft: '10px'}}>Your items has been added!</div>
+        <div style={{color: 'green', fontSize: '23px', marginLeft: '0px'}}>Your items have been added!</div>
       </div>
     ) : (
 <div style={{ display: "flex", flexDirection: "column", width: "300px", marginLeft: '110px' }}>
@@ -85,7 +85,7 @@ export default function AdminCabinet() {
       <label for="cars">Choose a property: </label>
     </div> */}
     <select style={{width: '300px', margin: '10px 0px', height: '26px', fontSize: '18px', textAlign: 'center'}} onChange={handler} name="tag1" id="cars">
-      <option>Choose property</option>
+      <option>Choose option</option>
       <option value="color">Color</option>
       <option value="size">Size</option>
       <option value="brand">Brand</option>
@@ -103,7 +103,7 @@ export default function AdminCabinet() {
   </div> */}
   <div>
     <select style={{width: '300px', margin: '10px 0px', height: '26px', fontSize: '18px', textAlign: 'center'}} onChange={handler} name="cars" id="cars">
-      <option>Choose property</option>
+      <option>Choose option</option>
       <option value="color">Color</option>
       <option value="size">Size</option>
       <option value="brand">Brand</option>
