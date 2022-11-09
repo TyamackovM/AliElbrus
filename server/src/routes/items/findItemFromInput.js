@@ -4,6 +4,7 @@ const { Item, WishList } = require('../../../db/models');
 
 router.post('/', async (req, res) => {
   const { value, check,} = req.body;
+  try {    
     const findItems = await Item.findAll({
       where: {
         title: {
@@ -26,6 +27,9 @@ router.post('/', async (req, res) => {
       raw: true,
     });
     res.json({findItems, length: findItemsLength.length});
+  } catch (error) {
+    console.log('error: ', error);    
+  }
 });
 
 module.exports = router;

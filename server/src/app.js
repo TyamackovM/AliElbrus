@@ -31,8 +31,9 @@ const deleteItemFromWishListCart = require('./routes/user/deleteItemFromWishList
 const addNewItem = require('./routes/items/addNewItem')
 const searchUserByEmail = require('./routes/user/searchUserByEmail')
 const updateUserStatus = require('./routes/user/updateStatus')
-const checkOneItem = require('./routes//items/checkOneItem')
-const addManyItemToCart = require('./routes//items/add-many-item-to-cart')
+const checkOneItem = require('./routes/items/checkOneItem')
+const addManyItemToCart = require('./routes/items/add-many-item-to-cart')
+const geItemForBottomMainBlock = require('./routes/items/geItemForBottomMainBlock')
 
 
 const app = express();
@@ -86,6 +87,7 @@ app.use('/update-status', updateUserStatus)
 app.use('/update-status', updateUserStatus)
 app.use('/check-one-item', checkOneItem)
 app.use('/add-many-item-to-cart', addManyItemToCart)
+app.use('/get-item-main-bottom', geItemForBottomMainBlock)
 
 const httpServer = app.listen(CURRENT_PORT ?? 5000, () => {
   console.log(`Server started ${CURRENT_PORT}`);

@@ -5,10 +5,20 @@ import SliderCarousel from "../Carousel/Carousel";
 import Person from "../Person/Person";
 import RandomCards from "../RandomCards/RandomCards";
 import BottomMainBlock from "../BottomMainBlock/BottomMainBlock";
+import { useEffect } from 'react';
+import geItemForBottomMainBlock from '../../helpers/geItemForBottomMainBlock';
 
 export default function Main() {
   const [loading, setLoading] = useState(true);
+  const [dresses, setDresses] = useState(null)
   const { Header, Footer, Sider, Content } = Layout;
+
+  useEffect(() => {
+    (async function () {
+      const result = await geItemForBottomMainBlock();
+      setDresses(result)
+    })();
+  }, []);
 
   const spinner = (
     <div style={{ display: "flex", justifyContent: "center", height: "300px" }}>
@@ -116,7 +126,7 @@ export default function Main() {
                 boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
               }}
             >
-              <BottomMainBlock />
+              {dresses?.map((el) => <BottomMainBlock el={el} key={el.id}/> )}  
             </div>
           </Content>
         </Layout>
