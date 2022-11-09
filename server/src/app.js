@@ -6,6 +6,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
+const path = require('path');
 
 const regRouter = require('./routes/user/regRouter');
 const loginRouter = require('./routes/user/loginRouter');
@@ -31,6 +32,9 @@ const addNewItem = require('./routes/items/addNewItem')
 const searchUserByEmail = require('./routes/user/searchUserByEmail')
 const updateUserStatus = require('./routes/user/updateStatus')
 const createOrder = require('./routes/user/createOrder')
+const checkOneItem = require('./routes//items/checkOneItem')
+const addManyItemToCart = require('./routes//items/add-many-item-to-cart')
+
 
 const app = express();
 
@@ -41,6 +45,7 @@ app.use(morgan('dev'));
 app.use(cors({ credentials: true, origin: ['http://localhost:3000'] }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '../public/')));
 
 const sessionConfig = {
   name: 'SessionAliElbrus',
@@ -80,7 +85,9 @@ app.use('/add-new-item', addNewItem)
 app.use('/search-by-email', searchUserByEmail)
 app.use('/update-status', updateUserStatus)
 app.use('/create-order', createOrder)
-
+app.use('/update-status', updateUserStatus)
+app.use('/check-one-item', checkOneItem)
+app.use('/add-many-item-to-cart', addManyItemToCart)
 
 const httpServer = app.listen(CURRENT_PORT ?? 5000, () => {
   console.log(`Server started ${CURRENT_PORT}`);

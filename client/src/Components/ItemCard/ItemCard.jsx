@@ -3,11 +3,26 @@ import { Card, Rate, Button } from "antd";
 import styles from "./ItemCard.module.css";
 import { useLocation } from "react-router-dom";
 import FormFilter from "../Cards/FormFilter";
+import { addItem } from "../../store/cart/actionCreators";
+import { useDispatch, useSelector } from "react-redux";
+import checkItem from "../../helpers/checkItem";
 
 export default function ItemCard() {
+  const user_id = useSelector((state) => state.user.id);
+  const dispatch = useDispatch(); 
   const location = useLocation();
   const [item, setItem] = useState(location.state.el);
-  console.log(item);
+  
+  if(item.item_id){
+    (   async function check() {
+      console.log(4444444);
+      const result = await checkItem({item_id: item.item_id})
+      console.log('ggooo', result);
+      // const resultToback = await result.json();
+      setItem(result)
+      console.log('898989', item);
+    })()
+  }
 
   const desc = ["terrible", "bad", "normal", "good", "wonderful"];
   const [value, setValue] = useState(3);
@@ -25,6 +40,21 @@ export default function ItemCard() {
       setQuantity(quantity + 1);
     }
   }
+
+  const cartHandler = async (event) => {
+
+    const response = await fetch("http://localhost:4000/add-many-item-to-cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user_id, item_id: item.id, quantity }),
+      credentials: "include",
+    });
+    const result = await response.json(); 
+    console.log('quantyty111', result );
+    dispatch(addItem(result.quantity));
+  };
 
   const tabListNoTitle = [
     {
@@ -113,6 +143,9 @@ export default function ItemCard() {
     setActiveTabKey2(key);
   };
 
+
+
+
   return (
     <div
       className="itemCard"
@@ -137,11 +170,13 @@ export default function ItemCard() {
               borderRadius: "5px",
             }}
           >
-            <div>
+            <div style={{ height: "450px", width: "350px", borderRadius: '5px' }}>
               <img
                 src={item.image}
                 alt=""
-                style={{ height: "450px", width: "350px" }}
+                style={{ width: '100%',
+                height: '100%',
+                objectFit: 'cover', borderRadius: '5px'}}
               />
             </div>
           </div>
@@ -260,12 +295,12 @@ export default function ItemCard() {
                       </div>
                     </div>
                     <div style={{ marginTop: "20px"}}>
-                      <Button className={styles.btnReg}>Buy now</Button>
                       <Button
+                      onClick={cartHandler}
                         className={styles.btnReg}
                         style={{ marginLeft: "3px" }}
                       >
-                        Add card
+                        Add cart
                       </Button>
                     </div>
                   </div>
