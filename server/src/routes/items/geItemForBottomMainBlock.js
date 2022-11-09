@@ -1,14 +1,30 @@
 const router = require('express').Router();
-// const { Category } = require('../../../db/models');
 const { Item } = require('../../../db/models');
 
+function getRandomCategory() {
+  const categoriesQuantity = 26
+  const getRandomCategory = Math.floor(Math.random() * (categoriesQuantity - 1) + 1)
+  return getRandomCategory
+}
+
 router.get('/', async (req, res) => {
+  const quantityOfCards = 10
+  let counter = 0
+  let result = []
   try {
-    const getFields = await Item.findAll({ where: { category_id: 1 }, raw: true });    
-    res.json(getFields);
-  } catch (error) {
-    console.log('error: ', error);    
-  }
+    while(counter < quantityOfCards) {
+      counter++
+      const randomCategory = getRandomCategory()
+      const allItemsInCategory = await Item.findAll({ where: { category_id: randomCategory }, raw: true });
+      const length = allItemsInCategory.length
+      const randomIndexes = Math.floor(Math.random() * (length - 1) + 1)
+      const getRandomItems = allItemsInCategory[randomIndexes]
+        result.push(getRandomItems)    
+      }
+    } catch (error) {
+      console.log('error: ', error);    
+    }
+     res.json(result)
 });
 
 module.exports = router;
