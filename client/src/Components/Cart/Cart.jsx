@@ -1,6 +1,8 @@
+import { Button } from "antd";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import AdressForm from './AdressForm'
 import OneCart from "./OneCart";
 
@@ -25,6 +27,7 @@ export default function Cart() {
 
 
   return (
+    <div>
     <div
       style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
     >
@@ -32,5 +35,9 @@ export default function Cart() {
         <OneCart el={el} key={el.id} />
       ))}
     </div>
-  );
+    <Link to='/account/address-form'>
+      <Button>Buy items</Button>
+    </Link>
+    </div>
+  )
 }
