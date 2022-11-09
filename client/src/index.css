@@ -54,3 +54,12 @@ code {
   color: black !important;
   border-color: rgb(200, 0, 255) !important;
 }
+
+.ant-btn-primary:hover {
+  background:#a722ff6d !important;
+}
+
+.ant-btn-primary {
+  background:#a622ffb9 !important;
+  border-color: gray !important;
+}
