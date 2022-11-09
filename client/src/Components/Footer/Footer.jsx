@@ -136,7 +136,7 @@ export default function FooterPage() {
         </div>
       </div>
       <div
-        style={{ color: "white", background: "black", textAlign: "center" }}
+        style={{ color: "white", background: "#8B008B", textAlign: "center" }}
         className="footer-copywrite"
       >
         <div style={{ height: "25px" }} className="container">
