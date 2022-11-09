@@ -5,13 +5,24 @@ import { useLocation } from "react-router-dom";
 import FormFilter from "../Cards/FormFilter";
 import { addItem } from "../../store/cart/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
+import checkItem from "../../helpers/checkItem";
 
 export default function ItemCard() {
   const user_id = useSelector((state) => state.user.id);
   const dispatch = useDispatch(); 
   const location = useLocation();
   const [item, setItem] = useState(location.state.el);
-  console.log(item);
+  
+  if(item.item_id){
+    (   async function check() {
+      console.log(4444444);
+      const result = await checkItem({item_id: item.item_id})
+      console.log('ggooo', result);
+      // const resultToback = await result.json();
+      setItem(result)
+      console.log('898989', item);
+    })()
+  }
 
   const desc = ["terrible", "bad", "normal", "good", "wonderful"];
   const [value, setValue] = useState(3);

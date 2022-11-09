@@ -30,6 +30,7 @@ const deleteItemFromWishListCart = require('./routes/user/deleteItemFromWishList
 const addNewItem = require('./routes/items/addNewItem')
 const searchUserByEmail = require('./routes/user/searchUserByEmail')
 const updateUserStatus = require('./routes/user/updateStatus')
+const checkOneItem = require('./routes//items/checkOneItem')
 
 const app = express();
 
@@ -78,6 +79,8 @@ app.use('/display-cart', displayCart)
 app.use('/add-new-item', addNewItem)
 app.use('/search-by-email', searchUserByEmail)
 app.use('/update-status', updateUserStatus)
+app.use('/update-status', updateUserStatus)
+app.use('/check-one-item', checkOneItem)
 
 
 const httpServer = app.listen(CURRENT_PORT ?? 5000, () => {

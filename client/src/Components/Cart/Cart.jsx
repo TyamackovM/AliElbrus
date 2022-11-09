@@ -19,6 +19,7 @@ export default function Cart() {
         credentials: "include",
       });
       const result = await response.json();
+      console.log(result.cart);
       setCart(result.cart);
     })();
   }, []);

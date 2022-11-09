@@ -8,10 +8,12 @@ import { Avatar, Card } from "antd";
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
 import { initItem, addItem } from "../../store/cart/actionCreators";
 const { Meta } = Card;
 
 export default function OneCart({ el }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const user_id = useSelector((state) => state.user.id);
   const [display, setDisplay] = useState(true);
@@ -32,6 +34,12 @@ export default function OneCart({ el }) {
     }
     dispatch(initItem(result.cart.length));
   };
+
+  const redirectHandler = () => {
+    console.log('el in cart', el);
+    navigate('/item-card', {state: {el}})
+  } 
+
   return (
     <>
       {display ? (
@@ -42,7 +50,7 @@ export default function OneCart({ el }) {
         >
           <>
             <Meta
-              avatar={<Avatar src={el["Item.image"]} />}
+              avatar={<Avatar onClick={redirectHandler} src={el["Item.image"]} />}
               title={el["Item.title"]}
               description={"$" + el["Item.price"]}
             />
