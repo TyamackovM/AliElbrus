@@ -1,6 +1,6 @@
 import style from "./Admin.module.css";
 import React, { useEffect } from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
@@ -43,22 +43,37 @@ export default function AdminCabinet() {
     setAllInputs({ ...allInputs, [event.target.name]: event.target.value });
   };
 
+  const key = 'updatable';
+
   const saveHandler = () => {
     addNewItemToDB(allInputs);
-    setOk(true);
+    
+    message.loading({
+      content: 'Processing...',
+      key,
+    });
+    setTimeout(() => {
+      message.success({
+        content: 'Your item has been added, thank you!',
+        key,
+        duration: 2,
+      });
+      setOk(true);
+    }, 2500);
+
     setTimeout(() => {
       setOk(false);
-    }, 2500)
+          }, 5000)
   };
-
+  
   return (
     <>
     {ok ? (
       <div style={{width: '630px', display: 'flex', justifyContent: 'center'}}>
         
-        <div style={{display: 'flex', justifyContent: 'center'}}>
+        {/* <div style={{display: 'flex', justifyContent: 'center'}}>
         <img style={{width: '30px', height: '30px'}} src='/img/ok.png' alt='ok'/>
-        </div>
+        </div> */}
         <div style={{color: 'green', fontSize: '23px', marginLeft: '10px'}}>Your items has been added!</div>
       </div>
     ) : (
