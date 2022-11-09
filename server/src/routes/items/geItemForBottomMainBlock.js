@@ -6,11 +6,13 @@ function getRandomCategory() {
   const getRandomCategory = Math.floor(Math.random() * (categoriesQuantity - 1) + 1)
   return getRandomCategory
 }
+
 router.get('/', async (req, res) => {
+  const quantityOfCards = 10
   let counter = 0
   let result = []
   try {
-    while(counter <= 9) {
+    while(counter < quantityOfCards) {
       counter++
       const randomCategory = getRandomCategory()
       const allItemsInCategory = await Item.findAll({ where: { category_id: randomCategory }, raw: true });
