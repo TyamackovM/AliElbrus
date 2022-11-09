@@ -170,11 +170,13 @@ export default function ItemCard() {
               borderRadius: "5px",
             }}
           >
-            <div>
+            <div style={{ height: "450px", width: "350px", borderRadius: '5px' }}>
               <img
                 src={item.image}
                 alt=""
-                style={{ height: "450px", width: "350px" }}
+                style={{ width: '100%',
+                height: '100%',
+                objectFit: 'cover', borderRadius: '5px'}}
               />
             </div>
           </div>
