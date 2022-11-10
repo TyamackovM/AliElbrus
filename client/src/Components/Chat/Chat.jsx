@@ -15,7 +15,7 @@ export default function Chat() {
         setInput( {...input, [e.target.name]: e.target.value})
     }
 
-    const ws = new WebSocket('ws://');
+    const ws = new WebSocket('ws:');
     
     ws.onopen = () => {
       console.log('onopen!!')
