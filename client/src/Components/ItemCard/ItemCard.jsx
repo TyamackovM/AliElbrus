@@ -153,7 +153,7 @@ export default function ItemCard() {
       className="itemCard"
       style={{ justifyContent: "center", display: "flex", marginTop: "20px" }}
     >
-      <div style={{ display: "flex", flexDirection: "column", width: "65%" }}>
+      <div style={{ display: "flex", flexDirection: "column", width: "65%", minWidth: '900px' }}>
         <div
           className="upper part"
           style={{
@@ -170,15 +170,19 @@ export default function ItemCard() {
               flexDirection: "column",
               boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
               borderRadius: "5px",
+              display: 'inline-block', /* Строчно-блочный элемент */
+                overflow: 'hidden'
             }}
           >
             <div style={{ height: "450px", width: "350px", borderRadius: '5px' }}>
               <img
+              className={styles.imgHov}
                 src={item.image}
                 alt=""
                 style={{ width: '100%',
                 height: '100%',
-                objectFit: 'cover', borderRadius: '5px'}}
+                objectFit: 'cover', borderRadius: '5px', transition: '1s', 
+                display: 'block'}}
               />
             </div>
           </div>
