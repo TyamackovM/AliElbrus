@@ -7,9 +7,10 @@ import AdressForm from './AdressForm'
 import OneCart from "./OneCart";
 
 export default function Cart() {
+  const [cart, setCart] = useState();
+  const [sum, setSum] = useState(0)
   const user_id = useSelector((state) => state.user.id);
 
-  const [cart, setCart] = useState();
   useEffect(() => {
     (async function () {
       const response = await fetch("http://localhost:4000/display-cart", {
@@ -21,10 +22,24 @@ export default function Cart() {
         credentials: "include",
       });
       const result = await response.json();
-      console.log(result.cart);
+      // console.log(result.cart);
       setCart(result.cart);
     })();
+    (function () {  
+       cart?.forEach((el) => {
+         setSum({...sum, [sum.resSum]: +el['Item.price']}) 
+         console.log(sum)
+       })
+    })()
   }, []);
+
+useEffect(() => {
+  let res = 0
+  cart?.forEach(el => {
+    res += el['Item.price']
+  })
+  setSum(res)
+}, [cart])
 
 
   return (
@@ -39,7 +54,7 @@ export default function Cart() {
       {cart?.length ? (
         <div style={{display: 'flex', justifyContent: 'center', marginTop: '10px', }}>
     <Link to='/account/address-form'>
-        <Button style={{borderRadius: '5px', width: '200px'}}>Buy items</Button>
+        <Button style={{borderRadius: '5px', width: '200px'}}>{`Buy items ${sum.toFixed(1)}$`}</Button>
     </Link>
     </div>
       ) : (
