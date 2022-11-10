@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/AliElbrus/static/css/main.a98234ca.css",
+    "main.js": "/AliElbrus/static/js/main.d9f8ea9e.js",
+    "static/media/navbar.png": "/AliElbrus/static/media/navbar.920d001873a2d2de7fcf.png",
+    "index.html": "/AliElbrus/index.html",
+    "main.a98234ca.css.map": "/AliElbrus/static/css/main.a98234ca.css.map",
+    "main.d9f8ea9e.js.map": "/AliElbrus/static/js/main.d9f8ea9e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a98234ca.css",
+    "static/js/main.d9f8ea9e.js"
+  ]
+}
