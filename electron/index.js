@@ -6,7 +6,7 @@ function createWindow() {
     height: 868,
   });
 
-  mainWindow.loadURL('https://www.youtube.com/');
+  mainWindow.loadURL('https://ali-elbrus.herokuapp.com/');
 
   mainWindow.once('ready-to-show', mainWindow.show);
 }
