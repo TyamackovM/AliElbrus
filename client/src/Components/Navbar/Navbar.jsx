@@ -74,6 +74,8 @@ const Navbar = () => {
       <div className={styles.banner_container}>
         <Link href="#" className={styles.banner}></Link>
       </div>
+      <div style={{backgroundColor: 'white', position: 'sticky', top: '0', zIndex: '3'}}>
+      <div style={{marginLeft: '120px', }}>
       <Space className={styles.header} direction="vertical">
         <div className={styles.logo}>
           <Link to="/">
@@ -152,6 +154,8 @@ const Navbar = () => {
           </div>
         </div>
       </Space>
+      </div>
+      </div>
     </>
   );
 };
