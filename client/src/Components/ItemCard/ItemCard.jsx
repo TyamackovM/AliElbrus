@@ -44,7 +44,7 @@ export default function ItemCard() {
   }
   console.log(333444);
   const cartHandler = async () => {
-    const response = await fetch("http://localhost:4000/add-many-item-to-cart", {
+    const response = await fetch("/add-many-item-to-cart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
