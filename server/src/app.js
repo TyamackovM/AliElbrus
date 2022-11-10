@@ -4,8 +4,6 @@ const ws = require('ws');
 const express = require('express');
 const configApp = require('../config/configApp');
 
-
-
 const app = express();
 configApp(app);
 
