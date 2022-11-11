@@ -28,7 +28,3 @@
     box-shadow: 0 0 10px 0 #f4b7dd inset, 0 0 10px 4px #e1c0f3;
     background-color: rgb(226, 119, 250);
   }
-
-  .imgHov:hover {
-    transform: scale(1.2);
-  }
