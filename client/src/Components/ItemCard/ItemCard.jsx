@@ -169,11 +169,7 @@ export default function ItemCard() {
               display: "flex",
               flexDirection: "column",
               boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-              borderRadius: "5px",
-              // display: 'inline-block', /* Строчно-блочный элемент */
-                // overflow: 'hidden',
-                // height: "450px", width: "500px"
-               
+              borderRadius: "5px",             
             }}
           >
             <div style={{ height: "450px", width: "350px", borderRadius: '5px' }}>
