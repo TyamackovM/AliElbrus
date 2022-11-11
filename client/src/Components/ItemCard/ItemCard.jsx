@@ -171,8 +171,8 @@ export default function ItemCard() {
               boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
               borderRadius: "5px",
               // display: 'inline-block', /* Строчно-блочный элемент */
-                overflow: 'hidden',
-                height: "450px", width: "500px"
+                // overflow: 'hidden',
+                // height: "450px", width: "500px"
                
             }}
           >
@@ -183,8 +183,7 @@ export default function ItemCard() {
                 alt=""
                 style={{ width: '100%',
                 height: '100%',
-                objectFit: 'cover', borderRadius: '5px', transition: '1s', 
-                display: 'block'}}
+                objectFit: 'cover', borderRadius: '5px' }}
               />
             </div>
           </div>
