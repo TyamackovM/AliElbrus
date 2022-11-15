@@ -150,7 +150,7 @@ const Navbar = () => {
             )}
           </div>
           <div>
-            <span>My AliElbrus</span>
+            <span>My E-market</span>
           </div>
         </div>
       </Space>
