@@ -33,7 +33,7 @@ export default function Person() {
           icon={<UserOutlined />}
         />
       </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ display: "flex", justifyContent: "center", flexWrap: 'wrap' }}>
         <p style={{ fontWeight: "bold", fontSize: "17px" }}>Hi, {user.login}</p>
       </div>
       <div style={{ display: "flex", justifyContent: "space-around" }}>
