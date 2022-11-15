@@ -79,7 +79,7 @@ const Navbar = () => {
       <Space className={styles.header} direction="vertical">
         <div className={styles.logo}>
           <Link to="/">
-            <span className={styles.logo_base}>AliElbrus</span>
+            <span className={styles.logo_base}>E-market</span>
           </Link>
         </div>
 

@@ -1,5 +1,6 @@
+
 {
-  "name": "alielbrus",
+  "name": "emarket",
   "version": "1.0.0",
   "description": "",
   "main": "test.js",
@@ -19,3 +20,4 @@
   },
   "homepage": "https://github.com/TyamackovM/AliElbrus#readme"
 }
+
