@@ -39,7 +39,7 @@ const Navbar = () => {
   };
 
   const handleLogout = async (e) => {
-    const res = await fetch("http://localhost:4000/logout", {
+    const res = await fetch("/logout", {
       method: "GET",
       credentials: "include",
     });
@@ -54,7 +54,7 @@ const Navbar = () => {
 
   useEffect(() => {
     (async function toBack() {
-      const response = await fetch("http://localhost:4000/add-item-to-cart", {
+      const response = await fetch("/add-item-to-cart", {
         method: "DELETE", //SUPPOSED TO BE ANOTHER ROUTES, DID HAVE TIME TO WRITE ANOTHER ONE
         headers: {
           "Content-Type": "application/json",

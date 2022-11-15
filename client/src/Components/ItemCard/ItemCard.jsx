@@ -44,7 +44,7 @@ export default function ItemCard() {
   }
   console.log(333444);
   const cartHandler = async () => {
-    const response = await fetch("http://localhost:4000/add-many-item-to-cart", {
+    const response = await fetch("/add-many-item-to-cart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -145,11 +145,8 @@ export default function ItemCard() {
               display: "flex",
               flexDirection: "column",
               boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-              borderRadius: "5px",
-              // display: 'inline-block', /* Строчно-блочный элемент */
-               
-               
-            }}
+              borderRadius: "5px", 
+              }}
           >
             <div style={{ height: "450px", width: "350px", borderRadius: '5px' }}>
               <img
@@ -158,7 +155,7 @@ export default function ItemCard() {
                 alt=""
                 style={{ width: '100%',
                 height: '100%',
-                objectFit: 'cover', borderRadius: '5px', }}
+                objectFit: 'cover', borderRadius: '5px' }}
               />
             </div>
           </div>
