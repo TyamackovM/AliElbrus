@@ -20,7 +20,7 @@ export default function SliderCarousel() {
         
       </div>
       <div>
-        <Link to='/category/26'>
+        <Link to='/category/1'>
           <img style={{width: '550px', height: '160px', borderRadius: '5px' }} src='/img/mainblock.png' />
         </Link>
       </div>
