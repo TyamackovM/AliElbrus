@@ -75,7 +75,7 @@ export default function Person() {
         />
       </div>
       <div style={{ display: "flex", justifyContent: "center",  }}>
-        <p style={{ fontWeight: "bold", fontSize: "17px" }}>Welcome to AliElbrus</p>
+        <p style={{ fontWeight: "bold", fontSize: "17px" }}>Welcome to E-market</p>
       </div>
       <div style={{ display: "flex", justifyContent: "space-evenly" }}>
       <Button onClick={() => modalPageHandler(true)} className={style.btnClick}   shape="round" htmlType="submit">
