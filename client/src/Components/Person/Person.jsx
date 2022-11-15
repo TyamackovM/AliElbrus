@@ -50,7 +50,7 @@ export default function Person() {
         <div className={style.bottomBlock}>
           <div className={style.bottomFirst}>
             <p className={style.exc}>Exclusive offers</p>
-            <p className={style.newMem}>Just for new AliElbrus members!</p>
+            <p className={style.newMem}>Just for new E-market members!</p>
             <p className={style.newPrice}>for $1:</p>
           </div>
           <div className={style.bottomSecond}></div>
