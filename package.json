@@ -1,11 +1,10 @@
-
 {
   "name": "emarket",
   "version": "1.0.0",
   "description": "",
   "main": "test.js",
   "scripts": {
-    "postinstall": "cd server && npm i && npx sequelize db:migrate && cd ../client && npm i && npm run build",
+    "postinstall": "cd server && npm i && npx sequelize db:migrate:undo:all & npx sequelize db:migrate && npx sequelize db:seed:all && cd ../client && npm i && npm run build",
     "start": "cd server && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,4 +19,3 @@
   },
   "homepage": "https://github.com/TyamackovM/AliElbrus#readme"
 }
-
