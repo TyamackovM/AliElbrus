@@ -17,6 +17,8 @@ const LoginPage = () => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
+ 
+
   const handleLogin = async (e) => {
     e.preventDefault();
     const res = await fetch("/login", {
@@ -31,18 +33,16 @@ const LoginPage = () => {
     if (toJson === "PasswordNotDone") {
       setPasswordTrue(true);
       setTimeout(() => {
-        setPasswordTrue(false)
-      }, 3000)
+        setPasswordTrue(false);
+      }, 3000);
       // alert("Incorrect password");
-    } 
-    else if (toJson === "EmailNotDone") {
+    } else if (toJson === "EmailNotDone") {
       setEmailTrue(true);
       setTimeout(() => {
-        setEmailTrue(false)
-      }, 3000)
+        setEmailTrue(false);
+      }, 3000);
       // alert("Incorrect email");
-    } 
-    else {
+    } else {
       dispatch(getUser(toJson));
       // dispatch(changeBooleanStateAC(false))
       navigate("/");
@@ -82,7 +82,8 @@ const LoginPage = () => {
             },
           ]}
         >
-          <Input placeholder="Email"
+          <Input
+            placeholder="Email"
             name="email"
             onChange={inputHandler}
             style={{ width: "300px", borderRadius: "5px" }}
@@ -90,7 +91,6 @@ const LoginPage = () => {
         </Form.Item>
 
         <Form.Item
-
           name="password"
           rules={[
             {
@@ -107,11 +107,23 @@ const LoginPage = () => {
           />
         </Form.Item>
         {passwordTrue ? (
-          <div style={{display: 'flex', justifyContent: 'center', color: 'red'}}>Incorrect password</div>
-        ) : (<></>)}
+          <div
+            style={{ display: "flex", justifyContent: "center", color: "red" }}
+          >
+            Incorrect password
+          </div>
+        ) : (
+          <></>
+        )}
         {emailTrue ? (
-          <div style={{display: 'flex', justifyContent: 'center', color: 'red'}}>Incorrect email</div>
-        ) : (<></>)}
+          <div
+            style={{ display: "flex", justifyContent: "center", color: "red" }}
+          >
+            Incorrect email
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
       <Button
         className={style.btnReg}
