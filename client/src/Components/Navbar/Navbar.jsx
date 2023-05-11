@@ -1,6 +1,5 @@
 import styles from "../Navbar/Navbar.module.css";
 import {
-  AudioOutlined,
   ShoppingCartOutlined,
   HeartOutlined,
   UserOutlined,
@@ -15,16 +14,13 @@ import { changeBooleanStateAC } from "../../store/modal/actionCreators";
 import { checkItemFromInputInDB } from "../../helpers/checkItemFromInputInDB";
 import { useState } from "react";
 import { useEffect } from "react";
-import { addItem, initItem } from "../../store/cart/actionCreators";
+import { initItem } from "../../store/cart/actionCreators";
 
 const { Search } = Input;
 
-// const user = useSelector((state) => state.user);
+
 const Navbar = () => {
-  const [items, setItems] = useState(null);
-  const modal = useSelector((state) => state.modal);
   const user = useSelector((state) => state.user);
-  const user_id = useSelector((state) => state.user.id);
 
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -34,7 +30,6 @@ const Navbar = () => {
   const searchHandler = async (value) => {
     const { findItems, length } = await checkItemFromInputInDB(value);
     const searchResult = findItems;
-    console.log("searchResult", searchResult.length);
     navigate("/search", { state: { searchResult, length, searchWord: value } });
   };
 
@@ -55,7 +50,7 @@ const Navbar = () => {
   useEffect(() => {
     (async function toBack() {
       const response = await fetch("/add-item-to-cart", {
-        method: "DELETE", //SUPPOSED TO BE ANOTHER ROUTES, DID HAVE TIME TO WRITE ANOTHER ONE
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },

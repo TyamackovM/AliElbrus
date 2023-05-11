@@ -19,27 +19,39 @@ export default function Orders() {
         credentials: "include",
       });
       const result = await response.json();
-      console.log(result.orders);
-      console.log("ORDERS!!!!", result);
       setOrder(result.orders);
     })();
   }, []);
   return (
     <>
-    {order?.length ? (
-    <>
-    <div>
-      <OrderMessage />
-    </div>
-    <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
-      {order?.map((el) => (
-        <OneOrder el={el} key={el.id} />
-      ))}
-    </div>
-  </>
-    ) : (
-   <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}}>No orders</div> 
-    )}
+      {order?.length ? (
+        <>
+          <div>
+            <OrderMessage />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            {order?.map((el) => (
+              <OneOrder el={el} key={el.id} />
+            ))}
+          </div>
+        </>
+      ) : (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "20px",
+          }}
+        >
+          No orders
+        </div>
+      )}
     </>
   );
 }

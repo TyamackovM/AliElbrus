@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Card, Rate, Button } from "antd";
 import styles from "./ItemCard.module.css";
 import { useLocation } from "react-router-dom";
-import FormFilter from "../Cards/FormFilter";
 import { addItem } from "../../store/cart/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
 import checkItem from "../../helpers/checkItem";
@@ -10,20 +9,16 @@ import { changeBooleanStateAC } from "../../store/modal/actionCreators";
 
 export default function ItemCard() {
   const user_id = useSelector((state) => state.user.id);
-  const user = useSelector((state) => state.user)
-  const dispatch = useDispatch(); 
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const location = useLocation();
   const [item, setItem] = useState(location.state.el);
-  
-  if(item.item_id){
-    (   async function check() {
-      console.log(4444444);
-      const result = await checkItem({item_id: item.item_id})
-      console.log('ggooo', result);
-      // const resultToback = await result.json();
-      setItem(result)
-      console.log('898989', item);
-    })()
+
+  if (item.item_id) {
+    (async function check() {
+      const result = await checkItem({ item_id: item.item_id });
+      setItem(result);
+    })();
   }
 
   const desc = ["terrible", "bad", "normal", "good", "wonderful"];
@@ -42,7 +37,6 @@ export default function ItemCard() {
       setQuantity(quantity + 1);
     }
   }
-  console.log(333444);
   const cartHandler = async () => {
     const response = await fetch("/add-many-item-to-cart", {
       method: "POST",
@@ -52,8 +46,7 @@ export default function ItemCard() {
       body: JSON.stringify({ user_id, item_id: item.id, quantity }),
       credentials: "include",
     });
-    const result = await response.json(); 
-    console.log('quantyty111', result );
+    const result = await response.json();
     dispatch(addItem(result.quantity));
   };
 
@@ -91,9 +84,7 @@ export default function ItemCard() {
             ""
           )}
         </span>
-        <div style={{ marginTop: "20px" }}>
-                  
-        </div>
+        <div style={{ marginTop: "20px" }}></div>
       </div>
     ),
     project: (
@@ -104,12 +95,8 @@ export default function ItemCard() {
           alignContent: "center ",
         }}
       >
-        <div style={{ width: "440px" }}>
-          
-        </div>
-        <div style={{ width: "440px" }}>
-          
-        </div>
+        <div style={{ width: "440px" }}></div>
+        <div style={{ width: "440px" }}></div>
       </div>
     ),
   };
@@ -127,9 +114,21 @@ export default function ItemCard() {
   return (
     <div
       className="itemCard"
-      style={{ justifyContent: "center", display: "flex", marginTop: "20px", minWidth: '900px' }}
+      style={{
+        justifyContent: "center",
+        display: "flex",
+        marginTop: "20px",
+        minWidth: "900px",
+      }}
     >
-      <div style={{ display: "flex", flexDirection: "column", width: "65%", minWidth: '900px' }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          width: "65%",
+          minWidth: "900px",
+        }}
+      >
         <div
           className="upper part"
           style={{
@@ -145,17 +144,22 @@ export default function ItemCard() {
               display: "flex",
               flexDirection: "column",
               boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
-              borderRadius: "5px", 
-              }}
+              borderRadius: "5px",
+            }}
           >
-            <div style={{ height: "450px", width: "350px", borderRadius: '5px' }}>
+            <div
+              style={{ height: "450px", width: "350px", borderRadius: "5px" }}
+            >
               <img
-              className={styles.imgHov}
+                className={styles.imgHov}
                 src={item.image}
                 alt=""
-                style={{ width: '100%',
-                height: '100%',
-                objectFit: 'cover', borderRadius: '5px' }}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "5px",
+                }}
               />
             </div>
           </div>
@@ -164,7 +168,6 @@ export default function ItemCard() {
             style={{
               display: "flex",
               flexDirection: "column",
-              // marginLeft: "10px",
               boxShadow: "1px 1px 1px 1px rgba(167, 167, 167, 0.596)",
               borderRadius: "5px",
             }}
@@ -195,10 +198,9 @@ export default function ItemCard() {
                 }}
               >
                 <div className={styles.price}>
-                  <div >
-                    <div style={{ marginTop: "15px",  }}>{item.price}$</div>
-
-                    </div>
+                  <div>
+                    <div style={{ marginTop: "15px" }}>{item.price}$</div>
+                  </div>
                 </div>
                 <div>
                   <div
@@ -206,7 +208,6 @@ export default function ItemCard() {
                       display: "flex",
                       flexDirection: "column",
                       marginTop: "20px",
-                      // marginLeft: "20px",
                       justifyContent: "center",
                     }}
                   >
@@ -273,25 +274,24 @@ export default function ItemCard() {
                         </Button>
                       </div>
                     </div>
-                    <div style={{ marginTop: "20px"}}>
+                    <div style={{ marginTop: "20px" }}>
                       {user.login ? (
                         <Button
-                      onClick={cartHandler}
-                        className={styles.btnReg}
-                        style={{ marginLeft: "3px" }}
-                      >
-                        Add cart
-                      </Button>
+                          onClick={cartHandler}
+                          className={styles.btnReg}
+                          style={{ marginLeft: "3px" }}
+                        >
+                          Add cart
+                        </Button>
                       ) : (
                         <Button
-                        onClick={() => modalPageHandler(true)}
-                        className={styles.btnReg}
-                        style={{ marginLeft: "3px" }}
-                      >
-                        Add cart
-                      </Button>
+                          onClick={() => modalPageHandler(true)}
+                          className={styles.btnReg}
+                          style={{ marginLeft: "3px" }}
+                        >
+                          Add cart
+                        </Button>
                       )}
-                      
                     </div>
                   </div>
                 </div>

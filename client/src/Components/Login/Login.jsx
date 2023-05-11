@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getUser } from "../../store/user/actionCreators";
 import style from "../Registr/Registr.module.css";
-import { changeBooleanStateAC } from "../../store/modal/actionCreators";
 
 const LoginPage = () => {
   const [input, setInput] = useState({ email: "", password: "" });
@@ -16,8 +15,6 @@ const LoginPage = () => {
   const inputHandler = async (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
-
- 
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -35,26 +32,17 @@ const LoginPage = () => {
       setTimeout(() => {
         setPasswordTrue(false);
       }, 3000);
-      // alert("Incorrect password");
     } else if (toJson === "EmailNotDone") {
       setEmailTrue(true);
       setTimeout(() => {
         setEmailTrue(false);
       }, 3000);
-      // alert("Incorrect email");
     } else {
       dispatch(getUser(toJson));
-      // dispatch(changeBooleanStateAC(false))
       navigate("/");
     }
   };
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
   return (
     <Form
       name="basic"
@@ -62,8 +50,6 @@ const LoginPage = () => {
       initialValues={{
         remember: true,
       }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
       <div

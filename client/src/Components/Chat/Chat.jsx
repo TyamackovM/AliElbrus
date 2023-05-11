@@ -1,29 +1,25 @@
-import { Button } from 'antd';
-import React from 'react';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import styles from './Chat.module.css';
+import { Button } from "antd";
+import React from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import styles from "./Chat.module.css";
 
 export default function Chat() {
   const user = useSelector((state) => state.user);
 
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [allMessages, setAllMessages] = useState([]);
 
   function handlerInput(e) {
     setInput({ ...input, [e.target.name]: e.target.value });
   }
 
-  // const ws = new WebSocket('ws://localhost:4000');
-
   /* eslint-disable no-restricted-globals */
 
-  const HOST = location.origin.replace(/^http/, 'ws');
+  const HOST = location.origin.replace(/^http/, "ws");
   const ws = new WebSocket(HOST);
 
-  ws.onopen = () => {
-    console.log('onopen!!');
-  };
+  ws.onopen = () => {};
 
   const submitClick = (e) => {
     e.preventDefault();
@@ -31,23 +27,18 @@ export default function Chat() {
     setAllMessages([...allMessages, sendMess]);
     const jsonMess = JSON.stringify(sendMess);
     ws.send(jsonMess);
-    console.log('сообщение отправлено', jsonMess);
   };
 
   ws.onmessage = (e) => {
     const getMess = JSON.parse(e.data);
     setAllMessages([...allMessages, getMess]);
-    console.log(allMessages);
-    console.log('сообщение получено', getMess);
   };
 
   return (
     <div>
-      {/* <h2 id="users">Чат:</h2> */}
-      {/* <hr /> */}
       <form name="chatForm" className="d-flex formChat">
         <label htmlFor="exampleInput1" className="form-label">
-          Введите сообщение{' '}
+          Введите сообщение{" "}
         </label>
         <input
           name="chatInp"
@@ -59,7 +50,7 @@ export default function Chat() {
         <Button
           className={styles.btnReg}
           onClick={submitClick}
-          style={{ marginLeft: '3px' }}
+          style={{ marginLeft: "3px" }}
         >
           Отправить
         </Button>
