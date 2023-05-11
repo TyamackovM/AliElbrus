@@ -10,7 +10,6 @@ import {
   TwitterOutlined,
   FacebookFilled,
 } from "@ant-design/icons";
-import { getStatusClassNames } from "antd/lib/_util/statusUtils";
 import React from "react";
 import styles from "../Footer/Footer.module.css";
 
